@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 namespace BPCMain.Utilities
 {
     static class ConstraintMethods
-    { 
+    {
         //Mangler at blive testet
         public static bool IsEmailValid(string eMail)
         {
