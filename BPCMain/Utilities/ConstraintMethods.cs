@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BPCMain.Utilities
 {
-    class ConstraintMethods
+    static class ConstraintMethods
     {
+        
     }
 }
