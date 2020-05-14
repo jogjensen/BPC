@@ -123,6 +123,17 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ConstraintMethods.cs" />
+    <Compile Include="Utilities\NavigationService.cs" />
+    <Compile Include="Utilities\RelayCommand.cs" />
+    <Compile Include="ViewModel\AboutFaqContact.cs" />
+    <Compile Include="ViewModel\CreateBookingCompany.cs" />
+    <Compile Include="ViewModel\DisplayBookingAdmin.cs" />
+    <Compile Include="ViewModel\DisplayBookingCar.cs" />
+    <Compile Include="ViewModel\DisplayBookingCompany.cs" />
+    <Compile Include="ViewModel\Login.cs" />
+    <Compile Include="ViewModel\NewUserCar.cs" />
+    <Compile Include="ViewModel\NewUserCompany.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -153,6 +164,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
