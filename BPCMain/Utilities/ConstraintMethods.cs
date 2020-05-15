@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BPCMain.Utilities
 {
-    static class ConstraintMethods
+    public static class ConstraintMethods
     {
         //Mangler at blive testet
         public static bool IsEmailValid(string eMail)

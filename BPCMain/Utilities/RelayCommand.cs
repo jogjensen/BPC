@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace BPCMain.Utilities
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Predicate<object> _predicate;
         private Action _method;
