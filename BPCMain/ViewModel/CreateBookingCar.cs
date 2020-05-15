@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace BPCMain.ViewModel
 {
-    class Login
-    {
-    }
+	class CreateBookingCar
+	{
+		#region Instance Fields
+
+
+
+		#endregion
+
+		#region Properties
+
+
+
+		#endregion
+
+		#region RelayCommands
+
+
+
+		#endregion
+	}
 }

@@ -7,6 +7,23 @@ using System.Threading.Tasks;
 namespace BPCMain.ViewModel
 {
     class DisplayBookingAdmin
-    {
-    }
+	{
+		#region Instance Fields
+
+
+
+		#endregion
+
+		#region Properties
+
+
+
+		#endregion
+
+		#region RelayCommands
+
+
+
+		#endregion
+	}
 }

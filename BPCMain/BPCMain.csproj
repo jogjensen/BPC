@@ -127,13 +127,47 @@
     <Compile Include="Utilities\NavigationService.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="ViewModel\AboutFaqContact.cs" />
+    <Compile Include="ViewModel\CreateBookingCar.cs" />
     <Compile Include="ViewModel\CreateBookingCompany.cs" />
     <Compile Include="ViewModel\DisplayBookingAdmin.cs" />
     <Compile Include="ViewModel\DisplayBookingCar.cs" />
     <Compile Include="ViewModel\DisplayBookingCompany.cs" />
-    <Compile Include="ViewModel\Login.cs" />
+    <Compile Include="ViewModel\HomePageLogin.cs" />
     <Compile Include="ViewModel\NewUserCar.cs" />
     <Compile Include="ViewModel\NewUserCompany.cs" />
+    <Compile Include="View\AboutUs.xaml.cs">
+      <DependentUpon>AboutUs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ContactBPC.xaml.cs">
+      <DependentUpon>ContactBPC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateBookingCar.xaml.cs">
+      <DependentUpon>CreateBookingCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateBookingCompany.xaml.cs">
+      <DependentUpon>CreateBookingCompany.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DisplayBookingAdmin.xaml.cs">
+      <DependentUpon>DisplayBookingAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DisplayBookingCar.xaml.cs">
+      <DependentUpon>DisplayBookingCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DisplayBookingCompany.xaml.cs">
+      <DependentUpon>DisplayBookingCompany.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Faq.xaml.cs">
+      <DependentUpon>Faq.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomePageLogin.xaml.cs">
+      <DependentUpon>HomePageLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewUserCar.xaml.cs">
+      <DependentUpon>NewUserCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewUserCompany.xaml.cs">
+      <DependentUpon>NewUserCompany.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -159,7 +193,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\MainPage1.xaml">
+    <Page Include="View\AboutUs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ContactBPC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateBookingCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateBookingCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DisplayBookingAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DisplayBookingCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DisplayBookingCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Faq.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomePageLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewUserCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewUserCompany.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

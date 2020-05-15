@@ -7,6 +7,23 @@ using System.Threading.Tasks;
 namespace BPCMain.ViewModel
 {
     class NewUserCompany
-    {
-    }
+	{
+		#region Instance Fields
+
+
+
+		#endregion
+
+		#region Properties
+
+
+
+		#endregion
+
+		#region RelayCommands
+
+
+
+		#endregion
+	}
 }

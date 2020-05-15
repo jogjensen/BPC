@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BPCMain.ViewModel
 {
-    class DisplayBookingCompany
+	class HomePageLogin
 	{
 		#region Instance Fields
 

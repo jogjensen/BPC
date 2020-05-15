@@ -8,5 +8,22 @@ namespace BPCMain.ViewModel
 {
     class AboutFaqContact
     {
-    }
+		#region Instance Fields
+
+
+
+		#endregion
+
+		#region Properties
+
+
+
+		#endregion
+
+		#region RelayCommands
+
+		
+
+		#endregion
+	}
 }
