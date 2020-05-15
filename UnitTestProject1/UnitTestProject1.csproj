@@ -159,7 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BPCMain">
-      <HintPath>..\BPCMain\bin\x64\Debug\BPCMain.exe</HintPath>
+      <HintPath>..\BPCMain\bin\ARM\Debug\BPCMain.exe</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
