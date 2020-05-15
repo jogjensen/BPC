@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BPCMain.ViewModel
 {
-	class CreateBookingCar
+	class CreateBookingCar : BaseVM
 	{
 		#region Instance Fields
 
