@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BPCClassLibrary;
 using BPCMain.Utilities;
 using static BPCMain.Utilities.ConstraintMethods;
 using static BPCMain.Utilities.NavigationService;
+using BPCMain.Persistency;
 
 namespace BPCMain.ViewModel
 {
-    class NewUserCar : BaseVM
+	class NewUserCar : BaseVM
 	{
 		#region Instance Fields
 
@@ -27,8 +29,9 @@ namespace BPCMain.ViewModel
 		private string _errorMessage;
 
 		private RelayCommand _createCar;
-		
+
 		private NavigationService navigation = new NavigationService();
+		private RestWorker restworker = new RestWorker();
 
 		#endregion
 
@@ -107,6 +110,8 @@ namespace BPCMain.ViewModel
 			}
 		}
 
+
+
 		#endregion
 
 		#region RelayCommands
@@ -116,11 +121,14 @@ namespace BPCMain.ViewModel
 			get { return _createCar; }
 			set
 			{
+				_createCar = value; //er denne linje nødvendig???
 				if (CreateCarCheck(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode,
 						Country, Password) == true)
 				{
 					//save new Car in database
-					
+					Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode,
+						Country, Password);
+					//await restworker.CreateObjectAsync(newCar, "Car");
 					navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
 				}
 				else
@@ -129,6 +137,12 @@ namespace BPCMain.ViewModel
 				}
 			}
 		}
+
+		#endregion
+
+		#region Methods
+
+
 
 		#endregion
 	}

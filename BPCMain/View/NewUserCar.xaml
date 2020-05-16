@@ -5,10 +5,74 @@
     xmlns:local="using:BPCMain.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:BPCMain.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+	<Page.DataContext>
+		<ViewModel:NewUserCar/>
+	</Page.DataContext>
 
-    </Grid>
+	<Grid>
+		<StackPanel>
+			<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="400" Text="Opret ny bruger (følgebil):"/>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}"
+				           Text="Fornavn"/>
+				<TextBox Width="400" Text ="{Binding FirstName}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}"
+				           Text="Efternavn"/>
+				<TextBox Width="400" Text ="{Binding LastName}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}"
+					        Text="CVR-nummer"/>
+				<TextBox Width="400" Text ="{Binding CvrNo}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}" 
+					        Text="Email adresse"/>
+				<TextBox Width="400" Text ="{Binding EMail}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Telefonnummer"/>
+				<TextBox Width="400" Text ="{Binding TelephoneNo}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Mobilnummer"/>
+				<TextBox Width="400" Text ="{Binding MobileNo}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Adresse"/>
+				<TextBox Width="400" Text ="{Binding Address}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Postnummer"/>
+				<TextBox Width="400" Text ="{Binding PostalCode}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Land"/>
+				<TextBox Width="400" Text ="{Binding Country}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Password"/>
+				<TextBox Width="400" Text ="{Binding Password}"/>
+			</StackPanel>
+			<Button x:Name="Vend"
+			        Height="40"
+			        Margin="5"
+			        FontSize="20"
+			        Content="opret bruger"
+			        Command="{Binding CreateCar}">
+			</Button>
+		</StackPanel>
+	</Grid>
 </Page>

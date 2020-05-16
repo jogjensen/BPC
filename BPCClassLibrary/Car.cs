@@ -27,11 +27,26 @@ namespace BPCClassLibrary
         {
 
         }
+
+        public Car(string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password)
+        {
+	        _firstName = firstName;
+	        _lastName = lastName;
+	        _cvrNo = cvrNo;
+	        _eMail = eMail;
+	        _telephoneNo = telephoneNo;
+	        _mobileNo = mobileNo;
+	        _address = address;
+	        _postalCode = postalCode;
+	        _country = country;
+	        _password = password;
+        }
+
         #endregion
 
-        #region Properties
+      #region Properties
 
-        public int Id
+      public int Id
         {
 	        get => _id;
 	        set => _id = value;
