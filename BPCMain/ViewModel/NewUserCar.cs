@@ -122,18 +122,17 @@ namespace BPCMain.ViewModel
 			set
 			{
 				_createCar = value; //er denne linje nødvendig???
-				if (CreateCarCheck(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode,
-						Country, Password) == true)
+				Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode,
+					Country, Password);
+				if (CreateCarCheck(newCar)) //metode i ConstraintMethods
 				{
 					//save new Car in database
-					Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode,
-						Country, Password);
 					//await restworker.CreateObjectAsync(newCar, "Car");
 					navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
 				}
 				else
 				{
-					ErrorMessage = "Fejl i oplysninger";
+					ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
 				}
 			}
 		}
