@@ -14,6 +14,15 @@ namespace BPCClassLibrary
             Closed
         };
 
+        public enum TableName
+        {
+            Booking,
+            Car,
+            CarBooking,
+            Customer,
+            Truckdriver
+        };
+
         //eventuel struct til eventuelt brug
         public struct Dimensions
         {

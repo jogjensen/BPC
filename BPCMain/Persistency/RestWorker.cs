@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using static BPCClassLibrary.Datastructures;
 
 namespace BPCMain.Persistency
 {
@@ -12,8 +13,10 @@ namespace BPCMain.Persistency
     {
         private const string URI = "https://bpc-rest.azurewebsites.net/api/";
 
-        public async Task<IList<T>> GetAllObjectsAsync<T>(string objectName)// where T: class
+        public async Task<IList<T>> GetAllObjectsAsync<T>(TableName tableName)// where T: class
         {
+            string objectName = tableName.ToString();
+
             using (HttpClient client = new HttpClient())
             {
                 string content = await client.GetStringAsync(URI + objectName);
@@ -23,8 +26,10 @@ namespace BPCMain.Persistency
             }
         }
 
-        public async Task<T> GetObjectFromIdAsync<T>(int id, string objectName)
+        public async Task<T> GetObjectFromIdAsync<T>(int id, TableName tableName)
         {
+            string objectName = tableName.ToString();
+
             using (HttpClient client = new HttpClient())
             {
                 string content = await client.GetStringAsync(URI + objectName + "/" + id);
@@ -33,8 +38,9 @@ namespace BPCMain.Persistency
             }
         }
 
-        public async Task<bool> CreateObjectAsync<T>(T newObject, string objectName)
+        public async Task<bool> CreateObjectAsync<T>(T newObject, TableName tableName)
         {
+            string objectName = tableName.ToString();
             bool created = false;
 
             using (HttpClient client = new HttpClient())
@@ -53,8 +59,9 @@ namespace BPCMain.Persistency
             return created;
         }
 
-        public async Task<bool> DeleteObjectAsync<T>(int id, string objectName)
+        public async Task<bool> DeleteObjectAsync<T>(int id, TableName tableName)
         {
+            string objectName = tableName.ToString();
             bool deleted = false;
 
             using (HttpClient client = new HttpClient())
@@ -67,8 +74,9 @@ namespace BPCMain.Persistency
             return deleted;
         }
 
-        public async Task<bool> UpdateObjectAsync<T>(T upObject, int objectId, string objectName)
+        public async Task<bool> UpdateObjectAsync<T>(T upObject, int objectId, TableName tableName)
         {
+            string objectName = tableName.ToString();
             bool updated = false;
 
             string jstring = JsonConvert.SerializeObject(upObject);
