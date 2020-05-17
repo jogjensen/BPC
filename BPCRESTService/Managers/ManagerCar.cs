@@ -40,7 +40,9 @@ namespace BPCRESTService.Managers
 			using (SqlConnection conn = new SqlConnection(connString))
 			{
 				conn.Open();
-
+						//
+						//@Id !=  @Name
+						//
 				using (SqlCommand command = new SqlCommand("Select * from Car where Id = @Id", conn))
 				{
 					command.Parameters.AddWithValue("@name", id);
@@ -62,7 +64,7 @@ namespace BPCRESTService.Managers
 			using (SqlConnection conn = new SqlConnection(connString))
 			{
 				conn.Open();
-
+				
 				using (SqlCommand command = new SqlCommand("Insert into Car (Id, FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password) values (@Id, @FirstName, @LastName, @CvrName, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @Country, @Password)", conn))
 				{
 					command.Parameters.AddWithValue("@Id", car.Id);
