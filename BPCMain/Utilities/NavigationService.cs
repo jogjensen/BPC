@@ -10,7 +10,7 @@ namespace BPCMain.Utilities
 {
     class NavigationService
     {
-        public void navigate(Type sourcePage)
+        public void Navigate(Type sourcePage)
         {
             var frame = (Frame)Window.Current.Content;
             frame.Navigate(sourcePage);
