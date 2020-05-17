@@ -256,6 +256,11 @@
       <HintPath>..\BPCClassLibrary\bin\Debug\netstandard2.0\BPCClassLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="BPCClassLibrary">
+      <HintPath>..\BPCClassLibrary\bin\Debug\netstandard2.0\BPCClassLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
