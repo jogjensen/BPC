@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using BPCMain.Utilities;
 using BPCClassLibrary;
+using BPCMain.Persistency;
 
 namespace BPCMain.ViewModel
 {
@@ -24,6 +25,9 @@ namespace BPCMain.ViewModel
         private string _password;
         private int _truckdriver;
         private RelayCommand _createCompany;
+        private string _errorMessage;
+        private NavigationService navigation = new NavigationService();
+        private RestWorker restWorker = new RestWorker();
         #endregion
 
         #region Properties
@@ -91,18 +95,35 @@ namespace BPCMain.ViewModel
             set { _truckdriver = value; }
         }
 
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set { _errorMessage = value; OnPropertyChanged(); }
+
+        }
+
         #endregion
 
         #region RelayCommands
 
-        //public RelayCommand CreateCompany
-        //{
-        //    get { return _createCompany; }
-        //    set
-        //    {
-        //        string errorMessage =
-        //    }
-        //}
+        public RelayCommand CreateCompany
+        {
+            get { return _createCompany; }
+            set
+            {
+                _createCompany = value;
+                if (CreateUserCheck(CompanyName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country,
+                    Password) == true)
+                {
+                    Customer newCustomer = new Customer(CompanyName,CvrNo,EMail,TelephoneNo,MobileNo,Address,PostalCode,Country,Password);
+                    navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
+                }
+                else
+                {
+                    ErrorMessage = "Fejl i oplysninger";
+                }
+            }
+        }
 
         #endregion
     }
