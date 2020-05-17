@@ -5,10 +5,56 @@
     xmlns:local="using:BPCMain.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:BPCMain.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Page.DataContext>
+        <ViewModel:NewUserCompany/>
+    </Page.DataContext>
+
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Company Information-->
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Fill company Information" FontSize="15"/>
+        <TextBox Grid.Row="3" Grid.Column="1" PlaceholderText="Company name" Text="{Binding CompanyName,Mode=TwoWay}"/>
+        <TextBox Grid.Row="4" Grid.Column="1" PlaceholderText="CvrNo" Text="{Binding CvrNo,Mode=TwoWay}"/>
+        <TextBox Grid.Row="5" Grid.Column="1" PlaceholderText="Email" Text="{Binding EMail,Mode=TwoWay}"/>
+        <TextBox Grid.Row="6" Grid.Column="1" PlaceholderText="TelephoneNo" Text="{Binding TelephoneNo,Mode=TwoWay}"/>
+        <TextBox Grid.Row="7" Grid.Column="1" PlaceholderText="MobileNo" Text="{Binding MobileNo,Mode=TwoWay}"/>
+        <TextBox Grid.Row="8" Grid.Column="1" PlaceholderText="Address" Text="{Binding Address,Mode=TwoWay}"/>
+        <TextBox Grid.Row="9" Grid.Column="1" PlaceholderText="Postalcode" Text="{Binding PostalCode,Mode=TwoWay}"/>
+        <TextBox Grid.Row="10" Grid.Column="1" PlaceholderText="Country" Text="{Binding Country,Mode=TwoWay}"/>
+        <TextBox Grid.Row="11" Grid.Column="1" PlaceholderText="Password" Text="{Binding Password,Mode=TwoWay}"/>
+
+        <!-- Create user button -->
+        
 
     </Grid>
 </Page>

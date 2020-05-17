@@ -5,30 +5,50 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.SmartCards;
-using BPCClassLibrary;
+using Windows.UI.Composition;
 
 namespace BPCMain.Utilities
 {
 	public static class ConstraintMethods
 	{
-		//string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password
-		public static bool CreateCarCheck(Car car)
+
+		public static bool CreateCarCheck(string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password)
 		{
-			if (!OnlyNumbersCheck(car.TelephoneNo) ||
-				 !OnlyNumbersCheck(car.MobileNo) ||
-				 !OnlyNumbersCheck(car.PostalCode) ||
-				 //!OnlyNumbersCheck(car.CvrNo) ||
-				 !StringLengthCheck(car.FirstName, 2, 30) ||
-				 !StringLengthCheck(car.LastName, 2, 30) ||
-				 !CheckNumber(car.CvrNo, 10000000, 99999999) ||
-				 !StringLengthCheck(car.EMail, 10, 30) ||
-				 !StringLengthCheck(car.TelephoneNo, 8, 8) ||
-				 !StringLengthCheck(car.MobileNo, 8, 8) ||
-				 !StringLengthCheck(car.Address, 5, 30) ||
-				 !StringLengthCheck(car.PostalCode, 4, 4) ||
-				 !StringLengthCheck(car.Country, 2, 30) ||
-				 !StringLengthCheck(car.Password, 6, 16)) return false;
+			if (!OnlyNumbersCheck(telephoneNo) ||
+				 !OnlyNumbersCheck(mobileNo) ||
+				 !OnlyNumbersCheck(postalCode) ||
+				 //!OnlyNumbersCheck(cvrNo) ||
+				 !StringLengthCheck(firstName, 2, 30) ||
+				 !StringLengthCheck(lastName, 2, 30) ||
+				 !CheckNumber(cvrNo, 10000000, 99999999) ||
+				 !StringLengthCheck(eMail, 10, 30) ||
+				 !StringLengthCheck(telephoneNo, 8, 8) ||
+				 !StringLengthCheck(mobileNo, 8, 8) ||
+				 !StringLengthCheck(address, 5, 30) ||
+				 !StringLengthCheck(postalCode, 4, 4) ||
+				 !StringLengthCheck(country, 2, 30) ||
+				 !StringLengthCheck(password, 6, 16)) return false;
 			return true;
+
+		}
+
+        public static bool CreateUserCheck(string CompanyName, int CvrNo, string Email, string TelephoneNo,
+            string MobileNo, string Address, string PostalCode, string Country, string Password)
+        {
+            if (
+                !StringLengthCheck(CompanyName,2,50)||
+				!CheckNumber(CvrNo,100000,999999999)||
+                !StringLengthCheck(Email,6,50)||
+				!StringLengthCheck(TelephoneNo,6,16)||
+                !OnlyNumbersCheck(TelephoneNo) ||
+				!StringLengthCheck(MobileNo,6,16)||
+				!OnlyNumbersCheck(MobileNo)||
+				!StringLengthCheck(Address,10,80)||
+				!StringLengthCheck(PostalCode,4,10)||
+				!OnlyNumbersCheck(PostalCode)||
+				!StringLengthCheck(Country,2,40)||
+				!StringLengthCheck(Password,6,30)) return false;
+            return true;
 
 		}
 
