@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using BPCClassLibrary;
+using BPCMain.Persistency;
 using BPCMain.Utilities;
 using BPCMain.View;
 
@@ -16,19 +20,24 @@ namespace BPCMain.ViewModel
         private RelayCommand _aboutBpcCommand;
         private RelayCommand _createUserCarCommand;
         private RelayCommand _createUserCompanyCommand;
-        private RelayCommand _userLogin;
+        private RelayCommand _tryLogin;
+
+        private int _userUser;
+        private string _userPass;
+
         private NavigationService _navigation = new NavigationService();
+        private RestWorker restWorker = new RestWorker();
         #endregion
 
         #region Constructor
 
         public HomePageLogin()
         {
-            _faqCommand = new RelayCommand(NavigateToFaq);
-            _aboutBpcCommand = new RelayCommand(NavigateToAboutBpc);
-            _createUserCarCommand = new RelayCommand(NavigateToCreateUserCar);
-            _createUserCompanyCommand = new RelayCommand(NavigateToCreateUserCompany);
-            _userLogin = new RelayCommand(CheckUserInfo);
+            _faqCommand = new RelayCommand(NavigateToFaq, null);
+            _aboutBpcCommand = new RelayCommand(NavigateToAboutBpc, null);
+            _createUserCarCommand = new RelayCommand(NavigateToCreateUserCar, null);
+            _createUserCompanyCommand = new RelayCommand(NavigateToCreateUserCompany, null);
+            _tryLogin = new RelayCommand(CheckUserInfo, null);
         }
         #endregion
 
@@ -54,10 +63,21 @@ namespace BPCMain.ViewModel
             get { return _createUserCarCommand; }
         }
 
-        public RelayCommand UserLogin
+        public RelayCommand TryLogin
         {
-            get { return _userLogin; }
-            set { _userLogin = value; }
+            get { return _tryLogin; }
+        }
+
+        public int UserUser
+        {
+            get { return _userUser; }
+            set { _userUser = value; }
+        }
+
+        public string UserPass
+        {
+            get { return _userPass; }
+            set { _userPass = value; }
         }
         #endregion
 
@@ -83,9 +103,67 @@ namespace BPCMain.ViewModel
             _navigation.Navigate(typeof(NewUserCompany));
         }
 
-        private void CheckUserInfo()
+        public async void CheckUserInfoCar()
         {
+            IList<Car> carList = await restWorker.GetAllObjectsAsync<Car>(tableName: Datastructures.TableName.Car);
+            foreach (var car in carList)
+            {
+                if (UserUser == car.CvrNo)
+                {
+                    if (UserPass == car.Password)
+                    {
+                        _navigation.Navigate(typeof(AboutUs));
+                    }
+                }
+                else
+                {
+                    string ErrorMessage = "Fejl i login";
+                }
+            }
+        }
 
+        public async void CheckUserInfoCustomer()
+        {
+            IList<Customer> customerList = await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
+            foreach (var customer in customerList)
+            {
+                if (UserUser == customer.CvrNo)
+                {
+                    if (UserPass == customer.Password)
+                    {
+                        LoginPopUp();
+                        _navigation.Navigate(typeof(AboutUs));
+                    }
+                }
+                else
+                {
+                    string ErrorMessage = "Fejl i login";
+                }
+            }
+        }
+
+        public async void CheckUserInfo()
+        {
+            CheckUserInfoCar();
+            CheckUserInfoCustomer();
+        }
+
+        private async void LoginPopUp()
+        {
+            try
+            {
+                ContentDialog dialogue = new ContentDialog()
+                {
+                    Title = "Log in",
+                    Content = "Signed in successfully",
+                    CloseButtonText = "Ok",
+                };
+                await dialogue.ShowAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         #endregion
     }
