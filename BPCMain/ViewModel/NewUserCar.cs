@@ -122,12 +122,11 @@ namespace BPCMain.ViewModel
 			set
 			{
 				_createCar = value; //er denne linje nødvendig???
-				Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode,
-					Country, Password);
+				Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
 				if (CreateCarCheck(newCar)) //metode i ConstraintMethods
 				{
 					//save new Car in database
-					//await restworker.CreateObjectAsync(newCar, "Car");
+					
 					navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
 				}
 				else
@@ -141,7 +140,10 @@ namespace BPCMain.ViewModel
 
 		#region Methods
 
-
+		//public async Task<bool> CreateNewCar<T>(Car newCar, Datastructures.TableName.Car)
+		//{
+		//	await 
+		//}
 
 		#endregion
 	}
