@@ -115,26 +115,30 @@ namespace BPCMain.ViewModel
 
 		#endregion
 
+		public NewUserCar()
+		{
+			_createCar = new RelayCommand(NewUCAR, null);
+		}
+
+		public async void NewUCAR()
+		{
+			Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
+			if (CreateCarCheck(newCar)) //metode i ConstraintMethods
+			{
+				//save new Car in database
+				await CreateNewCar(newCar);
+				navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
+			}
+			else
+			{
+				ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
+			}
+		}
 		#region RelayCommands
 
 		public RelayCommand CreateCar
 		{
 			get { return _createCar; }
-			set
-			{
-				_createCar = value; //er denne linje nødvendig???
-				Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
-				if (CreateCarCheck(newCar)) //metode i ConstraintMethods
-				{
-					//save new Car in database
-					CreateNewCar(newCar);
-					navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
-				}
-				else
-				{
-					ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
-				}
-			}
 		}
 
 		#endregion
