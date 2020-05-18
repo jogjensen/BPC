@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 using BPCClassLibrary;
 using BPCMain.Persistency;
 using BPCMain.Utilities;
@@ -102,7 +103,7 @@ namespace BPCMain.ViewModel
             _navigation.Navigate(typeof(NewUserCompany));
         }
 
-        private async void CheckUserInfoCar()
+        public async void CheckUserInfoCar()
         {
             IList<Car> carList = await restWorker.GetAllObjectsAsync<Car>(tableName: Datastructures.TableName.Car);
             foreach (var car in carList)
@@ -111,7 +112,7 @@ namespace BPCMain.ViewModel
                 {
                     if (UserPass == car.Password)
                     {
-                        _navigation.Navigate(typeof(Faq));
+                        _navigation.Navigate(typeof(AboutUs));
                     }
                 }
                 else
@@ -121,7 +122,7 @@ namespace BPCMain.ViewModel
             }
         }
 
-        private async void CheckUserInfoCustomer()
+        public async void CheckUserInfoCustomer()
         {
             IList<Customer> customerList = await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
             foreach (var customer in customerList)
@@ -130,7 +131,8 @@ namespace BPCMain.ViewModel
                 {
                     if (UserPass == customer.Password)
                     {
-                        _navigation.Navigate(typeof(Faq));
+                        LoginPopUp();
+                        _navigation.Navigate(typeof(AboutUs));
                     }
                 }
                 else
@@ -140,10 +142,28 @@ namespace BPCMain.ViewModel
             }
         }
 
-        private async void CheckUserInfo()
+        public async void CheckUserInfo()
         {
             CheckUserInfoCar();
             CheckUserInfoCustomer();
+        }
+
+        private async void LoginPopUp()
+        {
+            try
+            {
+                ContentDialog dialogue = new ContentDialog()
+                {
+                    Title = "Log in",
+                    Content = "Signed in successfully",
+                    CloseButtonText = "Ok",
+                };
+                await dialogue.ShowAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         #endregion
     }
