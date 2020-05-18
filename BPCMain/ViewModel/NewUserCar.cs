@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using BPCClassLibrary;
@@ -126,7 +127,7 @@ namespace BPCMain.ViewModel
 				if (CreateCarCheck(newCar)) //metode i ConstraintMethods
 				{
 					//save new Car in database
-					
+					CreateNewCar(newCar);
 					navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
 				}
 				else
@@ -140,10 +141,12 @@ namespace BPCMain.ViewModel
 
 		#region Methods
 
-		//public async Task<bool> CreateNewCar<T>(Car newCar, Datastructures.TableName.Car)
-		//{
-		//	await 
-		//}
+		public async Task<bool> CreateNewCar<T>(T newCar)
+		{
+			var Task = await restworker.CreateObjectAsync(newCar, Datastructures.TableName.Car);
+			var result = Task;
+				return result;
+		}
 
 		#endregion
 	}
