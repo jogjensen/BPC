@@ -19,8 +19,8 @@ namespace BPCMain.Utilities
 				 !OnlyNumbersCheck(car.MobileNo) ||
 				 !OnlyNumbersCheck(car.PostalCode) ||
 				 //!OnlyNumbersCheck(car.CvrNo) ||
-				 !StringLengthCheck(car.FirstName, 2, 30) ||
-				 !StringLengthCheck(car.LastName, 2, 30) ||
+				 !StringLengthCheck(car.FirstName, 2, 50) ||
+				 !StringLengthCheck(car.LastName, 2, 50) ||
 				 !CheckNumber(car.CvrNo, 10000000, 99999999) ||
 				 !StringLengthCheck(car.EMail, 10, 30) ||
 				 !StringLengthCheck(car.TelephoneNo, 8, 8) ||
