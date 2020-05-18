@@ -46,5 +46,17 @@
             <Setter Property="FontFamily" Value="Arial Black"/>
         </Style>
 
+        <!-- MenuBar Application Resources -->
+        <Style x:Key="MenuBarButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RequestedTheme" Value="Dark"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
     </Application.Resources>
 </Application>

@@ -13,18 +13,17 @@
         <viewModel:HomePageLogin/>
     </Page.DataContext>
 
-    <Page.TopAppBar>
-        <CommandBar IsOpen="True" Height="70">
-            <AppBarToggleButton Icon="Help" Label="FAQ" Command="{Binding FAQCommand}"/>
-            <AppBarToggleButton Icon="Help" Label="About" Command="{Binding AboutBpcCommand}"/>
-            <AppBarToggleButton Icon="Add" Label="Create Car" Command="{Binding CreateCarCommand}"/>
-            <AppBarToggleButton Icon="Add" Label="Create Company"  Command="{Binding CreateCompanyCommand}"/>
-        </CommandBar>
-    </Page.TopAppBar>
-
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+
+        <Grid Background="Black" Opacity="0.50" Width="Auto" Height="45" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Car" Command="{Binding CreateCarCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Company" Command="{Binding CreateCompanyCommand}"/>
+            </StackPanel>
+        </Grid>
 
         <Grid Background="Black" 
              Opacity="0.50" 

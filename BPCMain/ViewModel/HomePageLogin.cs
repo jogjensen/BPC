@@ -77,7 +77,7 @@ namespace BPCMain.ViewModel
         }
         #endregion
 
-        #region Methods
+        #region Navigation Methods
 
         private void NavigateToFaq()
         {
