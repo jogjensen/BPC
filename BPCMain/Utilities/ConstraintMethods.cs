@@ -11,23 +11,23 @@ namespace BPCMain.Utilities
 {
 	public static class ConstraintMethods
 	{
-
-		public static bool CreateCarCheck(string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password)
+		//string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password
+		public static bool CreateCarCheck(Car car)
 		{
-			if (!OnlyNumbersCheck(telephoneNo) ||
-				 !OnlyNumbersCheck(mobileNo) ||
-				 !OnlyNumbersCheck(postalCode) ||
-				 //!OnlyNumbersCheck(cvrNo) ||
-				 !StringLengthCheck(firstName, 2, 30) ||
-				 !StringLengthCheck(lastName, 2, 30) ||
-				 !CheckNumber(cvrNo, 10000000, 99999999) ||
-				 !StringLengthCheck(eMail, 10, 30) ||
-				 !StringLengthCheck(telephoneNo, 8, 8) ||
-				 !StringLengthCheck(mobileNo, 8, 8) ||
-				 !StringLengthCheck(address, 5, 30) ||
-				 !StringLengthCheck(postalCode, 4, 4) ||
-				 !StringLengthCheck(country, 2, 30) ||
-				 !StringLengthCheck(password, 6, 16)) return false;
+			if (!OnlyNumbersCheck(car.TelephoneNo) ||
+				 !OnlyNumbersCheck(car.MobileNo) ||
+				 !OnlyNumbersCheck(car.PostalCode) ||
+				 //!OnlyNumbersCheck(car.CvrNo) ||
+				 !StringLengthCheck(car.FirstName, 2, 30) ||
+				 !StringLengthCheck(car.LastName, 2, 30) ||
+				 !CheckNumber(car.CvrNo, 10000000, 99999999) ||
+				 !StringLengthCheck(car.EMail, 10, 30) ||
+				 !StringLengthCheck(car.TelephoneNo, 8, 8) ||
+				 !StringLengthCheck(car.MobileNo, 8, 8) ||
+				 !StringLengthCheck(car.Address, 5, 30) ||
+				 !StringLengthCheck(car.PostalCode, 4, 4) ||
+				 !StringLengthCheck(car.Country, 2, 30) ||
+				 !StringLengthCheck(car.Password, 6, 16)) return false;
 			return true;
 
 		}
