@@ -15,7 +15,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
-            <Grid Background="Black" Opacity="0.50" Width="Auto" Height="45" VerticalAlignment="Top">
+            <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
