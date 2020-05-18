@@ -3,27 +3,90 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BPCMain.Utilities;
+using BPCMain.View;
 
 namespace BPCMain.ViewModel
 {
 	class HomePageLogin
 	{
-		#region Instance Fields
+        #region Instance Fields
 
+        private RelayCommand _faqCommand;
+        private RelayCommand _aboutBpcCommand;
+        private RelayCommand _createUserCarCommand;
+        private RelayCommand _createUserCompanyCommand;
+        private RelayCommand _userLogin;
+        private NavigationService _navigation = new NavigationService();
+        #endregion
 
+        #region Constructor
 
-		#endregion
+        public HomePageLogin()
+        {
+            _faqCommand = new RelayCommand(NavigateToFaq);
+            _aboutBpcCommand = new RelayCommand(NavigateToAboutBpc);
+            _createUserCarCommand = new RelayCommand(NavigateToCreateUserCar);
+            _createUserCompanyCommand = new RelayCommand(NavigateToCreateUserCompany);
+            _userLogin = new RelayCommand(CheckUserInfo);
+        }
+        #endregion
 
-		#region Properties
+        #region RelayCommands
 
+        public RelayCommand FAQCommand
+        {
+            get { return _faqCommand; }
+        }
 
+        public RelayCommand AboutBpcCommand
+        {
+            get { return _aboutBpcCommand; }
+        }
 
-		#endregion
+        public RelayCommand CreateCarCommand
+        {
+            get { return _createUserCarCommand; }
+        }
 
-		#region RelayCommands
+        public RelayCommand CreateCompanyCommand
+        {
+            get { return _createUserCarCommand; }
+        }
 
+        public RelayCommand UserLogin
+        {
+            get { return _userLogin; }
+            set { _userLogin = value; }
+        }
+        #endregion
 
+        #region Methods
 
-		#endregion
-	}
+        private void NavigateToFaq()
+        {
+            _navigation.Navigate(typeof(Faq));
+        }
+
+        private void NavigateToAboutBpc()
+        {
+            _navigation.Navigate(typeof(AboutUs));
+        }
+
+        private void NavigateToCreateUserCar()
+        {
+            _navigation.Navigate(typeof(NewUserCar));
+        }
+
+        private void NavigateToCreateUserCompany()
+        {
+            _navigation.Navigate(typeof(NewUserCompany));
+        }
+
+        private void CheckUserInfo()
+        {
+
+        }
+        #endregion
+    }
 }
