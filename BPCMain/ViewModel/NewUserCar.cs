@@ -115,10 +115,14 @@ namespace BPCMain.ViewModel
 
 		#endregion
 
+		#region Constructor
+
 		public NewUserCar()
 		{
 			_createCar = new RelayCommand(NewUCAR, null);
 		}
+
+		#endregion
 
 		public async void NewUCAR()
 		{
