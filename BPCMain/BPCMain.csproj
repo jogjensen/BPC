@@ -123,6 +123,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Persistency\RestWorker.cs" />
+    <Compile Include="Persistency\SharedUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ConstraintMethods.cs" />
     <Compile Include="Utilities\NavigationService.cs" />

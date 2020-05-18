@@ -22,8 +22,7 @@ namespace BPCMain.ViewModel
         private RelayCommand _createUserCompanyCommand;
         private RelayCommand _tryLogin;
 
-        private int _userUser;
-        private string _userPass;
+        private SharedUser _shared;
 
         private NavigationService _navigation = new NavigationService();
         private RestWorker restWorker = new RestWorker();
@@ -33,11 +32,20 @@ namespace BPCMain.ViewModel
 
         public HomePageLogin()
         {
+            _shared = SharedUser.Instance;
             _faqCommand = new RelayCommand(NavigateToFaq, null);
             _aboutBpcCommand = new RelayCommand(NavigateToAboutBpc, null);
             _createUserCarCommand = new RelayCommand(NavigateToCreateUserCar, null);
             _createUserCompanyCommand = new RelayCommand(NavigateToCreateUserCompany, null);
             _tryLogin = new RelayCommand(CheckUserInfo, null);
+        }
+        #endregion
+
+        #region Properties
+
+        public SharedUser Shared
+        {
+            get { return _shared; }
         }
         #endregion
 
@@ -67,18 +75,6 @@ namespace BPCMain.ViewModel
         {
             get { return _tryLogin; }
         }
-
-        public int UserUser
-        {
-            get { return _userUser; }
-            set { _userUser = value; }
-        }
-
-        public string UserPass
-        {
-            get { return _userPass; }
-            set { _userPass = value; }
-        }
         #endregion
 
         #region Methods
@@ -102,15 +98,18 @@ namespace BPCMain.ViewModel
         {
             _navigation.Navigate(typeof(NewUserCompany));
         }
+        #endregion
+
+        #region Login Logic
 
         public async void CheckUserInfoCar()
         {
             IList<Car> carList = await restWorker.GetAllObjectsAsync<Car>(tableName: Datastructures.TableName.Car);
             foreach (var car in carList)
             {
-                if (UserUser == car.CvrNo)
+                if (_shared.UserUser == car.CvrNo)
                 {
-                    if (UserPass == car.Password)
+                    if (_shared.UserPass == car.Password)
                     {
                         _navigation.Navigate(typeof(AboutUs));
                     }
@@ -127,11 +126,10 @@ namespace BPCMain.ViewModel
             IList<Customer> customerList = await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
             foreach (var customer in customerList)
             {
-                if (UserUser == customer.CvrNo)
+                if (_shared.UserUser == customer.CvrNo)
                 {
-                    if (UserPass == customer.Password)
+                    if (_shared.UserPass == customer.Password)
                     {
-                        LoginPopUp();
                         _navigation.Navigate(typeof(AboutUs));
                     }
                 }
@@ -146,24 +144,6 @@ namespace BPCMain.ViewModel
         {
             CheckUserInfoCar();
             CheckUserInfoCustomer();
-        }
-
-        private async void LoginPopUp()
-        {
-            try
-            {
-                ContentDialog dialogue = new ContentDialog()
-                {
-                    Title = "Log in",
-                    Content = "Signed in successfully",
-                    CloseButtonText = "Ok",
-                };
-                await dialogue.ShowAsync();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
         #endregion
     }
