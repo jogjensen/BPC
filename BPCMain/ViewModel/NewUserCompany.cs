@@ -112,10 +112,9 @@ namespace BPCMain.ViewModel
             set
             {
                 _createCompany = value;
-                if (CreateUserCheck(CompanyName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country,
-                    Password) == true)
+	                Customer newCustomer = new Customer(CompanyName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
+                if (ConstraintMethods.CreateUserCheck(newCustomer))
                 {
-                    Customer newCustomer = new Customer(CompanyName,CvrNo,EMail,TelephoneNo,MobileNo,Address,PostalCode,Country,Password);
                     navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
                 }
                 else

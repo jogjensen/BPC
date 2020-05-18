@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.SmartCards;
 using Windows.UI.Composition;
+using BPCClassLibrary;
+
 
 namespace BPCMain.Utilities
 {
 	public static class ConstraintMethods
 	{
-		//string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password
 		public static bool CreateCarCheck(Car car)
 		{
 			if (!OnlyNumbersCheck(car.TelephoneNo) ||
@@ -32,22 +33,21 @@ namespace BPCMain.Utilities
 
 		}
 
-        public static bool CreateUserCheck(string CompanyName, int CvrNo, string Email, string TelephoneNo,
-            string MobileNo, string Address, string PostalCode, string Country, string Password)
+        public static bool CreateUserCheck(Customer newCustomer)
         {
             if (
-                !StringLengthCheck(CompanyName,2,50)||
-				!CheckNumber(CvrNo,100000,999999999)||
-                !StringLengthCheck(Email,6,50)||
-				!StringLengthCheck(TelephoneNo,6,16)||
-                !OnlyNumbersCheck(TelephoneNo) ||
-				!StringLengthCheck(MobileNo,6,16)||
-				!OnlyNumbersCheck(MobileNo)||
-				!StringLengthCheck(Address,10,80)||
-				!StringLengthCheck(PostalCode,4,10)||
-				!OnlyNumbersCheck(PostalCode)||
-				!StringLengthCheck(Country,2,40)||
-				!StringLengthCheck(Password,6,30)) return false;
+                !StringLengthCheck(newCustomer.CompanyName, 2,50)||
+				!CheckNumber(newCustomer.CvrNo, 100000,999999999)||
+                !StringLengthCheck(newCustomer.EMail,6,50)||
+				!StringLengthCheck(newCustomer.TelephoneNo,6,16)||
+                !OnlyNumbersCheck(newCustomer.TelephoneNo) ||
+				!StringLengthCheck(newCustomer.MobileNo,6,16)||
+				!OnlyNumbersCheck(newCustomer.MobileNo)||
+				!StringLengthCheck(newCustomer.Address,10,80)||
+				!StringLengthCheck(newCustomer.PostalCode,4,10)||
+				!OnlyNumbersCheck(newCustomer.PostalCode)||
+				!StringLengthCheck(newCustomer.Country,2,40)||
+				!StringLengthCheck(newCustomer.Password,6,30)) return false;
             return true;
 
 		}
