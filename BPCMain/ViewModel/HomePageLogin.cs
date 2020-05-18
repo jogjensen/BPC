@@ -24,11 +24,11 @@ namespace BPCMain.ViewModel
 
         public HomePageLogin()
         {
-            _faqCommand = new RelayCommand(NavigateToFaq);
-            _aboutBpcCommand = new RelayCommand(NavigateToAboutBpc);
-            _createUserCarCommand = new RelayCommand(NavigateToCreateUserCar);
-            _createUserCompanyCommand = new RelayCommand(NavigateToCreateUserCompany);
-            _userLogin = new RelayCommand(CheckUserInfo);
+            _faqCommand = new RelayCommand(NavigateToFaq, null);
+            _aboutBpcCommand = new RelayCommand(NavigateToAboutBpc, null);
+            _createUserCarCommand = new RelayCommand(NavigateToCreateUserCar, null);
+            _createUserCompanyCommand = new RelayCommand(NavigateToCreateUserCompany, null);
+            _userLogin = new RelayCommand(CheckUserInfo, null);
         }
         #endregion
 
