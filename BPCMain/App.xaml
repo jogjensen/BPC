@@ -4,31 +4,47 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BPCMain">
 
-	<Application.Resources>
-		
-		<Style x:Key="TextBlockStyle1" TargetType="TextBlock">
-			<Setter Property="Width" Value="200"/>
-			<Setter Property="FontSize" Value="30"/>
-			<Setter Property="Margin" Value="5,5,5,5"/>
-		</Style>
-		
-		<Style x:Key="TextBlockStyle2" TargetType="TextBlock">
-			<Setter Property="FontSize" Value="40"/>
-			<Setter Property="Width" Value="120"/>
-			<Setter Property="Margin" Value="5"/>
-		</Style>
+    <Application.Resources>
 
-		<Style x:Key="ButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="Black"/>
-			<Setter Property="Background" Value="#DE4EAA"/>
-			<Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style x:Key="TextBlockStyle1" TargetType="TextBlock">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
 
-		</Style>
-		<Style x:Key="TextBlockStyle3" TargetType="TextBlock">
-			<Setter Property="FontSize" Value="20"/>
-			<Setter Property="Margin" Value="0,0,0,0"/>
-			<Setter Property="Foreground" Value="Black"/>
-		</Style>
+        <Style x:Key="TextBlockStyle2" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+        </Style>
 
-	</Application.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#DE4EAA"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="RequestedTheme" Value="Dark"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+
+        </Style>
+        <Style x:Key="TextBlockStyle3" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle1" TargetType="Button">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="RequestedTheme" Value="Dark"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+        </Style>
+
+    </Application.Resources>
 </Application>
