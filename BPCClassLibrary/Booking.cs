@@ -7,25 +7,25 @@ namespace BPCClassLibrary
 {
     public class Booking
     {
-	    #region Instance field
+        #region Instance field
         //General information
         private int _orderNo;
         private Datastructures.Status _status;
         private int _companyCvrNo;
         private int _numOfCarsNeeded;
         private string _comment;
-        //Payload information
-        private string _typeOfGoods;
-        private double _totalWidth;
-        private double _totalLength;
-        private double _totalHeight;
-        private double _totalWeight;
         //Departure information
         private DateTime _startDate;
         private string _startAddress;
         private string _startPostalCode;
         private string _startCity;
         private string _startCountry;
+        //Payload information
+        private string _typeOfGoods;
+        private double _totalWidth;
+        private double _totalLength;
+        private double _totalHeight;
+        private double _totalWeight;
         //Destination information
         private DateTime _endDate;
         private string _endAddress;
@@ -33,17 +33,43 @@ namespace BPCClassLibrary
         private string _endCity;
         private string _endCountry;
         //Truck
-        private int _truckdriver;
-        private string _contactperson;
-      #endregion
+        private int _truckDriverId;
+        private string _contactPerson;
+        #endregion
 
-      #region Constructors
-      public Booking()
+        #region Constructors
+        public Booking()
         { }
-      #endregion
 
-      #region Properties
-      public int OrderNo
+        public Booking(int orderNo, Datastructures.Status status, int companyCvrNo, int numOfCarsNeeded, string typeOfGoods, double totalWidth, double totalLength, double totalHeight, double totalWeight, DateTime startDate, string startAddress, string startPostalCode, string startCity, string startCountry, DateTime endDate, string endAddress, string endPostalCode, string endCity, string endCountry, int truckDriverId, string contactPerson, string comment = "")
+        {
+            _orderNo = orderNo;
+            _status = status;
+            _companyCvrNo = companyCvrNo;
+            _numOfCarsNeeded = numOfCarsNeeded;
+            _typeOfGoods = typeOfGoods;
+            _totalWidth = totalWidth;
+            _totalLength = totalLength;
+            _totalHeight = totalHeight;
+            _totalWeight = totalWeight;
+            _startDate = startDate;
+            _startAddress = startAddress;
+            _startPostalCode = startPostalCode;
+            _startCity = startCity;
+            _startCountry = startCountry;
+            _endDate = endDate;
+            _endAddress = endAddress;
+            _endPostalCode = endPostalCode;
+            _endCity = endCity;
+            _endCountry = endCountry;
+            _truckDriverId = truckDriverId;
+            _contactPerson = contactPerson;
+            _comment = comment;
+        }
+        #endregion
+
+        #region Properties
+        public int OrderNo
         {
             get => _orderNo;
             set => _orderNo = value;
@@ -57,12 +83,12 @@ namespace BPCClassLibrary
 
         public int CompanyCvrNo
         {
-	        get => _companyCvrNo;
-	        set => _companyCvrNo = value;
+            get => _companyCvrNo;
+            set => _companyCvrNo = value;
         }
 
-        
-      public int NumOfCarsNeeded
+
+        public int NumOfCarsNeeded
         {
             get => _numOfCarsNeeded;
             set => _numOfCarsNeeded = value;
@@ -164,17 +190,17 @@ namespace BPCClassLibrary
             set => _endCountry = value;
         }
 
-        public int Truckdriver
+        public int TruckDriverId
         {
-	        get => _truckdriver;
-	        set => _truckdriver = value;
+            get => _truckDriverId;
+            set => _truckDriverId = value;
         }
 
         public string ContactPerson
         {
-	        get => _contactperson;
-	        set => _contactperson = value;
-      }
-      #endregion
-   }
+            get => _contactPerson;
+            set => _contactPerson = value;
+        }
+        #endregion
+    }
 }
