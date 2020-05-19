@@ -7,14 +7,14 @@ namespace BPCClassLibrary
     public class CarBooking
     {
         private int _orderNo;
-        private int _car;
-        private int _id;
+        private int _carId;
+        private int _carBookingId;
 
         public CarBooking(int orderNo, int CBId)
         {
             _orderNo = orderNo;
-            _car = 0;
-            _id = CBId;
+            _carId = 0;
+            _carBookingId = CBId;
         }
 
         public CarBooking()
@@ -28,16 +28,16 @@ namespace BPCClassLibrary
             set => _orderNo = value;
         }
 
-        public int Car
+        public int CarId
         {
-            get => _car;
-            set => _car = value;
+            get => _carId;
+            set => _carId = value;
         }
 
-        public int Id
+        public int CarBookingId
         {
-            get => _id;
-            set => _id = value;
+            get => _carBookingId;
+            set => _carBookingId = value;
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BPCClassLibrary;
+using BPCRESTService.Managers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,36 +13,41 @@ namespace BPCRESTService.Controllers
     [ApiController]
     public class CarBookingController : ControllerBase
     {
+        ManagerCarBooking manager = new ManagerCarBooking();
+
         // GET: api/CarBooking
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<CarBooking> Get()
         {
-            return new string[] { "value1", "value2" };
+            return manager.GetAllCarBookings();
         }
 
         // GET: api/CarBooking/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public CarBooking Get(int id)
         {
-            return "value";
+            return manager.GetCarBookingFromId(id);
         }
 
         // POST: api/CarBooking
         [HttpPost]
-        public void Post([FromBody] string value)
+        public bool Post([FromBody] CarBooking value)
         {
+            return manager.CreateCarBooking(value);
         }
 
         // PUT: api/CarBooking/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public bool Put(int id, [FromBody] CarBooking value)
         {
+            return manager.UpdateCarBooking(value, id);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public CarBooking Delete(int id)
         {
+            return manager.DeleteCarBooking(id);
         }
     }
 }

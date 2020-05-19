@@ -62,8 +62,8 @@ namespace BPCRESTService.Managers
 
 				using (SqlCommand command = new SqlCommand("Insert into CarBooking (CarBookingId, OrderNo) values(@CarBookingId, @OrderNo)", conn))
 				{
-					command.Parameters.AddWithValue("@CarBookingId", carBooking.Id);
-					command.Parameters.AddWithValue("@TelephoneNo", truckdriver.TelephoneNo);
+					command.Parameters.AddWithValue("@CarBookingId", carBooking.CarBookingId);
+					command.Parameters.AddWithValue("@OrderNo", carBooking.OrderNo);
 
 					int rows = command.ExecuteNonQuery();
 					created = rows == 1;
@@ -72,13 +72,50 @@ namespace BPCRESTService.Managers
 			return created;
 		}
 
+		public bool UpdateCarBooking(CarBooking carBooking, int id)
+		{
+			bool updated = false;
+
+			using (SqlConnection conn = new SqlConnection(connString))
+			{
+				conn.Open();
+
+				using (SqlCommand command = new SqlCommand("Update CarBooking set CarId = @Car, where CarBookingId = @Id", conn))
+				{
+					command.Parameters.AddWithValue("@Id", id);
+					command.Parameters.AddWithValue("@Car", carBooking.CarId);
+
+					int rows = command.ExecuteNonQuery();
+					updated = rows == 1;
+				}
+			}
+			return updated;
+		}
+
+		public CarBooking DeleteCarBooking(int id)
+		{
+			CarBooking carBooking = GetCarBookingFromId(id);
+
+			using (SqlConnection conn = new SqlConnection(connString))
+			{
+				conn.Open();
+
+				using (SqlCommand command = new SqlCommand("Delete from CarBooking where CarBookingId = @Id", conn))
+				{
+					command.Parameters.AddWithValue("@Id", id);
+					command.ExecuteNonQuery();
+				}
+			}
+			return carBooking;
+		}
+
 		private CarBooking ReadNextCarBooking(SqlDataReader reader)
 		{
 			CarBooking carBooking = new CarBooking();
 
-			carBooking.Id = reader.GetInt32(0);
+			carBooking.CarBookingId = reader.GetInt32(0);
 			carBooking.OrderNo = reader.GetInt32(1);
-			carBooking.Car = reader.GetInt32(2);
+			carBooking.CarId = reader.GetInt32(2);
 
 			return carBooking;
 		}
