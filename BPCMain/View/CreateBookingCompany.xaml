@@ -33,7 +33,7 @@
              Margin="100"/>
 
 		<StackPanel Orientation="Vertical" 
-                    Width="1000">
+		            Width="1000">
 
 			<StackPanel Orientation="Vertical" 
                         VerticalAlignment="Top" 
@@ -41,8 +41,8 @@
                         Margin="0,150" 
                         HorizontalAlignment="Center">
 
-				<TextBlock Text="Ny Booking" 
-                           Style="{StaticResource Header1}"/>
+				<TextBlock Text="Ny Booking"
+                       Style="{StaticResource Header1}"/>
 
 			</StackPanel>
 
@@ -55,8 +55,5 @@
 
 			</StackPanel>
 		</StackPanel>
-
-
-
 	</Grid>
 </Page>
