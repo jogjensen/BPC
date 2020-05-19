@@ -18,6 +18,7 @@ namespace BPCClassLibrary
         private string _city;
         private string _country;
         private string _password;
+        private int _truckdriverId;
         #endregion
 
         #region Constructors
@@ -102,6 +103,12 @@ namespace BPCClassLibrary
         {
             get => _password;
             set => _password = value;
+        }
+
+        public int TruckdriverId
+        {
+            get => _truckdriverId;
+            set => _truckdriverId = value;
         }
         #endregion
     }

@@ -38,7 +38,7 @@ namespace BPCRESTService.Managers
 		#endregion
 
 		#region GetCustomerFromName
-		public Customer GetCustomerFromName(string companyName)
+		public Customer GetCustomerFromId(int id)
 		{
 			Customer customer = new Customer();
 
@@ -46,9 +46,9 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Select * from Customer where CompanyName = @CompanyName", conn))
+				using (SqlCommand command = new SqlCommand("Select * from Customer where CvrNo = @id", conn))
 				{
-					command.Parameters.AddWithValue("@CompanyName", companyName);
+					command.Parameters.AddWithValue("@id", id);
 					SqlDataReader reader = command.ExecuteReader();
 					if (reader.Read())
 					{
@@ -69,7 +69,7 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Insert into Customer (CompanyName, CvrNo, Email, TelephoneNo, MobileNo, Address, PostalCode, Country, Password, Truckdriver) values(@CompanyName, @CvrNo, @EMail, @TelephoneNo, @MobileNo, @Address, @PostalCode, @Country, @Password, @Truckdriver)", conn))
+				using (SqlCommand command = new SqlCommand("Insert into Customer (CompanyName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, City, Country, Password, TruckdriverId) values(@CompanyName, @CvrNo, @EMail, @TelephoneNo, @MobileNo, @Address, @PostalCode, @City, @Country, @Password, @Truckdriver)", conn))
 				{
 					command.Parameters.AddWithValue("@Companyname", customer.CompanyName);
 					command.Parameters.AddWithValue("@CvrNo", customer.CvrNo);
@@ -78,9 +78,10 @@ namespace BPCRESTService.Managers
 					command.Parameters.AddWithValue("@MobileNo", customer.MobileNo);
 					command.Parameters.AddWithValue("@Address", customer.Address);
 					command.Parameters.AddWithValue("@PostalCode", customer.PostalCode);
+					command.Parameters.AddWithValue("@City", customer.City);
 					command.Parameters.AddWithValue("@Country", customer.Country);
 					command.Parameters.AddWithValue("@Password", customer.Password);
-					command.Parameters.AddWithValue("@Truckdriver", customer.Truckdriver);
+					command.Parameters.AddWithValue("@Truckdriver", customer.TruckdriverId);
 
 					int rows = command.ExecuteNonQuery();
 					created = rows == 1;
@@ -91,7 +92,7 @@ namespace BPCRESTService.Managers
 		#endregion
 
 		#region UpdateCustomer
-		public bool UpdateCustomer(Customer customer, string companyName)
+		public bool UpdateCustomer(Customer customer, int id)
 		{
 			bool updated = false;
 
@@ -99,7 +100,7 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Update Customer set CvrNo = @CvrNo, Email = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode, Country = @Country, Password = @Password, Truckdriver = @Truckdriver where CompanyName = @companyName", conn))
+				using (SqlCommand command = new SqlCommand("Update Customer set City = @City, CvrNo = @CvrNo, EMail = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode, Country = @Country, Password = @Password, TruckdriverId = @Truckdriver where CvrNo = @Id", conn))
 				{
 					command.Parameters.AddWithValue("@Companyname", customer.CompanyName);
 					command.Parameters.AddWithValue("@CvrNo", customer.CvrNo);
@@ -108,9 +109,10 @@ namespace BPCRESTService.Managers
 					command.Parameters.AddWithValue("@MobileNo", customer.MobileNo);
 					command.Parameters.AddWithValue("@Address", customer.Address);
 					command.Parameters.AddWithValue("@PostalCode", customer.PostalCode);
+					command.Parameters.AddWithValue("@City", customer.City);
 					command.Parameters.AddWithValue("@Country", customer.Country);
 					command.Parameters.AddWithValue("@Password", customer.Password);
-					command.Parameters.AddWithValue("@Truckdriver", customer.Truckdriver);
+					command.Parameters.AddWithValue("@Truckdriver", customer.TruckdriverId);
 
 					int rows = command.ExecuteNonQuery();
 					updated = rows == 1;
@@ -121,17 +123,17 @@ namespace BPCRESTService.Managers
 		#endregion
 
 		#region DeleteCustomer
-		public Customer DeleteCustomer(string companyName)
+		public Customer DeleteCustomer(int id)
 		{
-			Customer customer = GetCustomerFromName(companyName);
+			Customer customer = GetCustomerFromId(id);
 
 			using (SqlConnection conn = new SqlConnection(connString))
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Delete from Customer where companyName = @companyName", conn))
+				using (SqlCommand command = new SqlCommand("Delete from Customer where CvrNo = @Id", conn))
 				{
-					command.Parameters.AddWithValue("@companyName", companyName);
+					command.Parameters.AddWithValue("@Id", id);
 					command.ExecuteNonQuery();
 				}
 			}
@@ -150,9 +152,10 @@ namespace BPCRESTService.Managers
 			customer.MobileNo = reader.GetString(4);
 			customer.Address = reader.GetString(5);
 			customer.PostalCode = reader.GetString(6);
-			customer.Country = reader.GetString(7);
-			customer.Password = reader.GetString(8);
-			customer.Truckdriver = reader.GetInt32(9);
+			customer.City = reader.GetString(7);
+			customer.Country = reader.GetString(8);
+			customer.Password = reader.GetString(9);
+			customer.TruckdriverId = reader.GetInt32(10);
 
 			return customer;
 		}

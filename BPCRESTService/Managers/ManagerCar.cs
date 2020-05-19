@@ -41,7 +41,7 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 						
-				using (SqlCommand command = new SqlCommand("Select * from Car where Id = @Id", conn))
+				using (SqlCommand command = new SqlCommand("Select * from Car where CarId = @Id", conn))
 				{
 					command.Parameters.AddWithValue("@Id", id);
 					SqlDataReader reader = command.ExecuteReader();
@@ -63,7 +63,7 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 				
-				using (SqlCommand command = new SqlCommand("Insert into Car (Id, FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password) values (@Id, @FirstName, @LastName, @CvrName, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @Country, @Password)", conn))
+				using (SqlCommand command = new SqlCommand("Insert into Car (CarId, FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, City, Country, Password) values (@Id, @FirstName, @LastName, @CvrName, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @City, @Country, @Password)", conn))
 				{
 					command.Parameters.AddWithValue("@Id", car.Id);
 					command.Parameters.AddWithValue("@FirstName", car.FirstName);
@@ -74,6 +74,7 @@ namespace BPCRESTService.Managers
 					command.Parameters.AddWithValue("@MobileNo", car.MobileNo);
 					command.Parameters.AddWithValue("@Address", car.Address);
 					command.Parameters.AddWithValue("@PostalCode", car.PostalCode);
+					command.Parameters.AddWithValue("@City", car.City);
 					command.Parameters.AddWithValue("@Country", car.Country);
 					command.Parameters.AddWithValue("@Password", car.Password);
 
@@ -93,7 +94,7 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Update Car set CvrNo = @CvrNo, EMail = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode where Id = @Id", conn))
+				using (SqlCommand command = new SqlCommand("Update Car set City = @City, CvrNo = @CvrNo, EMail = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode where Id = @Id", conn))
 				{
 					command.Parameters.AddWithValue("@Id", id);
 					command.Parameters.AddWithValue("@FirstName", car.FirstName);
@@ -104,6 +105,7 @@ namespace BPCRESTService.Managers
 					command.Parameters.AddWithValue("@MobileNo", car.MobileNo);
 					command.Parameters.AddWithValue("@Address", car.Address);
 					command.Parameters.AddWithValue("@PostalCode", car.PostalCode);
+					command.Parameters.AddWithValue("@City", car.City);
 					command.Parameters.AddWithValue("@Country", car.Country);
 					command.Parameters.AddWithValue("@Password", car.Password);
 
@@ -122,7 +124,7 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Delete from Car where Id = @Id", conn))
+				using (SqlCommand command = new SqlCommand("Delete from Car where CarId = @Id", conn))
 				{
 					command.Parameters.AddWithValue("@Id", id);
 					command.ExecuteNonQuery();
@@ -144,8 +146,9 @@ namespace BPCRESTService.Managers
 			car.MobileNo = reader.GetString(6);
 			car.Address = reader.GetString(7);
 			car.PostalCode = reader.GetString(8);
-			car.Country = reader.GetString(9);
-			car.Password = reader.GetString(10);
+			car.City = reader.GetString(9);
+			car.Country = reader.GetString(10);
+			car.Password = reader.GetString(11);
 
 			return car;
 		}

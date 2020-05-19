@@ -40,7 +40,7 @@ namespace BPCRESTService.Managers
          {
             conn.Open();
 
-            using (SqlCommand command = new SqlCommand("Select * from Booking where Id = @Id", conn))
+            using (SqlCommand command = new SqlCommand("Select * from Booking where OrderNo = @Id", conn))
             {
                command.Parameters.AddWithValue("@Id", bookingId);
                SqlDataReader reader = command.ExecuteReader();
@@ -61,11 +61,11 @@ namespace BPCRESTService.Managers
          {
             conn.Open();
 
-            using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, Company, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, Truckdriver, ContactPerson) values(@OrderNo, @Status, @Company, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson)", conn))
+            using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson) values(@OrderNo, @Status, @Company, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson)", conn))
             {
 	            command.Parameters.AddWithValue("@OrderNo", booking.OrderNo);
 	            command.Parameters.AddWithValue("@Status", booking.Status);
-	            command.Parameters.AddWithValue("@CompanyName", booking.CompanyName);
+	            command.Parameters.AddWithValue("@CompanyName", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
 	            command.Parameters.AddWithValue("@TypeOfGoods", booking.TypeOfGoods);
@@ -81,7 +81,7 @@ namespace BPCRESTService.Managers
 	            command.Parameters.AddWithValue("@EndAddress", booking.EndAddress);
 	            command.Parameters.AddWithValue("@EndPostalCode", booking.EndPostalCode);
 	            command.Parameters.AddWithValue("@EndCountry", booking.EndCountry);
-	            command.Parameters.AddWithValue("@Truckdriver", booking.Truckdriver);
+	            command.Parameters.AddWithValue("@Truckdriver", booking.TruckDriverId);
 	            command.Parameters.AddWithValue("@ContactPerson", booking.ContactPerson);
 
                int rows = command.ExecuteNonQuery();
@@ -99,27 +99,33 @@ namespace BPCRESTService.Managers
          {
             conn.Open();
 
-            using (SqlCommand command = new SqlCommand("Update Booking set Status = @Status, Company = @Company, NumOfCarsNeeded = @NumOfCarsNeeded, Comment = @Comment, TypeOfGoods = @TypeOfGoods, TotalWidth = @TotalWidth, TotalLength = @TotalLength, TotalHeight = @TotalHeight, TotalWeight = @TotalWeight, StartDate = @StartDate, StartAddress = @StartAddress, StartPostalCode = @StartPostalCode, StartCountry = @StartCountry, EndDate = @EndDate, EndAddress = @EndAddress, EndPostalCode = @EndPostalCode, EndCountry = @EndCountry, Truckdriver = @Truckdriver, ContactPerson = @ContactPerson where OrderNo = @OrderNo", conn))
+            using (SqlCommand command = new SqlCommand("Update Booking set EndCity = @EndCity, StartCity = @StartCity, Status = @Status, CompanyCvrNo = @Company, NumOfCarsNeeded = @NumOfCarsNeeded, Comment = @Comment, TypeOfGoods = @TypeOfGoods, TotalWidth = @TotalWidth, TotalLength = @TotalLength, TotalHeight = @TotalHeight, TotalWeight = @TotalWeight, StartDate = @StartDate, StartAddress = @StartAddress, StartPostalCode = @StartPostalCode, StartCountry = @StartCountry, EndDate = @EndDate, EndAddress = @EndAddress, EndPostalCode = @EndPostalCode, EndCountry = @EndCountry, TruckdriverId = @Truckdriver, ContactPerson = @ContactPerson where OrderNo = @OrderNo", conn))
             {
 	            command.Parameters.AddWithValue("@OrderNo", id);
 	            command.Parameters.AddWithValue("@Status", booking.Status);
-	            command.Parameters.AddWithValue("@Company", booking.CompanyName);
+	            command.Parameters.AddWithValue("@Company", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
+
 	            command.Parameters.AddWithValue("@TypeOfGoods", booking.TypeOfGoods);
 	            command.Parameters.AddWithValue("@TotalWidth", booking.TotalWidth);
 	            command.Parameters.AddWithValue("@TotalLength", booking.TotalLength);
 	            command.Parameters.AddWithValue("@TotalHeight", booking.TotalHeight);
 	            command.Parameters.AddWithValue("@TotalWeight", booking.TotalWeight);
+
 	            command.Parameters.AddWithValue("@StartDate", booking.StartDate);
 	            command.Parameters.AddWithValue("@StartAddress", booking.StartAddress);
 	            command.Parameters.AddWithValue("@StartPostalCode", booking.StartPostalCode);
+                command.Parameters.AddWithValue("@StartCity", booking.StartCity);
 	            command.Parameters.AddWithValue("@StartCountry", booking.StartCountry);
+
 	            command.Parameters.AddWithValue("@EndDate", booking.EndDate);
 	            command.Parameters.AddWithValue("@EndAddress", booking.EndAddress);
 	            command.Parameters.AddWithValue("@EndPostalCode", booking.EndPostalCode);
+	            command.Parameters.AddWithValue("@EndCity", booking.EndCity);
 	            command.Parameters.AddWithValue("@EndCountry", booking.EndCountry);
-	            command.Parameters.AddWithValue("@Truckdriver", booking.Truckdriver);
+
+	            command.Parameters.AddWithValue("@Truckdriver", booking.TruckDriverId);
 	            command.Parameters.AddWithValue("@ContactPerson", booking.ContactPerson);
 
                int rows = command.ExecuteNonQuery();
@@ -152,24 +158,32 @@ namespace BPCRESTService.Managers
 
          booking.OrderNo = reader.GetInt32(0);
          booking.Status = Enum.Parse<Datastructures.Status>(reader.GetString(1)); 
-         booking.CompanyName = reader.GetString(2);
+         booking.CompanyCvrNo = reader.GetInt32(2);
          booking.NumOfCarsNeeded = reader.GetInt32(3);
          booking.Comment = reader.GetString(4);
-         booking.TypeOfGoods = reader.GetString(5);
-         booking.TotalWidth = reader.GetDouble(6);
-         booking.TotalLength = reader.GetDouble(7);
-         booking.TotalHeight = reader.GetDouble(8);
-         booking.TotalWeight = reader.GetDouble(9);
-         booking.StartDate = reader.GetDateTime(10);
-         booking.StartAddress = reader.GetString(11);
-         booking.StartPostalCode = reader.GetString(12);
-         booking.StartCountry = reader.GetString(13);
-         booking.EndDate = reader.GetDateTime(14);
-         booking.EndAddress = reader.GetString(15);
-         booking.EndPostalCode = reader.GetString(16);
-         booking.EndCountry = reader.GetString(17);
-         booking.Truckdriver = reader.GetInt32(18);
-         booking.ContactPerson = reader.GetString(19);
+
+         booking.StartDate = reader.GetDateTime(5);
+         booking.StartAddress = reader.GetString(6);
+         booking.StartPostalCode = reader.GetString(7);
+         booking.StartCity = reader.GetString(8);
+         booking.StartCountry = reader.GetString(9);
+         
+
+         booking.TypeOfGoods = reader.GetString(10);
+         booking.TotalWidth = reader.GetDouble(11);
+         booking.TotalLength = reader.GetDouble(12);
+         booking.TotalHeight = reader.GetDouble(13);
+         booking.TotalWeight = reader.GetDouble(14);
+
+
+         booking.EndDate = reader.GetDateTime(15);
+         booking.EndAddress = reader.GetString(16);
+         booking.EndPostalCode = reader.GetString(17);
+         booking.EndCity = reader.GetString(18);
+         booking.EndCountry = reader.GetString(19);
+
+         booking.TruckDriverId = reader.GetInt32(20);
+         booking.ContactPerson = reader.GetString(21);
 
          return booking;
       }

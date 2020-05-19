@@ -39,7 +39,7 @@ namespace BPCRESTService.Managers
             {
                 conn.Open();
 
-                using (SqlCommand command = new SqlCommand("Select * from Truckdriver where Id = @Id", conn))
+                using (SqlCommand command = new SqlCommand("Select * from Truckdriver where TruckdriverId = @Id", conn))
                 {
                     command.Parameters.AddWithValue("@Id", id);
                     SqlDataReader reader = command.ExecuteReader();
@@ -60,9 +60,9 @@ namespace BPCRESTService.Managers
             {
                 conn.Open();
 
-                using (SqlCommand command = new SqlCommand("Insert into Truckdriver (Id, TelephoneNo, EMail) values(@Id, @TelephoneNo, @EMail)", conn))
+                using (SqlCommand command = new SqlCommand("Insert into Truckdriver (TruckdriverId, TelephoneNo, EMail) values(@Id, @TelephoneNo, @EMail)", conn))
                 {
-                    command.Parameters.AddWithValue("@Id", truckdriver.Id);
+                    command.Parameters.AddWithValue("@Id", truckdriver.TruckdriverId);
                     command.Parameters.AddWithValue("@TelephoneNo", truckdriver.TelephoneNo);
                     command.Parameters.AddWithValue("@EMail", truckdriver.EMail);
 
@@ -81,7 +81,7 @@ namespace BPCRESTService.Managers
             {
                 conn.Open();
 
-                using (SqlCommand command = new SqlCommand("Update Truckdriver set TelephoneNo = @Tlf, EMail = @Mail, where Id = @Id", conn))
+                using (SqlCommand command = new SqlCommand("Update Truckdriver set TelephoneNo = @Tlf, EMail = @Mail, where TruckdriverId = @Id", conn))
                 {
                     command.Parameters.AddWithValue("@Id", id);
                     command.Parameters.AddWithValue("@Tlf", truckdriver.TelephoneNo);
@@ -102,7 +102,7 @@ namespace BPCRESTService.Managers
             {
                 conn.Open();
 
-                using (SqlCommand command = new SqlCommand("Delete from Truckdriver where Id = @Id", conn))
+                using (SqlCommand command = new SqlCommand("Delete from Truckdriver where TruckdriverId = @Id", conn))
                 {
                     command.Parameters.AddWithValue("@Id", id);
                     command.ExecuteNonQuery();
@@ -115,7 +115,7 @@ namespace BPCRESTService.Managers
         {
             Truckdriver truckdriver = new Truckdriver();
 
-            truckdriver.Id = reader.GetInt32(0);
+            truckdriver.TruckdriverId = reader.GetInt32(0);
             truckdriver.TelephoneNo = reader.GetString(1);
             truckdriver.EMail = reader.GetString(2);
             

@@ -25,9 +25,9 @@ namespace BPCRESTService.Controllers
 
         // GET: api/Customer/5
         [HttpGet("{id}", Name = "GetCustomer")]
-        public Customer Get(string name)
+        public Customer Get(int id)
         {
-            return manager.GetCustomerFromName(name);
+            return manager.GetCustomerFromId(id);
         }
 
         // POST: api/Customer
@@ -39,16 +39,16 @@ namespace BPCRESTService.Controllers
 
         // PUT: api/Customer/5
         [HttpPut("{id}")]
-        public bool Put(string companyName, [FromBody] Customer value)
+        public bool Put(int id, [FromBody] Customer value)
         {
-            return manager.UpdateCustomer(value, companyName);
+            return manager.UpdateCustomer(value, id);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{companyName}")]
-        public Customer Delete(string companyName)
+        public Customer Delete(int id)
         {
-            return manager.DeleteCustomer(companyName);
+            return manager.DeleteCustomer(id);
         }
     }
 }
