@@ -9,13 +9,14 @@ using BPCMain.Utilities;
 
 namespace BPCMain.ViewModel
 {
-	class Booking : BaseVM
+	class BookingVM
 	{
+
 		#region Instance field
 		//General information
 		private int _orderNo;
 		private Datastructures.Status _status;
-		private string _companyName;
+		private int _companyCvrNo;
 		private int _numOfCarsNeeded;
 		private string _comment;
 		//Payload information
@@ -27,19 +28,24 @@ namespace BPCMain.ViewModel
 		//Departure information
 		private DateTime _startDate;
 		private string _startAddress;
+		private string _startCity;
 		private string _startPostalCode;
 		private string _startCountry;
 		//Destination information
 		private DateTime _endDate;
 		private string _endAddress;
+		private string _endCity;
 		private string _endPostalCode;
 		private string _endCountry;
 		//Truck
-		private int _truckdriver;
+		private int _truckdriverId;
 		private string _contactperson;
+		//CarBooking
+		private int _carBookingId;
 		//RelayCommands
 		private RelayCommand _createBookingCompany;
 		private RelayCommand _RequestJobCar;
+
 
 		private NavigationService navigation = new NavigationService();
 		private RestWorker restworker = new RestWorker();
@@ -59,10 +65,9 @@ namespace BPCMain.ViewModel
 			set { _status = value; }
 		}
 
-		public string CompanyName
+		public int CompanyCvrNo
 		{
-			get { return _companyName; }
-			set { _companyName = value; }
+			get { return 1; } //Find den i customer
 		}
 
 		public int NumOfCarsNeeded
@@ -125,6 +130,12 @@ namespace BPCMain.ViewModel
 			set { _startPostalCode = value; }
 		}
 
+		public string StartCity
+		{
+			get { return _startCity; }
+			set { _startCity = value; }
+		}
+
 		public string StartCountry
 		{
 			get { return _startCountry; }
@@ -149,16 +160,22 @@ namespace BPCMain.ViewModel
 			set { _endPostalCode = value; }
 		}
 
+		public string EndCity
+		{
+			get { return _endCity; }
+			set { _endCity = value; }
+		}
+
 		public string EndCountry
 		{
 			get { return _endCountry; }
 			set { _endCountry = value; }
 		}
 
-		public int Truckdriver
+		public int TruckdriverId
 		{
-			get { return _truckdriver; }
-			set { _truckdriver = value; }
+			get { return _truckdriverId; }
+			set { _truckdriverId = value; }
 		}
 
 		public string Contactperson
@@ -166,6 +183,13 @@ namespace BPCMain.ViewModel
 			get { return _contactperson; }
 			set { _contactperson = value; }
 		}
+
+		public int CarBookingId
+		{
+			get { return _carBookingId; }
+			set { _carBookingId = value; }
+		}
+
 		#endregion
 
 		#region Properties RelayCommands 
@@ -184,7 +208,7 @@ namespace BPCMain.ViewModel
 
 		#region Constructor
 
-		public Booking()
+		public BookingVM()
 		{
 			_createBookingCompany = new RelayCommand(NewBooking, null);
 			_RequestJobCar = new RelayCommand(NewJob, null);
@@ -196,20 +220,32 @@ namespace BPCMain.ViewModel
 
 		public async void NewBooking()
 		{
-			Booking newBooking = new Booking(CompanyName, ); //skal udfyldes
-			if (ConstraintMethods.CreateBookingCheck(newBooking)) //metode i ConstraintMethods
-			{
-				//save new Car in database
-				await CreateNewBooking(newBooking);
-				CarBooking newCarBooking = new CarBooking(OrderNo, Car); //evt. flere
-				navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany)); //evt. popup succesfull Booking
-			}
-			else
-			{
-				string errorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
-			}
+			Booking newBooking = new Booking(OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCity, StartCountry, EndDate, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
+			
+			//if (ConstraintMethods.CreateBookingCheck(newBooking)) //metode i ConstraintMethods
+			//{
+			//	//save new Car in database
+			//	await CreateNewBooking(newBooking);
+			//	//evt. popup successful Booking
+			//	navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany)); 
+			//}
+			//else
+			//{
+			//	string errorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
+			//}
+
+
 		}
 
+		public async void newCarBooking()
+		{
+			for (int i = 0; i < NumOfCarsNeeded; i++)
+			{
+				int carBookingId = NumOfCarsNeeded + 1;
+				CarBooking newCarBooking = new CarBooking(carBookingId, OrderNo);
+				await CreateNewCarBooking(newCarBooking);
+			}
+		}
 		#endregion
 
 		#region DisplayBookingCompany RelayCommands
@@ -217,8 +253,15 @@ namespace BPCMain.ViewModel
 		public async Task<bool> CreateNewBooking<T>(T newBooking)
 		{
 			var Task = await restworker.CreateObjectAsync(newBooking, Datastructures.TableName.Booking);
-			var result = Task;
-			return result;
+			return Task;
+			//var result = Task;
+			//return result;
+		}
+
+		public async Task<bool> CreateNewCarBooking<T>(T newCarBooking)
+		{
+			var Task = await restworker.CreateObjectAsync(newCarBooking, Datastructures.TableName.CarBooking);
+			return Task;
 		}
 
 		#endregion
@@ -227,7 +270,7 @@ namespace BPCMain.ViewModel
 
 		public async void NewJob()
 		{
-			
+
 		}
 
 		#endregion
@@ -248,7 +291,5 @@ namespace BPCMain.ViewModel
 
 
 		#endregion
-
-
 	}
 }
