@@ -28,7 +28,7 @@ namespace BPCClassLibrary
         }
         #endregion
 
-        public Customer(string companyName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string city, string country, string password)
+        public Customer(string companyName, int cvrNo, string eMail, string telephoneNo, string address, string postalCode, string city, string country, string password, string mobileNo = "N/A")
         {
             _companyName = companyName;
             _cvrNo = cvrNo;
