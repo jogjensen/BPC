@@ -49,8 +49,13 @@ namespace BPCMain.Utilities
 				!StringLengthCheck(newCustomer.Country,2,40)||
 				!StringLengthCheck(newCustomer.Password,6,30)) return false;
             return true;
-
 		}
+
+        public static bool CreateBookingCheck(Booking booking)
+        {
+
+	        return true;
+        }
 
 		public static bool CheckNumber(int number, int min, int max)
 		{

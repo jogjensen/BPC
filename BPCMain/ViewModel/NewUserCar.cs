@@ -119,12 +119,12 @@ namespace BPCMain.ViewModel
 
 		public NewUserCar()
 		{
-			_createCar = new RelayCommand(NewUCAR, null);
+			_createCar = new RelayCommand(NewCar, null);
 		}
 
 		#endregion
 
-		public async void NewUCAR()
+		public async void NewCar()
 		{
 			Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
 			if (CreateCarCheck(newCar)) //metode i ConstraintMethods

@@ -130,11 +130,7 @@
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="ViewModel\AboutFaqContact.cs" />
     <Compile Include="ViewModel\BaseVM.cs" />
-    <Compile Include="ViewModel\CreateBookingCar.cs" />
-    <Compile Include="ViewModel\CreateBookingCompany.cs" />
-    <Compile Include="ViewModel\DisplayBookingAdmin.cs" />
-    <Compile Include="ViewModel\DisplayBookingCar.cs" />
-    <Compile Include="ViewModel\DisplayBookingCompany.cs" />
+    <Compile Include="ViewModel\Booking.cs" />
     <Compile Include="ViewModel\HomePageLogin.cs" />
     <Compile Include="ViewModel\NewUserCar.cs" />
     <Compile Include="ViewModel\NewUserCompany.cs" />
@@ -143,9 +139,6 @@
     </Compile>
     <Compile Include="View\ContactBPC.xaml.cs">
       <DependentUpon>ContactBPC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CreateBookingCar.xaml.cs">
-      <DependentUpon>CreateBookingCar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateBookingCompany.xaml.cs">
       <DependentUpon>CreateBookingCompany.xaml</DependentUpon>
@@ -202,10 +195,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContactBPC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CreateBookingCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
