@@ -8,7 +8,7 @@ namespace BPCClassLibrary
     {
         #region Instance fields
 
-        private int _id;
+        private int _truckdriverId;
         private string _telephoneNo;
         private string _eMail;
         #endregion
@@ -23,10 +23,10 @@ namespace BPCClassLibrary
 
         #region Properties
 
-        public int Id
+        public int TruckdriverId
         {
-            get => _id;
-            set => _id = value;
+            get => _truckdriverId;
+            set => _truckdriverId = value;
         }
 
         public string TelephoneNo

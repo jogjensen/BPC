@@ -8,7 +8,7 @@ namespace BPCClassLibrary
     {
         #region Instance fields
 
-        private int _id;
+        private int _carId;
         private string _firstName;
         private string _lastName;
         private int _cvrNo;
@@ -17,6 +17,7 @@ namespace BPCClassLibrary
         private string _mobileNo;
         private string _address;
         private string _postalCode;
+        private string _city;
         private string _country;
         private string _password;
         #endregion
@@ -28,7 +29,7 @@ namespace BPCClassLibrary
 
         }
 
-        public Car(string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password)
+        public Car(string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string city, string country, string password)
         {
 	        _firstName = firstName;
 	        _lastName = lastName;
@@ -38,6 +39,7 @@ namespace BPCClassLibrary
 	        _mobileNo = mobileNo;
 	        _address = address;
 	        _postalCode = postalCode;
+            _city = city;
 	        _country = country;
 	        _password = password;
         }
@@ -48,8 +50,8 @@ namespace BPCClassLibrary
 
       public int Id
         {
-	        get => _id;
-	        set => _id = value;
+	        get => _carId;
+	        set => _carId = value;
       }
 
         public string FirstName
@@ -98,6 +100,12 @@ namespace BPCClassLibrary
         {
             get => _postalCode;
             set => _postalCode = value;
+        }
+
+        public string City
+        {
+            get => _city;
+            set => _city = value;
         }
 
         public string Country

@@ -15,9 +15,9 @@ namespace BPCClassLibrary
         private string _mobileNo;
         private string _address;
         private string _postalCode;
+        private string _city;
         private string _country;
         private string _password;
-        //private int _truckdriver;
         #endregion
 
         #region Constructors
@@ -28,17 +28,18 @@ namespace BPCClassLibrary
         }
         #endregion
 
-        public Customer(string companyName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password)
+        public Customer(string companyName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string city, string country, string password)
         {
-	        _companyName = companyName;
-	        _cvrNo = cvrNo;
-	        _eMail = eMail;
-	        _telephoneNo = telephoneNo;
-	        _mobileNo = mobileNo;
-	        _address = address;
-	        _postalCode = postalCode;
-	        _country = country;
-	        _password = password;
+            _companyName = companyName;
+            _cvrNo = cvrNo;
+            _eMail = eMail;
+            _telephoneNo = telephoneNo;
+            _mobileNo = mobileNo;
+            _address = address;
+            _postalCode = postalCode;
+            _city = city;
+            _country = country;
+            _password = password;
         }
 
         #region Properties
@@ -85,23 +86,23 @@ namespace BPCClassLibrary
             set => _postalCode = value;
         }
 
-        public string Country
+        public string City
         {
-	        get => _country;
-	        set => _country = value;
+            get => _city;
+            set => _city = value;
         }
 
-      public string Password
+        public string Country
+        {
+            get => _country;
+            set => _country = value;
+        }
+
+        public string Password
         {
             get => _password;
             set => _password = value;
         }
-
-        //public int Truckdriver
-        //{
-	       // get => _truckdriver;
-	       // set => _truckdriver = value;
-        //}
-      #endregion
-   }
+        #endregion
+    }
 }
