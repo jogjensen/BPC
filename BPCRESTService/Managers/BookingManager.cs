@@ -81,7 +81,7 @@ namespace BPCRESTService.Managers
 	            command.Parameters.AddWithValue("@EndAddress", booking.EndAddress);
 	            command.Parameters.AddWithValue("@EndPostalCode", booking.EndPostalCode);
 	            command.Parameters.AddWithValue("@EndCountry", booking.EndCountry);
-	            command.Parameters.AddWithValue("@Truckdriver", booking.Truckdriver);
+	            command.Parameters.AddWithValue("@Truckdriver", booking.TruckDriverId);
 	            command.Parameters.AddWithValue("@ContactPerson", booking.ContactPerson);
 
                int rows = command.ExecuteNonQuery();
@@ -125,7 +125,7 @@ namespace BPCRESTService.Managers
 	            command.Parameters.AddWithValue("@EndCity", booking.EndCity);
 	            command.Parameters.AddWithValue("@EndCountry", booking.EndCountry);
 
-	            command.Parameters.AddWithValue("@Truckdriver", booking.Truckdriver);
+	            command.Parameters.AddWithValue("@Truckdriver", booking.TruckDriverId);
 	            command.Parameters.AddWithValue("@ContactPerson", booking.ContactPerson);
 
                int rows = command.ExecuteNonQuery();
@@ -182,7 +182,7 @@ namespace BPCRESTService.Managers
          booking.EndCity = reader.GetString(18);
          booking.EndCountry = reader.GetString(19);
 
-         booking.Truckdriver = reader.GetInt32(20);
+         booking.TruckDriverId = reader.GetInt32(20);
          booking.ContactPerson = reader.GetString(21);
 
          return booking;
