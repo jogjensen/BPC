@@ -11,34 +11,6 @@ namespace BPCRESTService.Managers
 	{
 		private const string connString = "Server=tcp:bpc-dbserver.database.windows.net,1433;Initial Catalog=bpc-db;Persist Security Info=False;User ID=bpc-adm;Password=Secret1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-		//Dictionary<int, string> carLogin = new Dictionary<int, string>();
-
-
-		//public  GetUser&Password(int id)
-		//{
-		//	Car car = new Car();
-
-		//	using (SqlConnection conn = new SqlConnection(connString))
-		//	{
-		//		conn.Open();
-
-		//		using (SqlCommand command = new SqlCommand("Select * from Car where Id = @Id", conn))
-		//		{
-		//			command.Parameters.AddWithValue("@name", id);
-		//			SqlDataReader reader = command.ExecuteReader();
-		//			if (reader.Read())
-		//			{
-		//				car = ReadNextCar(reader);
-		//			}
-		//		}
-		//	}
-
-		//	return car;
-		//}
-
-	
-
-
 		#region Get/Post/Put/Delete
 
 		public IList<Car> GetAllCars()
@@ -68,12 +40,10 @@ namespace BPCRESTService.Managers
 			using (SqlConnection conn = new SqlConnection(connString))
 			{
 				conn.Open();
-						//
-						//@Id !=  @Name
-						//
+						
 				using (SqlCommand command = new SqlCommand("Select * from Car where Id = @Id", conn))
 				{
-					command.Parameters.AddWithValue("@name", id);
+					command.Parameters.AddWithValue("@Id", id);
 					SqlDataReader reader = command.ExecuteReader();
 					if (reader.Read())
 					{
