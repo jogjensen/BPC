@@ -158,7 +158,7 @@ namespace BPCRESTService.Managers
          booking.TypeOfGoods = reader.GetString(5);
          booking.TotalWidth = reader.GetDouble(6);
          booking.TotalLength = reader.GetDouble(7);
-	      booking.TotalHeight = reader.GetDouble(8);
+         booking.TotalHeight = reader.GetDouble(8);
          booking.TotalWeight = reader.GetDouble(9);
          booking.StartDate = reader.GetDateTime(10);
          booking.StartAddress = reader.GetString(11);

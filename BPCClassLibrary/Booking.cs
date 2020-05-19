@@ -11,7 +11,7 @@ namespace BPCClassLibrary
         //General information
         private int _orderNo;
         private Datastructures.Status _status;
-        private string _companyName;
+        private int _companyCvrNo;
         private int _numOfCarsNeeded;
         private string _comment;
         //Payload information
@@ -24,11 +24,13 @@ namespace BPCClassLibrary
         private DateTime _startDate;
         private string _startAddress;
         private string _startPostalCode;
+        private string _startCity;
         private string _startCountry;
         //Destination information
         private DateTime _endDate;
         private string _endAddress;
         private string _endPostalCode;
+        private string _endCity;
         private string _endCountry;
         //Truck
         private int _truckdriver;
@@ -53,10 +55,10 @@ namespace BPCClassLibrary
             set => _status = value;
         }
 
-        public string CompanyName
+        public int CompanyCvrNo
         {
-	        get => _companyName;
-	        set => _companyName = value;
+	        get => _companyCvrNo;
+	        set => _companyCvrNo = value;
         }
 
         
@@ -120,6 +122,12 @@ namespace BPCClassLibrary
             set => _startPostalCode = value;
         }
 
+        public string StartCity
+        {
+            get => _startCity;
+            set => _startCity = value;
+        }
+
         public string StartCountry
         {
             get => _startCountry;
@@ -142,6 +150,12 @@ namespace BPCClassLibrary
         {
             get => _endPostalCode;
             set => _endPostalCode = value;
+        }
+
+        public string EndCity
+        {
+            get => _endCity;
+            set => _endCity = value;
         }
 
         public string EndCountry
