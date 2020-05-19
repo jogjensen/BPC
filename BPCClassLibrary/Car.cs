@@ -29,7 +29,7 @@ namespace BPCClassLibrary
 
         }
 
-        public Car(string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string city, string country, string password)
+        public Car(string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string address, string postalCode, string country, string password, string city, string mobileNo = "N/A")
         {
 	        _firstName = firstName;
 	        _lastName = lastName;
