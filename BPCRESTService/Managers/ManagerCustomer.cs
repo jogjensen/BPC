@@ -101,9 +101,11 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Update Customer set City = @City, EMail = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode, Country = @Country, Password = @Password, TruckdriverId = @Truckdriver where CvrNo = @Id", conn))
+				using (SqlCommand command = new SqlCommand("Update Customer set City = @City, EMail = @EMail, TelephoneNo = @TelephoneNo, " +
+					"									MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode, Country = @Country, " +
+					"									Password = @Password, TruckdriverId = @Truckdriver, CompanyName = @CompanyName where CvrNo = @Id", conn))
 				{
-					command.Parameters.AddWithValue("@Companyname", customer.CompanyName);
+					command.Parameters.AddWithValue("@CompanyName", customer.CompanyName);
 					command.Parameters.AddWithValue("@EMail", customer.EMail);
 					command.Parameters.AddWithValue("@TelephoneNo", customer.TelephoneNo);
 					command.Parameters.AddWithValue("@MobileNo", customer.MobileNo);

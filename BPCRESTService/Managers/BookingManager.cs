@@ -61,8 +61,8 @@ namespace BPCRESTService.Managers
          {
             conn.Open();
 
-            using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson) " +
-                                                                    "values(@OrderNo, @Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson)", conn))
+            using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson, StartCity, @EndCity) " +
+                                                                    "values(@OrderNo, @Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson, @StartCity, @EndCity)", conn))
             {
 	            command.Parameters.AddWithValue("@OrderNo", booking.OrderNo);
 	            command.Parameters.AddWithValue("@Status", booking.Status);
@@ -84,6 +84,8 @@ namespace BPCRESTService.Managers
 	            command.Parameters.AddWithValue("@EndCountry", booking.EndCountry);
 	            command.Parameters.AddWithValue("@Truckdriver", booking.TruckDriverId);
 	            command.Parameters.AddWithValue("@ContactPerson", booking.ContactPerson);
+                command.Parameters.AddWithValue("@StartCity", booking.StartCity);
+                command.Parameters.AddWithValue("@EndCity", booking.EndCity);
 
                int rows = command.ExecuteNonQuery();
                created = rows == 1;

@@ -62,9 +62,9 @@ namespace BPCRESTService.Managers
 			using (SqlConnection conn = new SqlConnection(connString))
 			{
 				conn.Open();
-				//Fejl. @CvrNo != @CvrName
+				
 				using (SqlCommand command = new SqlCommand("Insert into Car (CarId, FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, City, Country, Password) " +
-																	"values (@Id, @FirstName, @LastName, @CvrName, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @City, @Country, @Password)", conn))
+																	"values (@Id, @FirstName, @LastName, @CvrNo, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @City, @Country, @Password)", conn))
 				{
 					command.Parameters.AddWithValue("@Id", car.Id);
 					command.Parameters.AddWithValue("@FirstName", car.FirstName);
@@ -95,7 +95,9 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 				
-				using (SqlCommand command = new SqlCommand("Update Car set Password = @Password, Country = @Country, City = @City, CvrNo = @CvrNo, EMail = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode where Id = @Id", conn))
+				using (SqlCommand command = new SqlCommand("Update Car set Password = @Password, Country = @Country, City = @City, " +
+															"CvrNo = @CvrNo, EMail = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, " +
+															"Address = @Address, PostalCode = @PostalCode where CarId = @Id", conn))
 				{
 					command.Parameters.AddWithValue("@Id", id);
 					command.Parameters.AddWithValue("@FirstName", car.FirstName);

@@ -15,6 +15,13 @@ namespace BPCClassLibrary
 
         #region Constructors
 
+        public Truckdriver(int truckdriverId, string telephoneNo, string eMail)
+        {
+            _truckdriverId = truckdriverId;
+            _telephoneNo = telephoneNo;
+            _eMail = eMail;
+        }
+
         public Truckdriver()
         {
 
