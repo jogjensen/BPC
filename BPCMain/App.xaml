@@ -4,59 +4,71 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BPCMain">
 
-    <Application.Resources>
+	<Application.Resources>
+		<!-- Standard block/Box -->
+		<Style x:Key="TextBlockStyle1" TargetType="TextBlock">
+			<Setter Property="Width" Value="200"/>
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+			<Setter Property="Margin" Value="5,5,5,5"/>
+		</Style>
 
-        <Style x:Key="TextBlockStyle1" TargetType="TextBlock">
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontFamily" Value="Arial Black"/>
-            <Setter Property="Margin" Value="5,5,5,5"/>
-        </Style>
+		<Style x:Key="TextBoxStyle1" TargetType="TextBox">
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="Width" Value="200"/>
+			<Setter Property="Margin" Value="5"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+		</Style>
 
-        <Style x:Key="TextBlockStyle2" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="40"/>
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="FontFamily" Value="Arial Black"/>
-        </Style>
+		<Style x:Key="ButtonStyle" TargetType="Button">
+			<Setter Property="Width" Value="300"/>
+			<Setter Property="Foreground" Value="Black"/>
+			<Setter Property="Background" Value="#DE4EAA"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="RequestedTheme" Value="Dark"/>
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+			<Setter Property="BorderThickness" Value="1"/>
 
-        <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="300"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Background" Value="#DE4EAA"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="RequestedTheme" Value="Dark"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontFamily" Value="Arial Black"/>
-            <Setter Property="BorderThickness" Value="1"/>
+		</Style>
+		<Style x:Key="TextBlockStyle3" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="20"/>
+			<Setter Property="Margin" Value="0,0,0,0"/>
+			<Setter Property="Foreground" Value="Black"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+		</Style>
 
-        </Style>
-        <Style x:Key="TextBlockStyle3" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Margin" Value="0,0,0,0"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontFamily" Value="Arial Black"/>
-        </Style>
+<Style x:Key="Header1" TargetType="TextBlock">
+	<Setter Property="Width" Value="750"/>
+	<Setter Property="Height" Value="100"/>
+	<Setter Property="TextAlignment" Value="Center"/>
+	<Setter Property="FontWeight" Value="Bold"/>
+	<Setter Property="FontSize" Value="30"/>
+	<!--<Setter Property="" Value=""/>
+	<Setter Property="" Value=""/>-->
 
-        <Style x:Key="ButtonStyle1" TargetType="Button">
-            <Setter Property="Width" Value="300"/>
-            <Setter Property="RequestedTheme" Value="Dark"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontFamily" Value="Arial Black"/>
-        </Style>
+		</Style>
 
-        <!-- MenuBar Application Resources -->
-        <Style x:Key="MenuBarButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="150"/>
-            <Setter Property="Height" Value="60"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="RequestedTheme" Value="Dark"/>
-            <Setter Property="FontFamily" Value="Arial Black"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-      
-    </Application.Resources>
+
+		<Style x:Key="ButtonStyle1" TargetType="Button">
+			<Setter Property="Width" Value="300"/>
+			<Setter Property="RequestedTheme" Value="Dark"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+		</Style>
+
+		<!-- MenuBar Application Resources -->
+		<Style x:Key="MenuBarButtonStyle" TargetType="Button">
+			<Setter Property="Width" Value="150"/>
+			<Setter Property="Height" Value="60"/>
+			<Setter Property="Margin" Value="10"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="RequestedTheme" Value="Dark"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+		</Style>
+
+	</Application.Resources>
 </Application>

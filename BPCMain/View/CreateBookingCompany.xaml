@@ -5,10 +5,55 @@
     xmlns:local="using:BPCMain.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:BPCMain.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+	<Page.DataContext>
+		<viewModel:BookingVM/>
+	</Page.DataContext>
 
-    </Grid>
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+
+		<Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+			<StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
+				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Om os" Command="{Binding AboutBpcCommand}"/>
+				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
+				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookinger" />
+				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Min side" />
+			</StackPanel>
+		</Grid>
+
+		<Grid Background="Black" 
+             Opacity="0.50" 
+             Width="1200" 
+             Height="700" 
+             VerticalAlignment="Top" 
+             Margin="100"/>
+
+		<StackPanel Orientation="Vertical" 
+		            Width="1000">
+
+			<StackPanel Orientation="Vertical" 
+                        VerticalAlignment="Top" 
+                        Width="600" Height="100" 
+                        Margin="0,150" 
+                        HorizontalAlignment="Center">
+
+				<TextBlock Text="Ny Booking"
+                       Style="{StaticResource Header1}"/>
+
+			</StackPanel>
+
+			<StackPanel Orientation="Vertical" 
+                        VerticalAlignment="Top" 
+                        Width="600" 
+                        Height="400"
+                        Margin="0,50">
+
+
+			</StackPanel>
+		</StackPanel>
+	</Grid>
 </Page>
