@@ -13,6 +13,8 @@
         <viewModel:BookingVM/>
     </Page.DataContext>
 
+
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
 
@@ -26,7 +28,6 @@
         </Grid>
 
 
-
         <Grid Background="Black" 
              Opacity="0.50" 
              Width="1200" 
@@ -34,35 +35,103 @@
              VerticalAlignment="Top" 
              Margin="100"/>
 
-        <StackPanel Orientation="Vertical" 
-                    Width="1000">
+        
 
-            <StackPanel Orientation="Vertical" 
+
+
+                    <StackPanel Orientation="Vertical" 
                         VerticalAlignment="Top" 
                         Width="600" Height="100" 
-                        Margin="0,150" 
+                        Margin="0,100" 
                         HorizontalAlignment="Center">
 
-                <TextBlock Text="Bookings" 
+                        <TextBlock Text="Mine Bookinger" 
                            Width="750" Height="100" 
                            TextAlignment="Center" 
                            HorizontalAlignment="Center"
                            Style="{StaticResource HeaderTextBlockStyle}"
                            FontWeight="Bold"/>
 
-            </StackPanel>
+                    </StackPanel>
 
-            <StackPanel Orientation="Vertical" 
+                    <StackPanel Orientation="Vertical" 
                         VerticalAlignment="Top" 
                         Width="600" 
                         Height="400"
                         Margin="0,50">
 
-             
+                    </StackPanel>
+
+        <StackPanel Orientation="Vertical" 
+                    Width="1200"
+                    Height="700">
+
+            <StackPanel Orientation="Horizontal"
+            Margin="0,10">
+                <TextBlock Text="Ordre Nr" FontSize="25" Width="100"/>
+                <TextBlock Text="Start By" FontSize="25" Margin="10,0" Width="100"/>
+                <TextBlock Text="Dato og Tid" FontSize="25" Margin="10,0"  Width="150"/>
+                <TextBlock Text="Slut By" FontSize="25" Margin="10,0" Width="100"/>
+                <TextBlock Text="Dato og tid" FontSize="25" Margin="10,0"  Width="150"/>
+                <TextBlock Text="Godsart" FontSize="25" Margin="10,0" Width="100"/>
+                <TextBlock Text="Status" FontSize="25" Margin="10,0" Width="100"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
+                <Button x:Name="Alt Information" Content="Alt information"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
+                <Button x:Name="Alt Information1" Content="Alt information"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
+                <Button x:Name="Alt Information2" Content="Alt information"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
+                <Button x:Name="Alt Information3" Content="Alt information"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
+                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
+                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
+                <Button x:Name="Alt Information4" Content="Alt information"/>
             </StackPanel>
         </StackPanel>
-
-
-
+            
+       
     </Grid>
+
+
 </Page>

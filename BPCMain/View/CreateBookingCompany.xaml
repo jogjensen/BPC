@@ -32,6 +32,8 @@
              VerticalAlignment="Top" 
              Margin="100"/>
 
+		
+
 		<StackPanel Style="{StaticResource HeaderPanelStyle1}"
 		            Width="1000">
 
