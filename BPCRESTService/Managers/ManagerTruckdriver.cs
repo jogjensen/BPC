@@ -81,8 +81,8 @@ namespace BPCRESTService.Managers
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
-
-                using (SqlCommand command = new SqlCommand("Update Truckdriver set TelephoneNo = @Tlf, EMail = @Mail, where TruckdriverId = @Id", conn))
+                
+                using (SqlCommand command = new SqlCommand("Update Truckdriver set TelephoneNo = @Tlf, EMail = @Mail where TruckdriverId = @Id", conn))
                 {
                     command.Parameters.AddWithValue("@Id", id);
                     command.Parameters.AddWithValue("@Tlf", truckdriver.TelephoneNo);

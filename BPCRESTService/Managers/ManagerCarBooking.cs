@@ -60,10 +60,11 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Insert into CarBooking (CarBookingId, OrderNo) values(@CarBookingId, @OrderNo)", conn))
+				using (SqlCommand command = new SqlCommand("Insert into CarBooking (CarBookingId, OrderNo, CarId) values(@CarBookingId, @OrderNo, @CarId)", conn))
 				{
 					command.Parameters.AddWithValue("@CarBookingId", carBooking.CarBookingId);
 					command.Parameters.AddWithValue("@OrderNo", carBooking.OrderNo);
+					command.Parameters.AddWithValue("@CarId", carBooking.CarId);
 
 					int rows = command.ExecuteNonQuery();
 					created = rows == 1;
@@ -80,10 +81,11 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Update CarBooking set CarId = @Car, where CarBookingId = @Id", conn))
+				using (SqlCommand command = new SqlCommand("Update CarBooking set CarId = @Car, OrderNo = @OrderNo where CarBookingId = @Id", conn))
 				{
 					command.Parameters.AddWithValue("@Id", id);
 					command.Parameters.AddWithValue("@Car", carBooking.CarId);
+					command.Parameters.AddWithValue("@OrderNo", carBooking.OrderNo);
 
 					int rows = command.ExecuteNonQuery();
 					updated = rows == 1;

@@ -62,8 +62,9 @@ namespace BPCRESTService.Managers
 			using (SqlConnection conn = new SqlConnection(connString))
 			{
 				conn.Open();
-				
-				using (SqlCommand command = new SqlCommand("Insert into Car (CarId, FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, City, Country, Password) values (@Id, @FirstName, @LastName, @CvrName, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @City, @Country, @Password)", conn))
+				//Fejl. @CvrNo != @CvrName
+				using (SqlCommand command = new SqlCommand("Insert into Car (CarId, FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, City, Country, Password) " +
+																	"values (@Id, @FirstName, @LastName, @CvrName, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @City, @Country, @Password)", conn))
 				{
 					command.Parameters.AddWithValue("@Id", car.Id);
 					command.Parameters.AddWithValue("@FirstName", car.FirstName);
@@ -93,14 +94,14 @@ namespace BPCRESTService.Managers
 			using (SqlConnection conn = new SqlConnection(connString))
 			{
 				conn.Open();
-
-				using (SqlCommand command = new SqlCommand("Update Car set City = @City, CvrNo = @CvrNo, EMail = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode where Id = @Id", conn))
+				
+				using (SqlCommand command = new SqlCommand("Update Car set Password = @Password, Country = @Country, City = @City, CvrNo = @CvrNo, EMail = @EMail, TelephoneNo = @TelephoneNo, MobileNo = @MobileNo, Address = @Address, PostalCode = @PostalCode where Id = @Id", conn))
 				{
 					command.Parameters.AddWithValue("@Id", id);
 					command.Parameters.AddWithValue("@FirstName", car.FirstName);
 					command.Parameters.AddWithValue("@LastName", car.LastName);
 					command.Parameters.AddWithValue("@CvrNo", car.CvrNo);
-					command.Parameters.AddWithValue("@Email", car.EMail);
+					command.Parameters.AddWithValue("@EMail", car.EMail);
 					command.Parameters.AddWithValue("@TelephoneNo", car.TelephoneNo);
 					command.Parameters.AddWithValue("@MobileNo", car.MobileNo);
 					command.Parameters.AddWithValue("@Address", car.Address);
