@@ -46,6 +46,9 @@ namespace BPCMain.ViewModel
 		private RelayCommand _createBookingCompany;
 		private RelayCommand _RequestJobCar;
 
+		//new Truckdriver
+		private string _truckDriverTelNo;
+		private string _truckdriverEMail;
 
 		private NavigationService navigation = new NavigationService();
 		private RestWorker restworker = new RestWorker();
@@ -188,6 +191,18 @@ namespace BPCMain.ViewModel
 		{
 			get { return _carBookingId; }
 			set { _carBookingId = value; }
+		}
+
+		public string TruckDriverTelNo
+		{
+			get { return _truckDriverTelNo; }
+			set { _truckDriverTelNo = value; }
+		}
+
+		public string TruckdriverEMail
+		{
+			get { return _truckdriverEMail; }
+			set { _truckdriverEMail = value; }
 		}
 
 		#endregion

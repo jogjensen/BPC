@@ -5,12 +5,29 @@
     xmlns:local="using:BPCMain">
 
 	<Application.Resources>
+		<!--Header Styles-->
+			<Style x:Key="Header1" TargetType="TextBlock">
+			<Setter Property="Width" Value="600"/>
+			<Setter Property="Height" Value="80"/>
+			<Setter Property="TextAlignment" Value="Center"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontSize" Value="48"/>
+		</Style>
+
 		<!-- Standard block/Box -->
 		<Style x:Key="TextBlockStyle1" TargetType="TextBlock">
 			<Setter Property="Width" Value="200"/>
 			<Setter Property="FontSize" Value="16"/>
 			<Setter Property="FontFamily" Value="Arial Black"/>
 			<Setter Property="Margin" Value="5,5,5,5"/>
+		</Style>
+
+		<Style x:Key="TextBlockStyle1Bold" TargetType="TextBlock">
+			<Setter Property="Width" Value="200"/>
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+			<Setter Property="Margin" Value="5,5,5,5"/>
+			<Setter Property="FontWeight" Value="Bold"/>
 		</Style>
 
 		<Style x:Key="TextBoxStyle1" TargetType="TextBox">
@@ -38,17 +55,16 @@
 			<Setter Property="FontFamily" Value="Arial Black"/>
 		</Style>
 
-<Style x:Key="Header1" TargetType="TextBlock">
-	<Setter Property="Width" Value="750"/>
-	<Setter Property="Height" Value="100"/>
-	<Setter Property="TextAlignment" Value="Center"/>
-	<Setter Property="FontWeight" Value="Bold"/>
-	<Setter Property="FontSize" Value="30"/>
-	<!--<Setter Property="" Value=""/>
-	<Setter Property="" Value=""/>-->
+			<!--<Setter Property="" Value=""/>-->
+
+
+		<Style x:Key="HeaderPanelStyle1" TargetType="StackPanel">
+			<Setter Property="Width" Value="800"/>
+			<Setter Property="Height" Value="80"/>
+			<Setter Property="Margin" Value="0,150"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
 
 		</Style>
-
 
 		<Style x:Key="ButtonStyle1" TargetType="Button">
 			<Setter Property="Width" Value="300"/>
@@ -58,7 +74,7 @@
 			<Setter Property="FontFamily" Value="Arial Black"/>
 		</Style>
 
-		<!-- MenuBar Application Resources -->
+		<!--MenuBar Application Resources--> 
 		<Style x:Key="MenuBarButtonStyle" TargetType="Button">
 			<Setter Property="Width" Value="150"/>
 			<Setter Property="Height" Value="60"/>

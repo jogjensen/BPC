@@ -35,17 +35,10 @@
         <StackPanel Orientation="Vertical" 
                     Width="1000">
 
-            <StackPanel Orientation="Vertical" 
-                        VerticalAlignment="Top" 
-                        Width="600" Height="100" 
-                        Margin="0,150" 
-                        HorizontalAlignment="Center">
+			<StackPanel Style="{StaticResource HeaderPanelStyle1}">
 
                 <TextBlock Text="BookPilotCar" 
-                           Width="750" Height="100" 
-                           TextAlignment="Center" 
-                           HorizontalAlignment="Center"
-                           Style="{StaticResource HeaderTextBlockStyle}"
+                           Style="{StaticResource Header1}"
                            FontWeight="Bold"/>
 
             </StackPanel>
