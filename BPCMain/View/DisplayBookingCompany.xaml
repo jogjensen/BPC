@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <viewModel:DisplayBookingCompany/>
+        <viewModel:BookingVM/>
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -24,6 +24,8 @@
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="My side" />
             </StackPanel>
         </Grid>
+
+
 
         <Grid Background="Black" 
              Opacity="0.50" 
