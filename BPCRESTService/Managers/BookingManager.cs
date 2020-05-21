@@ -64,8 +64,10 @@ namespace BPCRESTService.Managers
             using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson, StartCity, @EndCity) " +
                                                                     "values(@OrderNo, @Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson, @StartCity, @EndCity)", conn))
             {
+                    int status = (int)booking.Status;
 	            command.Parameters.AddWithValue("@OrderNo", booking.OrderNo);
-	            command.Parameters.AddWithValue("@Status", booking.Status);
+	            //command.Parameters.AddWithValue("@Status", (int)booking.Status);
+	            command.Parameters.AddWithValue("@Status", status);
 	            command.Parameters.AddWithValue("@CompanyCvrNo", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
@@ -108,8 +110,10 @@ namespace BPCRESTService.Managers
                 "StartCountry = @StartCountry, EndDate = @EndDate, EndAddress = @EndAddress, EndPostalCode = @EndPostalCode, EndCountry = @EndCountry, TruckdriverId = @Truckdriver, " +
                 "ContactPerson = @ContactPerson where OrderNo = @OrderNo", conn))
             {
+                    int status = (int)booking.Status;
 	            command.Parameters.AddWithValue("@OrderNo", id);
-	            command.Parameters.AddWithValue("@Status", booking.Status);
+	            //command.Parameters.AddWithValue("@Status", (int)booking.Status);
+	            command.Parameters.AddWithValue("@Status", status);
 	            command.Parameters.AddWithValue("@Company", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
@@ -164,7 +168,7 @@ namespace BPCRESTService.Managers
          Booking booking = new Booking();
 
          booking.OrderNo = reader.GetInt32(0);
-         booking.Status = Enum.Parse<Datastructures.Status>(reader.GetString(1)); 
+         booking.Status = (Datastructures.Status) reader.GetInt32(1);
          booking.CompanyCvrNo = reader.GetInt32(2);
          booking.NumOfCarsNeeded = reader.GetInt32(3);
 
