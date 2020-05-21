@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,6 +50,8 @@ namespace BPCMain.ViewModel
 		//new Truckdriver
 		private string _truckDriverTelNo;
 		private string _truckdriverEMail;
+
+		private string _errorMessage;
 
 		private NavigationService navigation = new NavigationService();
 		private RestWorker restworker = new RestWorker();
@@ -205,6 +208,12 @@ namespace BPCMain.ViewModel
 			set { _truckdriverEMail = value; }
 		}
 
+		public string ErrorMessage
+		{
+			get { return _errorMessage; }
+			set { _errorMessage = value; }
+		}
+
 		#endregion
 
 		#region Properties RelayCommands 
@@ -235,42 +244,52 @@ namespace BPCMain.ViewModel
 
 		public async void NewBooking()
 		{
+			await CreateId<IList<Task>>(OrderNo, Datastructures.TableName.Booking); //creating new OrderNo
+			await CreateId<IList<Task>>(TruckdriverId, Datastructures.TableName.Truckdriver); //creating new truckdriverId
+			Status = Datastructures.Status.Open;
+			
 			Booking newBooking = new Booking(OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCity, StartCountry, EndDate, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
 			
-			//if (ConstraintMethods.CreateBookingCheck(newBooking)) //metode i ConstraintMethods
-			//{
-			//	//save new Car in database
-			//	await CreateNewBooking(newBooking);
-			//	//evt. popup successful Booking
-			//	navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany)); 
-			//}
-			//else
-			//{
-			//	string errorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
-			//}
+			Truckdriver truckdriver = new Truckdriver(TruckdriverId, TruckDriverTelNo, TruckdriverEMail);
+			
+			if (ConstraintMethods.CreateBookingCheck(newBooking)) //metode i ConstraintMethods
+			{
+				//save new Car in database
+				await CreateNewBooking(newBooking);
+				//save new Truckdriver in database
+				await CreateTruckdriver(truckdriver);
+				//evt. popup successful Booking
+				navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
+			}
+			else
+			{
+				string ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
+			}
+		}
+		
 
+		public async Task<bool> CreateTruckdriver<T>(T truckdriver)
+		{
+			var Task = await restworker.CreateObjectAsync<T>(truckdriver, Datastructures.TableName.Truckdriver);
+			var result = Task;
+			return result;
+		}
 
+		public async Task<IList<T>> CreateTruckdriverId<T>()
+		{
+			var Task = await restworker.GetAllObjectsAsync<T>(Datastructures.TableName.Truckdriver);
+			TruckdriverId = Task.Count + 1;
+			return Task;
 		}
 
 		public async void newCarBooking()
 		{
 			for (int i = 0; i < NumOfCarsNeeded; i++)
 			{
-				int carBookingId = NumOfCarsNeeded + 1;
-				CarBooking newCarBooking = new CarBooking(carBookingId, OrderNo);
+				await CreateId<IList<Task>>(CarBookingId, Datastructures.TableName.CarBooking); //creating new CarBookingId
+				CarBooking newCarBooking = new CarBooking(OrderNo, CarBookingId, 0);
 				await CreateNewCarBooking(newCarBooking);
 			}
-		}
-		#endregion
-
-		#region DisplayBookingCompany RelayCommands
-
-		public async Task<bool> CreateNewBooking<T>(T newBooking)
-		{
-			var Task = await restworker.CreateObjectAsync(newBooking, Datastructures.TableName.Booking);
-			return Task;
-			//var result = Task;
-			//return result;
 		}
 
 		public async Task<bool> CreateNewCarBooking<T>(T newCarBooking)
@@ -281,6 +300,26 @@ namespace BPCMain.ViewModel
 
 		#endregion
 
+		#region DisplayBookingCompany RelayCommands
+
+		public async Task<bool> CreateNewBooking<T>(T newBooking)
+		{
+			var Task = await restworker.CreateObjectAsync(newBooking, Datastructures.TableName.Booking);
+			var result = Task;
+			return result;
+		}
+
+		#endregion
+		
+		//creating new primary key for Table
+		public async Task<IList<T>> CreateId<T>(int id, Datastructures.TableName tableName)
+		{
+			var Task = await restworker.GetAllObjectsAsync<T>(tableName);
+			id = Task.Count + 1;
+			var result = Task;
+			return result;
+		}
+
 		#region DisplayBookingCar Methods
 
 		public async void NewJob()
@@ -289,6 +328,13 @@ namespace BPCMain.ViewModel
 		}
 
 		#endregion
+
+		//public async Task<IList<T>> CreateOrderNo<T>()
+		//{
+		//	var Task = await restworker.GetAllObjectsAsync<T>(Datastructures.TableName.Booking);
+		//	OrderNo = Task.Count + 1;
+		//	return Task;
+		//}
 
 		#region DisplayBookingCar RelayCommands
 

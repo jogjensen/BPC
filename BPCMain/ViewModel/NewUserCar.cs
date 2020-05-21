@@ -16,16 +16,18 @@ namespace BPCMain.ViewModel
 	{
 		#region Instance Fields
 
+		private int _carId;
 		private string _firstName;
 		private string _lastName;
 		private int _cvrNo;
 		private string _eMail;
 		private string _telephoneNo;
-		private string _mobileNo;
 		private string _address;
 		private string _postalCode;
 		private string _country;
 		private string _password;
+		private string _city;
+		private string _mobileNo;
 
 		private string _errorMessage;
 
@@ -37,6 +39,12 @@ namespace BPCMain.ViewModel
 		#endregion
 
 		#region Properties
+
+		public int CarId
+		{
+			get { return _carId; }
+			set { _carId = value; }
+		}
 
 		public string FirstName
 		{
@@ -69,6 +77,12 @@ namespace BPCMain.ViewModel
 		{
 			get { return _telephoneNo; }
 			set { _telephoneNo = value; }
+		}
+
+		public string City
+		{
+			get { return _city; }
+			set { _city = value; }
 		}
 
 		public string MobileNo
@@ -111,7 +125,14 @@ namespace BPCMain.ViewModel
 			}
 		}
 
+		#endregion
 
+		#region RelayCommands Properties
+
+		public RelayCommand CreateCar
+		{
+			get { return _createCar; }
+		}
 
 		#endregion
 
@@ -126,7 +147,8 @@ namespace BPCMain.ViewModel
 
 		public async void NewCar()
 		{
-			Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
+			await CreateId<IList<Task>>(CarId, Datastructures.TableName.Car); //creating new CarId
+			Car newCar = new Car(CarId, FirstName, LastName, CvrNo, EMail, TelephoneNo, Address, PostalCode, Country, Password, City, MobileNo);
 			if (CreateCarCheck(newCar)) //metode i ConstraintMethods
 			{
 				//save new Car in database
@@ -138,14 +160,6 @@ namespace BPCMain.ViewModel
 				ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
 			}
 		}
-		#region RelayCommands
-
-		public RelayCommand CreateCar
-		{
-			get { return _createCar; }
-		}
-
-		#endregion
 
 		#region Methods
 
@@ -156,6 +170,14 @@ namespace BPCMain.ViewModel
 				return result;
 		}
 
+		//creating new primary key for Table
+		public async Task<IList<T>> CreateId<T>(int id, Datastructures.TableName tableName)
+		{
+			var Task = await restworker.GetAllObjectsAsync<T>(tableName);
+			id = Task.Count + 1;
+			var result = Task;
+			return result;
+		}
 		#endregion
 	}
 }

@@ -57,6 +57,12 @@ namespace BPCMain.Utilities
 	        return true;
         }
 
+        public static bool CreatetruckdriverCheck(Truckdriver truckdriver)
+        {
+
+	        return true;
+        }
+
 		public static bool CheckNumber(int number, int min, int max)
 		{
 			if (number >= min && number <= max) return true;

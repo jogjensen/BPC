@@ -85,49 +85,9 @@
                 <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
                 <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
                 <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
-                <Button x:Name="Alt Information" Content="Alt information" Width="150"/>
+                <Button x:Name="AltInformation" Content="Alt information" Width="150"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
-                <Button x:Name="Alt Information1" Content="Alt information" Width="150"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
-                <Button x:Name="Alt Information2" Content="Alt information" Width="150"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
-                <Button x:Name="Alt Information3" Content="Alt information" Width="150"/>
-
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
-                <Button x:Name="Alt Information4" Content="Alt information" Width="150"/>
-            </StackPanel>
+           
         </StackPanel>
             
        
