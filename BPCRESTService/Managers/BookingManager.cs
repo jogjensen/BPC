@@ -164,7 +164,7 @@ namespace BPCRESTService.Managers
          Booking booking = new Booking();
 
          booking.OrderNo = reader.GetInt32(0);
-         booking.Status = (Datastructures.Status) reader.GetInt32(1);
+            booking.Status = Datastructures.Status.Closed; // (Datastructures.Status) reader.GetInt32(1);
          booking.CompanyCvrNo = reader.GetInt32(2);
          booking.NumOfCarsNeeded = reader.GetInt32(3);
 

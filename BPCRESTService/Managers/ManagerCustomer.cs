@@ -126,7 +126,7 @@ namespace BPCRESTService.Managers
 		#endregion
 
 		#region DeleteCustomer
-		public Customer DeleteCustomer(int id)//////////////virker ikke
+		public Customer DeleteCustomer(int id)
 		{
 			Customer customer = GetCustomerFromId(id);
 
