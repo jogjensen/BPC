@@ -38,16 +38,11 @@
 			<StackPanel Style="{StaticResource HeaderPanelStyle1}">
 
                 <TextBlock Text="BookPilotCar" 
-                           Style="{StaticResource Header1}"
-                           FontWeight="Bold"/>
+                           Style="{StaticResource Header1}"/>
 
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" 
-                        VerticalAlignment="Top" 
-                        Width="600" 
-                        Height="400"
-                        Margin="0,50">
+			<StackPanel Style="{StaticResource PanelStyleLogin}">
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
                     <TextBox Header="Username:" 

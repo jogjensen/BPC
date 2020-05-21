@@ -12,9 +12,11 @@ using BPCMain.View;
 
 namespace BPCMain.ViewModel
 {
-	class HomePageLogin
+	class HomePageLogin : BaseVM
 	{
         #region Instance Fields
+
+        private string _errorMessage;
 
         private RelayCommand _faqCommand;
         private RelayCommand _aboutBpcCommand;
@@ -42,6 +44,16 @@ namespace BPCMain.ViewModel
         #endregion
 
         #region Properties
+
+        public string ErrorMessage1
+        {
+	        get { return _errorMessage; }
+	        set
+	        {
+		        _errorMessage = value;
+                OnPropertyChanged();
+	        }
+        }
 
         public SharedUser Shared
         {
