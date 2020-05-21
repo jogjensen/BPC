@@ -61,13 +61,11 @@ namespace BPCRESTService.Managers
          {
             conn.Open();
 
-            using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson, StartCity, @EndCity) " +
+            using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson, StartCity, EndCity) " +
                                                                     "values(@OrderNo, @Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson, @StartCity, @EndCity)", conn))
             {
-                    int status = (int)booking.Status;
 	            command.Parameters.AddWithValue("@OrderNo", booking.OrderNo);
-	            //command.Parameters.AddWithValue("@Status", (int)booking.Status);
-	            command.Parameters.AddWithValue("@Status", status);
+	            command.Parameters.AddWithValue("@Status", (int)booking.Status);
 	            command.Parameters.AddWithValue("@CompanyCvrNo", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
@@ -104,16 +102,14 @@ namespace BPCRESTService.Managers
          {
             conn.Open();
 
-            using (SqlCommand command = new SqlCommand("Update Booking set EndCity = @EndCity, StartCity = @StartCity, Status = @Status, CompanyCvrNo = @Company, " +
-                "NumOfCarsNeeded = @NumOfCarsNeeded, Comment = @Comment, TypeOfGoods = @TypeOfGoods, TotalWidth = @TotalWidth, TotalLength = @TotalLength, " +
-                "TotalHeight = @TotalHeight, TotalWeight = @TotalWeight, StartDate = @StartDate, StartAddress = @StartAddress, StartPostalCode = @StartPostalCode, " +
-                "StartCountry = @StartCountry, EndDate = @EndDate, EndAddress = @EndAddress, EndPostalCode = @EndPostalCode, EndCountry = @EndCountry, TruckdriverId = @Truckdriver, " +
+            using (SqlCommand command = new SqlCommand("Update Booking set Status = @Status, CompanyCvrNo = @Company, NumOfCarsNeeded = @NumOfCarsNeeded, Comment = @Comment," +
+                " TypeOfGoods = @TypeOfGoods, TotalWidth = @TotalWidth, TotalLength = @TotalLength, TotalHeight = @TotalHeight, TotalWeight = @TotalWeight," +
+                " StartDate = @StartDate, StartAddress = @StartAddress, StartPostalCode = @StartPostalCode, StartCity = @StartCity, StartCountry = @StartCountry," +
+                " EndDate = @EndDate, EndAddress = @EndAddress, EndPostalCode = @EndPostalCode, EndCity = @EndCity, EndCountry = @EndCountry, TruckdriverId = @Truckdriver, " +
                 "ContactPerson = @ContactPerson where OrderNo = @OrderNo", conn))
             {
-                    int status = (int)booking.Status;
 	            command.Parameters.AddWithValue("@OrderNo", id);
-	            //command.Parameters.AddWithValue("@Status", (int)booking.Status);
-	            command.Parameters.AddWithValue("@Status", status);
+	            command.Parameters.AddWithValue("@Status", (int)booking.Status);
 	            command.Parameters.AddWithValue("@Company", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
