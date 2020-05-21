@@ -64,8 +64,10 @@ namespace BPCRESTService.Managers
             using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson, StartCity, @EndCity) " +
                                                                     "values(@OrderNo, @Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson, @StartCity, @EndCity)", conn))
             {
+                    int status = (int)booking.Status;
 	            command.Parameters.AddWithValue("@OrderNo", booking.OrderNo);
-	            command.Parameters.AddWithValue("@Status", (int)booking.Status);
+	            //command.Parameters.AddWithValue("@Status", (int)booking.Status);
+	            command.Parameters.AddWithValue("@Status", status);
 	            command.Parameters.AddWithValue("@CompanyCvrNo", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
@@ -108,8 +110,10 @@ namespace BPCRESTService.Managers
                 "StartCountry = @StartCountry, EndDate = @EndDate, EndAddress = @EndAddress, EndPostalCode = @EndPostalCode, EndCountry = @EndCountry, TruckdriverId = @Truckdriver, " +
                 "ContactPerson = @ContactPerson where OrderNo = @OrderNo", conn))
             {
+                    int status = (int)booking.Status;
 	            command.Parameters.AddWithValue("@OrderNo", id);
-	            command.Parameters.AddWithValue("@Status", (int)booking.Status);
+	            //command.Parameters.AddWithValue("@Status", (int)booking.Status);
+	            command.Parameters.AddWithValue("@Status", status);
 	            command.Parameters.AddWithValue("@Company", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
