@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ using BPCMain.Utilities;
 
 namespace BPCMain.ViewModel
 {
-	class BookingVM
+	class BookingVM : BaseVM
 	{
 
 		#region Instance field
@@ -52,6 +53,9 @@ namespace BPCMain.ViewModel
 		private string _truckdriverEMail;
 
 		private string _errorMessage;
+
+        private Booking _selectedBooking;
+        private ObservableCollection<Booking> _bookings;
 
 		private NavigationService navigation = new NavigationService();
 		private RestWorker restworker = new RestWorker();
@@ -214,6 +218,22 @@ namespace BPCMain.ViewModel
 			set { _errorMessage = value; }
 		}
 
+        public Booking SelectedBooking
+        {
+            get { return _selectedBooking;}
+            set
+            {
+                _selectedBooking = value;
+				OnPropertyChanged();
+            }
+
+        }
+
+        public ObservableCollection<Booking> Bookings
+        {
+            get { return _bookings; }
+        }
+
 		#endregion
 
 		#region Properties RelayCommands 
@@ -234,13 +254,41 @@ namespace BPCMain.ViewModel
 
 		public BookingVM()
 		{
-			_createBookingCompany = new RelayCommand(NewBooking, null);
+			_bookings = new ObservableCollection<Booking>();
+
+            _createBookingCompany = new RelayCommand(NewBooking, null);
 			_RequestJobCar = new RelayCommand(NewJob, null);
 		}
 
 		#endregion
 
 		#region DisplayBookingCompany Methods
+
+        public async void AddBookingToList()
+        {
+			IList<Booking> bookingList = new List<Booking>();
+            bookingList = await GetAllBookings();
+            foreach (Booking booking in bookingList)
+            {
+                if (SharedUser.Instance.UserUser != booking.CompanyCvrNo )
+                {
+                    bookingList.Remove(booking);
+                }
+            }
+
+            foreach (Booking booking in bookingList)
+            {
+                Bookings.Add(booking);
+            }
+        }
+
+        public async Task<IList<Booking>> GetAllBookings()
+        {
+            var Task = await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+            var result = Task;
+
+            return result;
+        }
 
 		public async void NewBooking()
 		{
