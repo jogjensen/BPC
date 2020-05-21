@@ -30,10 +30,11 @@
 
         <Grid Background="Black" 
              Opacity="0.50" 
-             Width="1200" 
-             Height="700" 
+             Width="1400" 
+             Height="850" 
              VerticalAlignment="Top" 
-             Margin="100"/>
+             Margin="100"
+             HorizontalAlignment="Center"/>
 
         
 
@@ -77,17 +78,31 @@
                 <TextBlock Text="Status" FontSize="25" Margin="10,0" Width="100"/>
 
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="100" Text="{Binding CarBookingId}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding StartCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding StartDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding EndCity}"></TextBox>
-                <TextBox Width="150" Margin="10,0" Text="{Binding EndDate}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding TypeOfGoods}"></TextBox>
-                <TextBox Width="100" Margin="10,0" Text="{Binding Status}"></TextBox>
-                <Button x:Name="AltInformation" Content="Alt information" Width="150"/>
-            </StackPanel>
-           
+	        <ScrollViewer>
+		        <StackPanel Orientation="Horizontal">
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding OrderNo}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCity}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndDate}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TypeOfGoods}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status}"/>
+				</StackPanel>
+	        </ScrollViewer>
+
+
+	        <!--<ListView ItemsSource="{Binding Kunstværkerne, Mode=TwoWay}" SelectedItem="{Binding ValgtKunstværket, Mode=TwoWay}" 
+	                  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="8" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+	                  Background="#696969" Margin="0,0,137,0">
+		        <ListView.ItemTemplate>
+			        <DataTemplate>
+				        <StackPanel Orientation="Horizontal">
+					        <Image Source="{Binding Billede}" Width="150" Height="150"/>
+					        <TextBlock Text="{Binding Tittel}" Margin="10,50"/>
+				        </StackPanel>
+			        </DataTemplate>
+		        </ListView.ItemTemplate>
+	        </ListView>-->
         </StackPanel>
             
        

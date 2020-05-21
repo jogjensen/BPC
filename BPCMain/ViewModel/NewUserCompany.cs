@@ -21,9 +21,10 @@ namespace BPCMain.ViewModel
         private string _mobileNo;
         private string _address;
         private string _postalCode;
+        private string _city;
         private string _country;
         private string _password;
-        private int _truckdriver;
+        private int _truckdriverId;
         private RelayCommand _createCompany;
         private string _errorMessage;
         private NavigationService navigation = new NavigationService();
@@ -77,6 +78,12 @@ namespace BPCMain.ViewModel
             set { _postalCode = value; }
         }
 
+        public string City
+        {
+	        get { return _city; }
+	        set { _city = value; }
+        }
+
         public string Country
         {
             get { return _country; }
@@ -89,17 +96,16 @@ namespace BPCMain.ViewModel
             set { _password = value; }
         }
 
-        public int Truckdriver
+        public int TruckdriverId
         {
-            get { return _truckdriver; }
-            set { _truckdriver = value; }
+            get { return _truckdriverId; }
+            set { _truckdriverId = value; }
         }
 
         public string ErrorMessage
         {
             get { return _errorMessage; }
             set { _errorMessage = value; OnPropertyChanged(); }
-
         }
 
         #endregion
@@ -112,7 +118,7 @@ namespace BPCMain.ViewModel
             set
             {
                 _createCompany = value;
-	                Customer newCustomer = new Customer(CompanyName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
+	                Customer newCustomer = new Customer(CompanyName, CvrNo, TruckdriverId, EMail, TelephoneNo, Address, PostalCode, City,  Country, Password, MobileNo);
                 if (ConstraintMethods.CreateUserCheck(newCustomer))
                 {
                     navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
