@@ -65,7 +65,7 @@ namespace BPCRESTService.Managers
                                                                     "values(@OrderNo, @Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson, @StartCity, @EndCity)", conn))
             {
 	            command.Parameters.AddWithValue("@OrderNo", booking.OrderNo);
-	            command.Parameters.AddWithValue("@Status", booking.Status);
+	            command.Parameters.AddWithValue("@Status", (int)booking.Status);
 	            command.Parameters.AddWithValue("@CompanyCvrNo", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
@@ -109,7 +109,7 @@ namespace BPCRESTService.Managers
                 "ContactPerson = @ContactPerson where OrderNo = @OrderNo", conn))
             {
 	            command.Parameters.AddWithValue("@OrderNo", id);
-	            command.Parameters.AddWithValue("@Status", booking.Status);
+	            command.Parameters.AddWithValue("@Status", (int)booking.Status);
 	            command.Parameters.AddWithValue("@Company", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
 	            command.Parameters.AddWithValue("@Comment", booking.Comment);
@@ -164,7 +164,7 @@ namespace BPCRESTService.Managers
          Booking booking = new Booking();
 
          booking.OrderNo = reader.GetInt32(0);
-         booking.Status = Enum.Parse<Datastructures.Status>(reader.GetString(1)); 
+         booking.Status = (Datastructures.Status) reader.GetInt32(1);
          booking.CompanyCvrNo = reader.GetInt32(2);
          booking.NumOfCarsNeeded = reader.GetInt32(3);
 
