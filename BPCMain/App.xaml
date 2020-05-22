@@ -5,6 +5,51 @@
     xmlns:local="using:BPCMain">
 
 	<Application.Resources>
+		<!--StackPanel Styles-->
+		<Style x:Key="HeaderPanelStyle1" TargetType="StackPanel">
+			<Setter Property="Width" Value="1000"/>
+			<Setter Property="Height" Value="80"/>
+			<Setter Property="Margin" Value="15,15"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+		</Style>
+
+		<Style x:Key="PanelStyle1" TargetType="StackPanel">
+			<Setter Property="Grid.Row" Value="1"/>
+			<Setter Property="Height" Value="800"/>
+			<Setter Property="Width" Value="1400"/>
+			<!--<Setter Property="BackGround" Value="Black"/>-->
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="VerticalAlignment" Value="Top"/>
+			<!--<Setter Property="Margin" Value="100"/>-->
+			<!--<Setter Property="Opacity" Value="0.50"/>-->
+		</Style>
+
+		<Style x:Key="PanelStyle2" TargetType="StackPanel">
+			<Setter Property="Height" Value="710"/>
+			<Setter Property="Width" Value="1360"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="VerticalAlignment" Value="Top"/>
+			<Setter Property="Orientation" Value="Vertical"/>
+			<Setter Property="Margin" Value="0,100,0,0"/>
+		</Style>
+
+		<Style x:Key="PanelStyleLogin" TargetType="StackPanel">
+			<Setter Property="Width" Value="600"/>
+			<Setter Property="Height" Value="400"/>
+			<Setter Property="Margin" Value="0,50"/>
+			<Setter Property="VerticalAlignment" Value="Top"/>
+			<Setter Property="Orientation" Value="Vertical"/>
+		</Style>
+
+		<Style x:Key="PanelStyle3" TargetType="StackPanel">
+			<Setter Property="Width" Value="500"/>
+			<!--<Setter Property="Height" Value="*"/>-->
+			<!--<Setter Property="Margin" Value="5"/>-->
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="Orientation" Value="Horizontal"/>
+		</Style>
+
 		<!--Header Styles-->
 			<Style x:Key="Header1" TargetType="TextBlock">
 			<Setter Property="Width" Value="600"/>
@@ -14,22 +59,34 @@
 			<Setter Property="FontSize" Value="48"/>
 		</Style>
 
-		<!-- Standard block/Box -->
+		<!-- TextBlock Styles -->
 		<Style x:Key="TextBlockStyle1" TargetType="TextBlock">
 			<Setter Property="Width" Value="200"/>
+			<Setter Property="FontSize" Value="22"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Margin" Value="5"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+
+		<Style x:Key="TextBlockStyle2" TargetType="TextBlock">
+			<Setter Property="Width" Value="300"/>
 			<Setter Property="FontSize" Value="18"/>
 			<Setter Property="FontFamily" Value="Arial Black"/>
-			<Setter Property="Margin" Value="5,5,5,5"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Margin" Value="5"/>
+			<Setter Property="VerticalAlignment" Value="Top"/>
 		</Style>
 
 		<Style x:Key="TextBlockStyle1Bold" TargetType="TextBlock">
 			<Setter Property="Width" Value="200"/>
-			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontSize" Value="22"/>
 			<Setter Property="FontFamily" Value="Arial Black"/>
-			<Setter Property="Margin" Value="5,5,5,5"/>
+			<Setter Property="Margin" Value="5"/>
 			<Setter Property="FontWeight" Value="Bold"/>
 		</Style>
 
+		<!-- TextBox Styles -->
 		<Style x:Key="TextBoxStyle1" TargetType="TextBox">
 			<Setter Property="FontSize" Value="16"/>
 			<Setter Property="Width" Value="200"/>
@@ -37,6 +94,18 @@
 			<Setter Property="FontFamily" Value="Arial Black"/>
 		</Style>
 
+		<Style x:Key="TextBoxStyle2" TargetType="TextBox">
+			<Setter Property="FontSize" Value="22"/>
+			<Setter Property="Width" Value="300"/>
+			<Setter Property="Margin" Value="5"/>
+			<Setter Property="FontFamily" Value="Arial Black"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="RequestedTheme" Value="Light"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<!--<Setter Property="PlaceholderText" Value="Skal udfyldes"/>-->
+		</Style>
+
+		<!-- Button Styles -->
 		<Style x:Key="ButtonStyle" TargetType="Button">
 			<Setter Property="Width" Value="300"/>
 			<Setter Property="Foreground" Value="Black"/>
@@ -46,8 +115,13 @@
 			<Setter Property="FontSize" Value="16"/>
 			<Setter Property="FontFamily" Value="Arial Black"/>
 			<Setter Property="BorderThickness" Value="1"/>
-
 		</Style>
+
+
+
+
+
+
 		<Style x:Key="TextBlockStyle3" TargetType="TextBlock">
 			<Setter Property="FontSize" Value="20"/>
 			<Setter Property="Margin" Value="0,0,0,0"/>
@@ -58,13 +132,7 @@
 			<!--<Setter Property="" Value=""/>-->
 
 
-		<Style x:Key="HeaderPanelStyle1" TargetType="StackPanel">
-			<Setter Property="Width" Value="800"/>
-			<Setter Property="Height" Value="80"/>
-			<Setter Property="Margin" Value="0,150"/>
-			<Setter Property="HorizontalAlignment" Value="Center"/>
 
-		</Style>
 
 		<Style x:Key="ButtonStyle1" TargetType="Button">
 			<Setter Property="Width" Value="300"/>
