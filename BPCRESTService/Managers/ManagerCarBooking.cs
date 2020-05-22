@@ -60,11 +60,11 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 
-				using (SqlCommand command = new SqlCommand("Insert into CarBooking ( OrderNo, CarId) values( @OrderNo, @CarId)", conn))
+				using (SqlCommand command = new SqlCommand("Insert into CarBooking ( OrderNo) values( @OrderNo)", conn))
 				{
 					//command.Parameters.AddWithValue("@CarBookingId", carBooking.CarBookingId);
 					command.Parameters.AddWithValue("@OrderNo", carBooking.OrderNo);
-					command.Parameters.AddWithValue("@CarId", carBooking.CarId);
+					//command.Parameters.AddWithValue("@CarId", carBooking.CarId);
 
 					int rows = command.ExecuteNonQuery();
 					created = rows == 1;
