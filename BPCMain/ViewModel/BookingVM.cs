@@ -49,7 +49,7 @@ namespace BPCMain.ViewModel
 		private RelayCommand _RequestJobCar;
 
 		//new Truckdriver
-		private string _truckDriverTelNo;
+		private int _truckDriverTelNo;
 		private string _truckdriverEMail;
 
 		private string _errorMessage;
@@ -200,7 +200,7 @@ namespace BPCMain.ViewModel
 			set { _carBookingId = value; }
 		}
 
-		public string TruckDriverTelNo
+		public int TruckDriverTelNo
 		{
 			get { return _truckDriverTelNo; }
 			set { _truckDriverTelNo = value; }

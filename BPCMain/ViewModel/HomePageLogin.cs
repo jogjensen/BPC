@@ -45,7 +45,7 @@ namespace BPCMain.ViewModel
 
         #region Properties
 
-        public string ErrorMessage1
+        public string ErrorMessage
         {
 	        get { return _errorMessage; }
 	        set
@@ -128,7 +128,7 @@ namespace BPCMain.ViewModel
                 }
                 else
                 {
-                    string ErrorMessage = "Fejl i login";
+                    ErrorMessage = "Fejl i login";
                 }
             }
         }
@@ -147,7 +147,7 @@ namespace BPCMain.ViewModel
                 }
                 else
                 {
-                    string ErrorMessage = "Fejl i login";
+                    ErrorMessage = "Fejl i login";
                 }
             }
         }
