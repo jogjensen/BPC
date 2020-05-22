@@ -28,7 +28,7 @@ namespace BPCMain.ViewModel
         private RelayCommand _createCompany;
         private string _errorMessage;
         private NavigationService navigation = new NavigationService();
-        private RestWorker restWorker = new RestWorker();
+        private RestWorker restworker = new RestWorker();
         #endregion
 
         #region Properties
@@ -108,9 +108,41 @@ namespace BPCMain.ViewModel
             set { _errorMessage = value; OnPropertyChanged(); }
         }
 
+        //public RestWorker RestWorker
+        //{
+	       // get { return _restWorker; }
+        //}
+
         #endregion
 
         #region RelayCommands
+
+        public NewUserCompany()
+        {
+	        _createCompany = new RelayCommand(NewUser, null);
+
+        }
+
+        public async void NewUser()
+        {
+	        Customer newCustomer = new Customer(CompanyName, CvrNo, TruckdriverId, EMail, TelephoneNo, Address, PostalCode, City, Country, Password, MobileNo);
+	        if (ConstraintMethods.CreateUserCheck(newCustomer))
+	        {
+
+		        navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
+	        }
+	        else
+	        {
+		        ErrorMessage = "Fejl i oplysninger";
+	        }
+
+        }
+        public async Task<bool> CreateNewUserCompany<T>(T truckdriver)
+        {
+	        var Task = await restworker.CreateObjectAsync<T>(truckdriver, Datastructures.TableName.Truckdriver);
+	        var result = Task;
+	        return result;
+        }
 
         public RelayCommand CreateCompany
         {

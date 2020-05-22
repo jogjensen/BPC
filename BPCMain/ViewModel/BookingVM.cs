@@ -292,14 +292,12 @@ namespace BPCMain.ViewModel
 
 		public async void NewBooking()
 		{
-			await CreateId<IList<Task>>(OrderNo, Datastructures.TableName.Booking); //creating new OrderNo
-			await CreateId<IList<Task>>(TruckdriverId, Datastructures.TableName.Truckdriver); //creating new truckdriverId
 			Status = Datastructures.Status.Open;
 			
-			Booking newBooking = new Booking(OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCity, StartCountry, EndDate, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
+			Booking newBooking = new Booking(Status, CompanyCvrNo, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCity, StartCountry, EndDate, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
 			
-			Truckdriver truckdriver = new Truckdriver(TruckdriverId, TruckDriverTelNo, TruckdriverEMail);
-			
+			Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
+
 			if (ConstraintMethods.CreateBookingCheck(newBooking)) //metode i ConstraintMethods
 			{
 				//save new Car in database
@@ -314,8 +312,8 @@ namespace BPCMain.ViewModel
 				string ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
 			}
 		}
-		
 
+		//public async Task<bool> CreateTruckdriver<T>(T truckdriver)
 		public async Task<bool> CreateTruckdriver<T>(T truckdriver)
 		{
 			var Task = await restworker.CreateObjectAsync<T>(truckdriver, Datastructures.TableName.Truckdriver);
@@ -334,8 +332,7 @@ namespace BPCMain.ViewModel
 		{
 			for (int i = 0; i < NumOfCarsNeeded; i++)
 			{
-				await CreateId<IList<Task>>(CarBookingId, Datastructures.TableName.CarBooking); //creating new CarBookingId
-				CarBooking newCarBooking = new CarBooking(OrderNo, CarBookingId, 0);
+				CarBooking newCarBooking = new CarBooking(OrderNo);
 				await CreateNewCarBooking(newCarBooking);
 			}
 		}
@@ -360,13 +357,13 @@ namespace BPCMain.ViewModel
 		#endregion
 		
 		//creating new primary key for Table
-		public async Task<IList<T>> CreateId<T>(int id, Datastructures.TableName tableName)
-		{
-			var Task = await restworker.GetAllObjectsAsync<T>(tableName);
-			id = Task.Count + 1;
-			var result = Task;
-			return result;
-		}
+		//public async Task<IList<T>> CreateId<T>(int id, Datastructures.TableName tableName)
+		//{
+		//	var Task = await restworker.GetAllObjectsAsync<T>(tableName);
+		//	id = Task.Count + 1;
+		//	var result = Task;
+		//	return result;
+		//}
 
 		#region DisplayBookingCar Methods
 

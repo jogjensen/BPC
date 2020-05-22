@@ -41,9 +41,8 @@ namespace BPCClassLibrary
         public Booking()
         { }
 
-        public Booking(int orderNo, Datastructures.Status status, int companyCvrNo, int numOfCarsNeeded, string typeOfGoods, double totalWidth, double totalLength, double totalHeight, double totalWeight, DateTime startDate, string startAddress, string startPostalCode, string startCity, string startCountry, DateTime endDate, string endAddress, string endPostalCode, string endCity, string endCountry, int truckDriverId, string contactPerson, string comment = "")
+        public Booking(Datastructures.Status status, int companyCvrNo, int numOfCarsNeeded, string typeOfGoods, double totalWidth, double totalLength, double totalHeight, double totalWeight, DateTime startDate, string startAddress, string startPostalCode, string startCity, string startCountry, DateTime endDate, string endAddress, string endPostalCode, string endCity, string endCountry, int truckDriverId, string contactPerson, string comment = "")
         {
-            _orderNo = orderNo;
             _status = status;
             _companyCvrNo = companyCvrNo;
             _numOfCarsNeeded = numOfCarsNeeded;

@@ -10,10 +10,9 @@ namespace BPCClassLibrary
         private int _carId;
         private int _carBookingId;
 
-        public CarBooking(int orderNo, int CBId)
+        public CarBooking(int orderNo)
         {
             _orderNo = orderNo;
-            _carBookingId = CBId;
         }
 
         public CarBooking()
