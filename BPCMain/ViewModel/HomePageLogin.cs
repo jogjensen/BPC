@@ -124,7 +124,7 @@ namespace BPCMain.ViewModel
                 {
                     if (_shared.UserPass.Equals(car.Password))
                     {
-                        _navigation.Navigate(typeof(AboutUs));
+                        _navigation.Navigate(typeof(ContactBPC));
                     }
                 }
                 else

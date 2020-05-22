@@ -11,7 +11,7 @@ namespace BPCMain.Persistency
 {
     class RestWorker
     {
-        private const string URI = "https://bpc-rest.azurewebsites.net/api/";
+        private const string URI = "https://bpcrestservice20200520092020.azurewebsites.net/api/";
 
         public async Task<IList<T>> GetAllObjectsAsync<T>(TableName tableName)// where T: class
         {
