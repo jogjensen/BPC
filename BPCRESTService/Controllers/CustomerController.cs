@@ -45,7 +45,7 @@ namespace BPCRESTService.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{companyName}")]
+        [HttpDelete("{id}")]
         public Customer Delete(int id)
         {
             return manager.DeleteCustomer(id);
