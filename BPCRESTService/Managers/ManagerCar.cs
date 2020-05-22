@@ -63,10 +63,10 @@ namespace BPCRESTService.Managers
 			{
 				conn.Open();
 				
-				using (SqlCommand command = new SqlCommand("Insert into Car (CarId, FirstName, LastName, CvrNo, Email, TelephoneNo, MobileNo, Address, Postalcode, City, Country, Password) " +
-																	"values (@Id, @FirstName, @LastName, @CvrNo, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @City, @Country, @Password)", conn))
+				using (SqlCommand command = new SqlCommand("Insert into Car (FirstName, LastName, CvrNo, Email, TelephoneNo, MobileNo, Address, Postalcode, City, Country, Password) " +
+																	"values (@FirstName, @LastName, @CvrNo, @Email, @TelephoneNo, @MobileNo, @Address, @PostalCode, @City, @Country, @Password)", conn))
 				{
-					command.Parameters.AddWithValue("@Id", car.Id);
+					//command.Parameters.AddWithValue("@Id", car.Id);
 					command.Parameters.AddWithValue("@FirstName", car.FirstName);
 					command.Parameters.AddWithValue("@LastName", car.LastName);
 					command.Parameters.AddWithValue("@CvrNo", car.CvrNo);

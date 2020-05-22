@@ -61,10 +61,10 @@ namespace BPCRESTService.Managers
          {
             conn.Open();
 
-            using (SqlCommand command = new SqlCommand("Insert into Booking (OrderNo, Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson, StartCity, EndCity) " +
-                                                                    "values(@OrderNo, @Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson, @StartCity, @EndCity)", conn))
+            using (SqlCommand command = new SqlCommand("Insert into Booking (Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson, StartCity, EndCity) " +
+                                                                    "values(@Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson, @StartCity, @EndCity)", conn))
             {
-	            command.Parameters.AddWithValue("@OrderNo", booking.OrderNo);
+	            //command.Parameters.AddWithValue("@OrderNo", booking.OrderNo);
 	            command.Parameters.AddWithValue("@Status", (int)booking.Status);
 	            command.Parameters.AddWithValue("@CompanyCvrNo", booking.CompanyCvrNo);
 	            command.Parameters.AddWithValue("@NumOfCarsNeeded", booking.NumOfCarsNeeded);
