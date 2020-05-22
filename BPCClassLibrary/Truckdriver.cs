@@ -9,13 +9,13 @@ namespace BPCClassLibrary
         #region Instance fields
 
         private int _truckdriverId;
-        private string _telephoneNo;
+        private int _telephoneNo;
         private string _eMail;
         #endregion
 
         #region Constructors
 
-        public Truckdriver(int truckdriverId, string telephoneNo, string eMail)
+        public Truckdriver(int truckdriverId, int telephoneNo, string eMail)
         {
             _truckdriverId = truckdriverId;
             _telephoneNo = telephoneNo;
@@ -36,7 +36,7 @@ namespace BPCClassLibrary
             set => _truckdriverId = value;
         }
 
-        public string TelephoneNo
+        public int TelephoneNo
         {
             get => _telephoneNo;
             set => _telephoneNo = value;
