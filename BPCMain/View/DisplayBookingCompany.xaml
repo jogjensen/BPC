@@ -78,12 +78,12 @@
 	        <ScrollViewer>
 		        <StackPanel Orientation="Horizontal">
 					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding OrderNo}"/>
-                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity}"/>
-					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate}"/>
-					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCity}"/>
-					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndDate}"/>
-					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TypeOfGoods}"/>
-					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity, Mode=TwoWay}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate, Mode=TwoWay}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCity, Mode=TwoWay}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndDate, Mode=TwoWay}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TypeOfGoods, Mode=TwoWay}"/>
+					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status, Mode=TwoWay}"/>
 				</StackPanel>
 	        </ScrollViewer>
 
@@ -95,32 +95,32 @@
 			        <DataTemplate>
 				        <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" >
-                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding OrderNo}"/>
-                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status}"/>
-                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding CompanyCvrNo}"/>
-                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding NumOfCarsNeeded}"/>
-                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Comment}"/>
-                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding Contactperson}"/>
-                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TruckdriverEMail}"/>
+								<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding OrderNo, Mode=TwoWay}"/>
+								<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status, Mode=TwoWay}"/>
+								<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding CompanyCvrNo, Mode=TwoWay}"/>
+								<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding NumOfCarsNeeded, Mode=TwoWay}"/>
+								<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Comment, Mode=TwoWay}"/>
+								<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding Contactperson, Mode=TwoWay}"/>
+								<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TruckdriverEMail, Mode=TwoWay}"/>
                             </StackPanel>
 
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartAddress}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartPostalCode}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCountry}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartAddress, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartPostalCode, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCountry, Mode=TwoWay}"/>
 
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TypeOfGoods}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TotalWidth}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TotalLength}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TotalHeight}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TotalWeight}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TypeOfGoods, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TotalWidth, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TotalLength, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TotalHeight, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TotalWeight, Mode=TwoWay}"/>
 
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndDate}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndAddress}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCity}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndPostalCode}"/>
-                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCountry}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndDate, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndAddress, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCity, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndPostalCode, Mode=TwoWay}"/>
+							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCountry, Mode=TwoWay}"/>
                             
                            
                             

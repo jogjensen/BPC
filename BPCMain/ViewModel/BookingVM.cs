@@ -49,7 +49,8 @@ namespace BPCMain.ViewModel
 		private int _carBookingId;
 		//RelayCommands
 		private RelayCommand _createBookingCompany;
-		private RelayCommand _RequestJobCar;
+		private RelayCommand _requestJobCar;
+		private RelayCommand _cancelJobCar;
 
 		//new Truckdriver
 		private int _truckDriverTelNo;
@@ -274,7 +275,13 @@ namespace BPCMain.ViewModel
 
 		public RelayCommand RequestJobCar
 		{
-			get { return _RequestJobCar; }
+			get { return _requestJobCar; }
+		}
+
+		public RelayCommand CancelJobCar
+		{
+			get { return _cancelJobCar; }
+			set { _cancelJobCar = value; }
 		}
 
 		#endregion
@@ -286,7 +293,8 @@ namespace BPCMain.ViewModel
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
             _createBookingCompany = new RelayCommand(NewBooking, null);
-			_RequestJobCar = new RelayCommand(NewJob, null);
+			_requestJobCar = new RelayCommand(RequestJob, null);
+			_cancelJobCar = new RelayCommand(CancelJob, null);
 		}
 
 		#endregion
@@ -305,10 +313,7 @@ namespace BPCMain.ViewModel
                 }
             }
 
-            //foreach (Booking booking in bookingList)
-            //{
-            //    Bookings.Add(booking);
-            //}
+          
         }
 
         public async Task<IList<Booking>> GetAllBookings()
@@ -380,10 +385,22 @@ namespace BPCMain.ViewModel
 		
 		#region DisplayBookingCar Methods
 
-		public async void NewJob()
+		public async void RequestJob()
 		{
-
+			SelectedBooking.Status = Datastructures.Status.Pending;
+			await UpdateBooking(SelectedBooking);
 		}
+
+
+
+		public async Task<bool> UpdateBooking(Booking updatedBooking)
+		{
+			var Task = await restworker.UpdateObjectAsync<Booking>(updatedBooking, updatedBooking.OrderNo,
+				Datastructures.TableName.Booking);
+			var result = Task;
+			return result;
+		}
+
 
 		#endregion
 
