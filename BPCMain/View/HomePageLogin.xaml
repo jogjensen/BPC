@@ -46,7 +46,7 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
                     <TextBox Header="Username:" 
-                             Text="{Binding Shared.Instance.UserUser, Mode=OneWay}"
+                             Text="{Binding Shared.Instance.UserUser, Mode=TwoWay}"
                          Width="300" 
                          RequestedTheme="Light" 
                          BorderThickness="1" 
@@ -65,7 +65,7 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
                     <PasswordBox Header="Password:" 
-                                 Password="{Binding Shared.Instance.UserPass, Mode=OneWay}"
+                                 Password="{Binding Shared.Instance.UserPass, Mode=TwoWay}"
                              Width="300" 
                              RequestedTheme="Light" 
                              BorderThickness="1" 
