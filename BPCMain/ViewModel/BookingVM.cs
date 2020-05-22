@@ -294,7 +294,7 @@ namespace BPCMain.ViewModel
 			_carBookings = new ObservableCollection<CarBooking>();
             _createBookingCompany = new RelayCommand(NewBooking, null);
 			_requestJobCar = new RelayCommand(RequestJob, null);
-			_cancelJobCar = new RelayCommand(CancelJob, null);
+			//_cancelJobCar = new RelayCommand(CancelJob, null);
 		}
 
 		#endregion
