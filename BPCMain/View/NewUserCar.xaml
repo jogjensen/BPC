@@ -5,12 +5,12 @@
     xmlns:local="using:BPCMain.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ViewModel="using:BPCMain.ViewModel"
+    xmlns:viewModel="using:BPCMain.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Page.DataContext>
-		<ViewModel:NewUserCar/>
+		<viewModel:NewUserCar/>
 	</Page.DataContext>
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<Grid.RowDefinitions>
