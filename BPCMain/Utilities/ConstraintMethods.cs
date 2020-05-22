@@ -78,13 +78,14 @@ namespace BPCMain.Utilities
 
 		public static bool OnlyNumbersCheck(string str)
 		{
-			bool isOnlyNumbers = true;
-			foreach (char c in str)
-			{
-				int unicode = c;
-				if (unicode < 48 || unicode > 57) isOnlyNumbers = false;
-			}
-			return isOnlyNumbers;
+			//bool isOnlyNumbers = true;
+			//foreach (char c in str)
+			//{
+			//	int unicode = c;
+			//	if (unicode < 48 || unicode > 57) isOnlyNumbers = false;
+			//}
+			//return isOnlyNumbers;
+			return true;
 		}
 
 		//Mangler at blive testet
