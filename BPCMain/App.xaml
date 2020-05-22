@@ -17,11 +17,9 @@
 			<Setter Property="Grid.Row" Value="1"/>
 			<Setter Property="Height" Value="800"/>
 			<Setter Property="Width" Value="1400"/>
-			<!--<Setter Property="BackGround" Value="Black"/>-->
 			<Setter Property="HorizontalAlignment" Value="Center"/>
 			<Setter Property="VerticalAlignment" Value="Top"/>
-			<!--<Setter Property="Margin" Value="100"/>-->
-			<!--<Setter Property="Opacity" Value="0.50"/>-->
+			
 		</Style>
 
 		<Style x:Key="PanelStyle2" TargetType="StackPanel">

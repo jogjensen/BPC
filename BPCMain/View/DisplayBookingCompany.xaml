@@ -90,7 +90,7 @@
 
 	        <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking}" 
 	                  ScrollViewer.VerticalScrollBarVisibility="Visible" 
-	                  Background="#696969" Margin="0,0,120,0">
+	                  Background="#696969" Margin="0,0,120,0" SelectionChanged="ListView_SelectionChanged">
 		        <ListView.ItemTemplate>
 			        <DataTemplate>
 				        <StackPanel Orientation="Vertical">

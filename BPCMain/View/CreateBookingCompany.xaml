@@ -9,51 +9,197 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-	<Page.DataContext>
-		<viewModel:BookingVM/>
-	</Page.DataContext>
+    <Page.DataContext>
+        <viewModel:BookingVM/>
+    </Page.DataContext>
 
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="50"/>
-			<RowDefinition Height="100"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
 
-		<Image Grid.Row="0" Grid.RowSpan="3" Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" />
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-		<StackPanel Grid.Row="0" Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
-			<StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
-				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Om os" Command="{Binding AboutBpcCommand}"/>
-				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
-				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookinger" />
-				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Min side" />
-			</StackPanel>
+        <Image Grid.Row="0" Grid.RowSpan="3" Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill" />
 
-			<!--Header-->
-		</StackPanel>
-		<StackPanel Grid.Row="1" Style="{StaticResource HeaderPanelStyle1}">
-			<TextBlock Text="Ny Booking" Style="{StaticResource Header1}"/>
-		</StackPanel>
+        <StackPanel Grid.Row="0" Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Om os" Command="{Binding AboutBpcCommand}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookinger" />
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Min side" />
+            </StackPanel>
 
-		<Grid Grid.Row="2">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="50"/>
-				<ColumnDefinition Width="1000"/>
-				<ColumnDefinition Width="390"/>
-				<ColumnDefinition Width="50"/>
+            <!--Header-->
+        </StackPanel>
+        <StackPanel Grid.Row="1" Style="{StaticResource HeaderPanelStyle1}">
+            <TextBlock Text="Ny Bruger" Style="{StaticResource Header1}"/>
+        </StackPanel>
 
-			</Grid.ColumnDefinitions>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="695"/>
+                <ColumnDefinition Width="695"/>
+                <ColumnDefinition Width="50"/>
 
-			<StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-							Background="Black"
+            </Grid.ColumnDefinitions>
+            <!--Background="Black"-->
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left"
+			            Style="{StaticResource PanelStyle1}" Width="695">
+                <StackPanel Style="{StaticResource PanelStyle2}" Width="695" HorizontalAlignment="Center">
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}"	Text="Fornavn*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding FirstName}">
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}"
+				           Text="Efternavn*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding LastName}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}"
+					        Text="CVR-nummer*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding CvrNo}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Gadenavn og nr.*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Address}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Postnummer*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding PostalCode}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" 
+						           Text="By*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding City}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Telefonnummer*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding TelephoneNo}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Mobilnummer"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Land*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Country}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" 
+						           Text="Email adresse*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EMail}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Password*"/>
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Password}"/>
+                    </StackPanel>
+
+
+
+                    <StackPanel Style="{StaticResource PanelStyle3}">
+                        <TextBlock Style="{StaticResource TextBlockStyle2}"
+						           Text="Alle bokse med * skal udfyldes"/>
+
+                        <Button Content="opret bruger"
+						        Margin="40,20,0,0"
+						        x:Name="OpretBruger"
+						        Style="{StaticResource MenuBarButtonStyle}"
+						        FontSize="22"
+						        Command="{Binding CreateCar}">
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Right"
 			            Style="{StaticResource PanelStyle1}">
-				<StackPanel Style="{StaticResource PanelStyle2}">
-				<TextBlock Text="Ny Booking" Style="{StaticResource TextBlockStyle1}"/>
+                        <StackPanel Style="{StaticResource PanelStyle2}">
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}"	Text="Fornavn*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding FirstName}">
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}"
+				           Text="Efternavn*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding LastName}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}"
+					        Text="CVR-nummer*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding CvrNo}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Gadenavn og nr.*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Address}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Postnummer*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding PostalCode}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" 
+						           Text="By*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding City}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Telefonnummer*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding TelephoneNo}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Mobilnummer"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Land*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Country}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" 
+						           Text="Email adresse*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EMail}"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" 
+				           Text="Password*"/>
+                                <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Password}"/>
+                            </StackPanel>
 
-				</StackPanel>	
-			</StackPanel>
 
-		</Grid>
-	</Grid>
+
+                            <StackPanel Style="{StaticResource PanelStyle3}">
+                                <TextBlock Style="{StaticResource TextBlockStyle2}"
+						           Text="Alle bokse med * skal udfyldes"/>
+
+                                <Button Content="opret bruger"
+						        Margin="40,20,0,0"
+						        x:Name="OpretBruger1"
+						        Style="{StaticResource MenuBarButtonStyle}"
+						        FontSize="22"
+						        Command="{Binding CreateCar}">
+                                </Button>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </Page>
