@@ -162,9 +162,9 @@ namespace BPCMain.ViewModel
 
 		#region Methods
 
-		public async Task<bool> CreateNewCar<T>(T newCar)
+		public async Task<bool> CreateNewCar(Car newCar)
 		{
-			var Task = await restworker.CreateObjectAsync(newCar, Datastructures.TableName.Car);
+			var Task = await restworker.CreateObjectAsync<Car>(newCar, Datastructures.TableName.Car);
 			var result = Task;
 				return result;
 		}

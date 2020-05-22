@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 using BPCClassLibrary;
 using BPCMain.Persistency;
 using BPCMain.Utilities;
@@ -28,6 +29,8 @@ namespace BPCMain.ViewModel
 		private double _totalHeight;
 		private double _totalWeight;
 		//Departure information
+		private CalendarDatePicker _sDate;
+		private TimePicker _sTime;
 		private DateTime _startDate;
 		private string _startAddress;
 		private string _startCity;
@@ -54,6 +57,10 @@ namespace BPCMain.ViewModel
 
 		private string _errorMessage;
 
+
+		private ObservableCollection<CarBooking> _carBookings;
+
+		
         private Booking _selectedBooking;
         private ObservableCollection<Booking> _bookings;
 
@@ -125,7 +132,23 @@ namespace BPCMain.ViewModel
 		public DateTime StartDate
 		{
 			get { return _startDate; }
-			set { _startDate = value; }
+			set
+			{
+				DateTime dt = new DateTime();
+				_startDate = value;
+			}
+		}
+
+		public CalendarDatePicker SDate
+		{
+			get { return _sDate; }
+			set { _sDate = value; }
+		}
+
+		public TimePicker STime
+		{
+			get { return _sTime; }
+			set { _sTime = value; }
 		}
 
 		public string StartAddress
@@ -232,6 +255,12 @@ namespace BPCMain.ViewModel
         public ObservableCollection<Booking> Bookings
         {
             get { return _bookings; }
+            set { _bookings = value; }
+        }
+
+        public ObservableCollection<CarBooking> CarBookings
+        {
+	        get { return _carBookings; }
         }
 
 		#endregion
@@ -255,7 +284,7 @@ namespace BPCMain.ViewModel
 		public BookingVM()
 		{
 			_bookings = new ObservableCollection<Booking>();
-
+			_carBookings = new ObservableCollection<CarBooking>();
             _createBookingCompany = new RelayCommand(NewBooking, null);
 			_RequestJobCar = new RelayCommand(NewJob, null);
 		}
@@ -270,16 +299,16 @@ namespace BPCMain.ViewModel
             bookingList = await GetAllBookings();
             foreach (Booking booking in bookingList)
             {
-                if (SharedUser.Instance.UserUser != booking.CompanyCvrNo )
+                if (SharedUser.Instance.UserUser == booking.CompanyCvrNo)
                 {
-                    bookingList.Remove(booking);
+                    Bookings.Add(booking);
                 }
             }
 
-            foreach (Booking booking in bookingList)
-            {
-                Bookings.Add(booking);
-            }
+            //foreach (Booking booking in bookingList)
+            //{
+            //    Bookings.Add(booking);
+            //}
         }
 
         public async Task<IList<Booking>> GetAllBookings()
@@ -313,7 +342,6 @@ namespace BPCMain.ViewModel
 			}
 		}
 
-		//public async Task<bool> CreateTruckdriver<T>(T truckdriver)
 		public async Task<bool> CreateTruckdriver<T>(T truckdriver)
 		{
 			var Task = await restworker.CreateObjectAsync<T>(truckdriver, Datastructures.TableName.Truckdriver);
@@ -321,25 +349,19 @@ namespace BPCMain.ViewModel
 			return result;
 		}
 
-		public async Task<IList<T>> CreateTruckdriverId<T>()
-		{
-			var Task = await restworker.GetAllObjectsAsync<T>(Datastructures.TableName.Truckdriver);
-			TruckdriverId = Task.Count + 1;
-			return Task;
-		}
-
 		public async void newCarBooking()
 		{
 			for (int i = 0; i < NumOfCarsNeeded; i++)
 			{
 				CarBooking newCarBooking = new CarBooking(OrderNo);
+				
 				await CreateNewCarBooking(newCarBooking);
 			}
 		}
 
-		public async Task<bool> CreateNewCarBooking<T>(T newCarBooking)
+		public async Task<bool> CreateNewCarBooking(CarBooking newCarBooking)
 		{
-			var Task = await restworker.CreateObjectAsync(newCarBooking, Datastructures.TableName.CarBooking);
+			var Task = await restworker.CreateObjectAsync<CarBooking>(newCarBooking, Datastructures.TableName.CarBooking);
 			return Task;
 		}
 
@@ -347,24 +369,15 @@ namespace BPCMain.ViewModel
 
 		#region DisplayBookingCompany RelayCommands
 
-		public async Task<bool> CreateNewBooking<T>(T newBooking)
+		public async Task<bool> CreateNewBooking(Booking newBooking)
 		{
-			var Task = await restworker.CreateObjectAsync(newBooking, Datastructures.TableName.Booking);
+			var Task = await restworker.CreateObjectAsync<Booking>(newBooking, Datastructures.TableName.Booking);
 			var result = Task;
 			return result;
 		}
 
 		#endregion
 		
-		//creating new primary key for Table
-		//public async Task<IList<T>> CreateId<T>(int id, Datastructures.TableName tableName)
-		//{
-		//	var Task = await restworker.GetAllObjectsAsync<T>(tableName);
-		//	id = Task.Count + 1;
-		//	var result = Task;
-		//	return result;
-		//}
-
 		#region DisplayBookingCar Methods
 
 		public async void NewJob()
@@ -373,13 +386,6 @@ namespace BPCMain.ViewModel
 		}
 
 		#endregion
-
-		//public async Task<IList<T>> CreateOrderNo<T>()
-		//{
-		//	var Task = await restworker.GetAllObjectsAsync<T>(Datastructures.TableName.Booking);
-		//	OrderNo = Task.Count + 1;
-		//	return Task;
-		//}
 
 		#region DisplayBookingCar RelayCommands
 

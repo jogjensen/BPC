@@ -108,10 +108,10 @@ namespace BPCMain.ViewModel
             set { _errorMessage = value; OnPropertyChanged(); }
         }
 
-        //public RestWorker RestWorker
-        //{
-	       // get { return _restWorker; }
-        //}
+        public RelayCommand CreateCompany
+        {
+            get { return _createCompany; }
+        }
 
         #endregion
 
@@ -128,7 +128,7 @@ namespace BPCMain.ViewModel
 	        Customer newCustomer = new Customer(CompanyName, CvrNo, TruckdriverId, EMail, TelephoneNo, Address, PostalCode, City, Country, Password, MobileNo);
 	        if (ConstraintMethods.CreateUserCheck(newCustomer))
 	        {
-
+		        await CreateNewCustomer(newCustomer);
 		        navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
 	        }
 	        else
@@ -137,30 +137,13 @@ namespace BPCMain.ViewModel
 	        }
 
         }
-        public async Task<bool> CreateNewUserCompany<T>(T truckdriver)
+        public async Task<bool> CreateNewCustomer(Customer newCustomer)
         {
-	        var Task = await restworker.CreateObjectAsync<T>(truckdriver, Datastructures.TableName.Truckdriver);
+	        var Task = await restworker.CreateObjectAsync<Customer>(newCustomer, Datastructures.TableName.Customer);
 	        var result = Task;
 	        return result;
         }
 
-        public RelayCommand CreateCompany
-        {
-            get { return _createCompany; }
-            set
-            {
-                _createCompany = value;
-	                Customer newCustomer = new Customer(CompanyName, CvrNo, TruckdriverId, EMail, TelephoneNo, Address, PostalCode, City,  Country, Password, MobileNo);
-                if (ConstraintMethods.CreateUserCheck(newCustomer))
-                {
-                    navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
-                }
-                else
-                {
-                    ErrorMessage = "Fejl i oplysninger";
-                }
-            }
-        }
 
         #endregion
     }
