@@ -39,5 +39,6 @@ namespace BPCMain.Persistency
             get { return _instance; }
         }
         #endregion
+
     }
 }

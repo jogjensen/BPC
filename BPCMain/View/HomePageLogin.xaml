@@ -9,44 +9,44 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-	<Page.DataContext>
-		<viewModel:HomePageLogin/>
-	</Page.DataContext>
+    <Page.DataContext>
+        <viewModel:HomePageLogin/>
+    </Page.DataContext>
 
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
 
-		<Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
-			<StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
-				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
-				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
-				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Car" Command="{Binding CreateCarCommand}"/>
-				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Company" Command="{Binding CreateCompanyCommand}"/>
-			</StackPanel>
-		</Grid>
+        <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Car" Command="{Binding CreateCarCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Company" Command="{Binding CreateCompanyCommand}"/>
+            </StackPanel>
+        </Grid>
 
-		<Grid Background="Black" 
+        <Grid Background="Black" 
              Opacity="0.50" 
              Width="600" 
              Height="700" 
              VerticalAlignment="Top" 
              Margin="100"/>
 
-		<StackPanel Orientation="Vertical" 
+        <StackPanel Orientation="Vertical" 
                     Width="1000">
 
 			<StackPanel Style="{StaticResource HeaderPanelStyle1}">
 
-				<TextBlock Text="BookPilotCar" 
+                <TextBlock Text="BookPilotCar" 
                            Style="{StaticResource Header1}"/>
 
-			</StackPanel>
+            </StackPanel>
 
 			<StackPanel Style="{StaticResource PanelStyleLogin}">
 
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
-					<TextBox Header="Username:" 
-                             Text="{Binding Shared.Instance.UserUser, Mode=OneWay}"
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
+                    <TextBox Header="Username:" 
+                             Text="{Binding Shared.Instance.UserUser, Mode=TwoWay}"
                          Width="300" 
                          RequestedTheme="Light" 
                          BorderThickness="1" 
@@ -55,17 +55,17 @@
                          HorizontalAlignment="Center"
                          Margin="150,10,0,0">
 
-						<TextBox.HeaderTemplate>
-							<DataTemplate>
-								<TextBlock Text="Username:" Foreground="White"/>
-							</DataTemplate>
-						</TextBox.HeaderTemplate>
-					</TextBox>
-				</StackPanel>
+                        <TextBox.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Username:" Foreground="White"/>
+                            </DataTemplate>
+                        </TextBox.HeaderTemplate>
+                    </TextBox>
+                </StackPanel>
 
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
-					<PasswordBox Header="Password:" 
-                                 Password="{Binding Shared.Instance.UserPass, Mode=OneWay}"
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
+                    <PasswordBox Header="Password:" 
+                                 Password="{Binding Shared.Instance.UserPass, Mode=TwoWay}"
                              Width="300" 
                              RequestedTheme="Light" 
                              BorderThickness="1" 
@@ -74,31 +74,16 @@
                              HorizontalAlignment="Center"
                              Margin="150,10,0,0">
 
-						<PasswordBox.HeaderTemplate>
-							<DataTemplate>
-								<TextBlock Text="Password:" Foreground="White"/>
-							</DataTemplate>
-						</PasswordBox.HeaderTemplate>
-					</PasswordBox>
-				</StackPanel>
+                        <PasswordBox.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Password:" Foreground="White"/>
+                            </DataTemplate>
+                        </PasswordBox.HeaderTemplate>
+                    </PasswordBox>
+                </StackPanel>
 
-				<!--skal slettes-->
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
-					<TextBlock 
-					         Text="{Binding ErrorMessage, Mode=TwoWay}"
-					         Width="300" 
-					         RequestedTheme="Light" 
-					         FontSize="16" 
-					         FontFamily="Arial Black"
-					         HorizontalAlignment="Center"
-					         Margin="150,10,0,0">
-
-					</TextBlock>
-				</StackPanel>
-				<!--skal slettes-->
-
-				<StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="600" Height="100" Margin="25">
-					<Button Content="Login" 
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="600" Height="100" Margin="25">
+                    <Button Content="Login" 
                             Width="300" 
                             RequestedTheme="Dark" 
                             BorderThickness="1" 
@@ -109,17 +94,17 @@
                             Margin="10"
                             Command="{Binding TryLogin}"/>
 
-					<CheckBox Content="Remember me" 
+                    <CheckBox Content="Remember me" 
                               Margin="10" 
                               VerticalAlignment="Bottom" 
                               FontSize="16" 
                               FontFamily="Arial Black"
                               HorizontalAlignment="Center"/>
-				</StackPanel>
-			</StackPanel>
-		</StackPanel>
-		<Grid.ColumnDefinitions>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Grid.ColumnDefinitions>
 
-		</Grid.ColumnDefinitions>
-	</Grid>
+        </Grid.ColumnDefinitions>
+    </Grid>
 </Page>

@@ -9,6 +9,7 @@ using BPCClassLibrary;
 using BPCMain.Persistency;
 using BPCMain.Utilities;
 using BPCMain.View;
+using System.Threading;
 
 namespace BPCMain.ViewModel
 {
@@ -116,12 +117,12 @@ namespace BPCMain.ViewModel
 
         public async void CheckUserInfoCar()
         {
-            IList<Car> carList = await restWorker.GetAllObjectsAsync<Car>(tableName: Datastructures.TableName.Car);
+            List<Car> carList = (List<Car>) await restWorker.GetAllObjectsAsync<Car>(tableName: Datastructures.TableName.Car);
             foreach (var car in carList)
             {
                 if (_shared.UserUser == car.CvrNo)
                 {
-                    if (_shared.UserPass == car.Password)
+                    if (_shared.UserPass.Equals(car.Password))
                     {
                         _navigation.Navigate(typeof(AboutUs));
                     }
