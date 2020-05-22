@@ -40,7 +40,7 @@ namespace BPCRESTService.Managers
             {
                 conn.Open();
 
-                using (SqlCommand command = new SqlCommand("Select * from Truckdriver where TruckdriverId = @Id", conn))
+                using (SqlCommand command = new SqlCommand("Select * from Truckdriver where telephoneNo = @Id", conn))
                 {
                     command.Parameters.AddWithValue("@Id", id);
                     SqlDataReader reader = command.ExecuteReader();
@@ -82,10 +82,10 @@ namespace BPCRESTService.Managers
             {
                 conn.Open();
                 
-                using (SqlCommand command = new SqlCommand("Update Truckdriver set TelephoneNo = @Tlf, EMail = @Mail where TruckdriverId = @Id", conn))
+                using (SqlCommand command = new SqlCommand("Update Truckdriver set EMail = @Mail, TruckdriverId = @TDID where TelephoneNo = @Id", conn))
                 {
                     command.Parameters.AddWithValue("@Id", id);
-                    command.Parameters.AddWithValue("@Tlf", truckdriver.TelephoneNo);
+                    command.Parameters.AddWithValue("@TDID", truckdriver.TruckdriverId);
                     command.Parameters.AddWithValue("@Mail", truckdriver.EMail);
 
                     int rows = command.ExecuteNonQuery();
@@ -103,7 +103,7 @@ namespace BPCRESTService.Managers
             {
                 conn.Open();
 
-                using (SqlCommand command = new SqlCommand("Delete from Truckdriver where TruckdriverId = @Id", conn))
+                using (SqlCommand command = new SqlCommand("Delete from Truckdriver where telephoneNo = @Id", conn))
                 {
                     command.Parameters.AddWithValue("@Id", id);
                     command.ExecuteNonQuery();
@@ -117,7 +117,7 @@ namespace BPCRESTService.Managers
             Truckdriver truckdriver = new Truckdriver();
 
             truckdriver.TruckdriverId = reader.GetInt32(0);
-            truckdriver.TelephoneNo = reader.GetString(1);
+            truckdriver.TelephoneNo = reader.GetInt32(1);
             truckdriver.EMail = reader.GetString(2);
             
             return truckdriver;

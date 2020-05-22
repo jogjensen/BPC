@@ -147,8 +147,7 @@ namespace BPCMain.ViewModel
 
 		public async void NewCar()
 		{
-			await CreateId<IList<Task>>(CarId, Datastructures.TableName.Car); //creating new CarId
-			Car newCar = new Car(CarId, FirstName, LastName, CvrNo, EMail, TelephoneNo, Address, PostalCode, Country, Password, City, MobileNo);
+			Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, Address, PostalCode, Country, Password, City, MobileNo);
 			if (CreateCarCheck(newCar)) //metode i ConstraintMethods
 			{
 				//save new Car in database
@@ -170,14 +169,6 @@ namespace BPCMain.ViewModel
 				return result;
 		}
 
-		//creating new primary key for Table
-		public async Task<IList<T>> CreateId<T>(int id, Datastructures.TableName tableName)
-		{
-			var Task = await restworker.GetAllObjectsAsync<T>(tableName);
-			id = Task.Count + 1;
-			var result = Task;
-			return result;
-		}
 		#endregion
 	}
 }
