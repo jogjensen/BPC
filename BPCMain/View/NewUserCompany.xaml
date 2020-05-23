@@ -24,12 +24,12 @@
 
         <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookings" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Om BPC" Command="{Binding AboutBpcCommand}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Kontakt os" Command="{Binding ContactBpcCommand}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}"/>

@@ -13,8 +13,8 @@ using System.Threading;
 
 namespace BPCMain.ViewModel
 {
-	class HomePageLogin : BaseVM
-	{
+    class HomePageLogin : BaseVM
+    {
         #region Instance Fields
 
         private string _errorMessage;
@@ -22,6 +22,7 @@ namespace BPCMain.ViewModel
 
         private RelayCommand _faqCommand;
         private RelayCommand _aboutBpcCommand;
+        private RelayCommand _contactBpcCommand;
         private RelayCommand _createUserCarCommand;
         private RelayCommand _createUserCompanyCommand;
         private RelayCommand _tryLogin;
@@ -39,6 +40,7 @@ namespace BPCMain.ViewModel
             _shared = SharedUser.Instance;
             _faqCommand = new RelayCommand(NavigateToFaq, null);
             _aboutBpcCommand = new RelayCommand(NavigateToAboutBpc, null);
+            _contactBpcCommand = new RelayCommand(NavigateToContactBpc, null);
             _createUserCarCommand = new RelayCommand(NavigateToCreateUserCar, null);
             _createUserCompanyCommand = new RelayCommand(NavigateToCreateUserCompany, null);
             _tryLogin = new RelayCommand(CheckUserInfo, null);
@@ -49,12 +51,12 @@ namespace BPCMain.ViewModel
 
         public string ErrorMessage
         {
-	        get { return _errorMessage; }
-	        set
-	        {
-		        _errorMessage = value;
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
                 OnPropertyChanged();
-	        }
+            }
         }
 
         public SharedUser Shared
@@ -82,7 +84,12 @@ namespace BPCMain.ViewModel
 
         public RelayCommand CreateCompanyCommand
         {
-            get { return _createUserCarCommand; }
+            get { return _createUserCompanyCommand; }
+        }
+
+        public RelayCommand ContactBpcCommand
+        {
+            get { return _contactBpcCommand; }
         }
 
         public RelayCommand TryLogin
@@ -105,12 +112,19 @@ namespace BPCMain.ViewModel
 
         private void NavigateToCreateUserCar()
         {
-            _navigation.Navigate(typeof(NewUserCar));
+
+            _navigation.Navigate(typeof(BPCMain.View.NewUserCar));
+
         }
 
         private void NavigateToCreateUserCompany()
         {
-            _navigation.Navigate(typeof(NewUserCompany));
+            _navigation.Navigate(typeof(BPCMain.View.NewUserCompany));
+        }
+
+        private void NavigateToContactBpc()
+        {
+            _navigation.Navigate(typeof(ContactBPC));
         }
         #endregion
 
@@ -118,7 +132,7 @@ namespace BPCMain.ViewModel
 
         public async void CheckUserInfoCar()
         {
-            List<Car> carList = (List<Car>) await restWorker.GetAllObjectsAsync<Car>(tableName: Datastructures.TableName.Car);
+            List<Car> carList = (List<Car>)await restWorker.GetAllObjectsAsync<Car>(tableName: Datastructures.TableName.Car);
             foreach (var car in carList)
             {
                 if (_shared.UserUser == car.CvrNo)
@@ -134,7 +148,7 @@ namespace BPCMain.ViewModel
 
         public async void CheckUserInfoCustomer()
         {
-            List<Customer> customerList = (List<Customer>) await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
+            List<Customer> customerList = (List<Customer>)await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
             foreach (var customer in customerList)
             {
                 if (_shared.UserUser == customer.CvrNo)

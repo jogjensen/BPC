@@ -18,10 +18,9 @@
 
         <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
-            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Om BPC" Command="{Binding AboutBpcCommand}"/>
             <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
-            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Car" Command="{Binding CreateCarCommand}"/>
-            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Company" Command="{Binding CreateCompanyCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Kontakt os" Command="{Binding ContactBpcCommand}"/>
             </StackPanel>
         </Grid>
 
@@ -30,13 +29,13 @@
              Width="600" 
              Height="700"
              VerticalAlignment="Top" 
-             Margin="100"/>
+             Margin="150"/>
 
         <StackPanel Orientation="Vertical" 
                     Width="1000">
                     
 
-			<StackPanel Style="{StaticResource HeaderPanelStyle1}">
+			<StackPanel Style="{StaticResource HeaderPanelStyle1}" Margin="40">
 
                 <TextBlock Text="BookPilotCar" 
                            Margin="0,20"
@@ -84,7 +83,7 @@
                     </PasswordBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="600" Height="100" Margin="25">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="600" Height="150" Margin="25">
                     <Button Content="Login" 
                             Width="300" 
                             RequestedTheme="Dark" 
@@ -96,12 +95,27 @@
                             Margin="10"
                             Command="{Binding TryLogin}"/>
 
-                    <CheckBox Content="Husk mig" 
-                              Margin="10" 
-                              VerticalAlignment="Bottom" 
-                              FontSize="16" 
-                              FontFamily="Arial Black"
-                              HorizontalAlignment="Center"/>
+                    <Button Content="Opret bil" 
+                            Width="300" 
+                            RequestedTheme="Dark" 
+                            BorderThickness="1" 
+                            FontSize="16" 
+                            FontFamily="Arial Black" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            Margin="10"
+                            Command="{Binding CreateCarCommand}"/>
+
+                    <Button Content="Opret firma" 
+                            Width="300" 
+                            RequestedTheme="Dark" 
+                            BorderThickness="1" 
+                            FontSize="16" 
+                            FontFamily="Arial Black" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            Margin="10"
+                            Command="{Binding CreateCompanyCommand}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

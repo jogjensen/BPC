@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Background;
 using BPCMain.Utilities;
 using BPCClassLibrary;
 using BPCMain.Persistency;
+using BPCMain.View;
 
 namespace BPCMain.ViewModel
 {
@@ -26,6 +27,10 @@ namespace BPCMain.ViewModel
         private string _password;
         private int _truckdriverId;
         private RelayCommand _createCompany;
+        private RelayCommand _backCommand;
+        private RelayCommand _faqCommand;
+        private RelayCommand _aboutBpcCommand;
+        private RelayCommand _contactBpcCommand;
         private string _errorMessage;
         private NavigationService navigation = new NavigationService();
         private RestWorker restworker = new RestWorker();
@@ -113,6 +118,24 @@ namespace BPCMain.ViewModel
             get { return _createCompany; }
         }
 
+        public RelayCommand BackCommand
+        {
+            get { return _backCommand; }
+        }
+        public RelayCommand FAQCommand
+        {
+            get { return _faqCommand; }
+        }
+
+        public RelayCommand AboutBpcCommand
+        {
+            get { return _aboutBpcCommand; }
+        }
+
+        public RelayCommand ContactBpcCommand
+        {
+            get { return _contactBpcCommand; }
+        }
         #endregion
 
         #region RelayCommands
@@ -120,9 +143,12 @@ namespace BPCMain.ViewModel
         public NewUserCompany()
         {
 	        _createCompany = new RelayCommand(NewUser, null);
-
+            _backCommand = new RelayCommand(GoBack, null);
+            _faqCommand = new RelayCommand(NavigateToFaq, null);
+            _aboutBpcCommand = new RelayCommand(NavigateToAboutBpc, null);
+            _contactBpcCommand = new RelayCommand(NavigateToContactBpc, null);
         }
-
+        
         public async void NewUser()
         {
             Customer newCustomer = new Customer(CompanyName, CvrNo, 0, EMail, TelephoneNo, Address, PostalCode, City, Country, Password, MobileNo);
@@ -142,6 +168,29 @@ namespace BPCMain.ViewModel
         {
 	        bool created = await restworker.CreateObjectAsync<Customer>(newCustomer, Datastructures.TableName.Customer);
 	        return created;
+        }
+        #endregion
+
+        #region Methods
+
+        public void GoBack()
+        {
+            navigation.GoBack();
+        }
+
+        private void NavigateToContactBpc()
+        {
+            navigation.Navigate(typeof(ContactBPC));
+        }
+
+        private void NavigateToFaq()
+        {
+            navigation.Navigate(typeof(Faq));
+        }
+
+        private void NavigateToAboutBpc()
+        {
+            navigation.Navigate(typeof(AboutUs));
         }
         #endregion
     }

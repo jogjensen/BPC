@@ -14,26 +14,17 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
-            <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+        <Image Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+        <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Om BPC" Command="{Binding AboutBpcCommand}"/>
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Kontakt os" Command="{Binding ContactBpcCommand}"/>
             </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
-                    <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}"/>
-                </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Tilbage" Command="{Binding BackCommand}"/>
+            </StackPanel>
         </Grid>
-        <Grid Background="Black" 
-             Opacity="0.50" 
-             Width="600" 
-             Height="700" 
-             VerticalAlignment="Top" 
-             Margin="100"/>
 
         <StackPanel Orientation="Vertical" 
                     Width="1000">
@@ -41,34 +32,31 @@
             <StackPanel Orientation="Vertical" 
                         VerticalAlignment="Top" 
                         Width="600" Height="150" 
-                        Margin="0,150" 
+                        Margin="0,20" 
                         HorizontalAlignment="Center">
 
-                <TextBlock Text="BookPilotCar" 
-                           Width="750" 
-                           Height="100" 
-                           TextAlignment="Center" 
-                           HorizontalAlignment="Center"
-                           Style="{StaticResource HeaderTextBlockStyle}"
-                           FontWeight="Bold"/>
+                <StackPanel Style="{StaticResource HeaderPanelStyle1}" Margin="40">
 
-                <TextBlock Text="Om os"
-                           Width="750"
-                           Height="50"
-                           TextAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Style="{StaticResource BodyTextBlockStyle}"
-                           FontWeight="Bold"
-                           Foreground="White"
-                           FontSize="25"
-                           />
-
+                    <TextBlock Text="BookPilotCar" 
+                               Margin="0,20"
+                               Style="{StaticResource Header1}"/>
+                </StackPanel>
             </StackPanel>
+            <TextBlock Text="Om BPC"
+                       Width="750"
+                       Height="50"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontSize="25"
+            />
             <StackPanel Orientation="Vertical" 
                         VerticalAlignment="Top" 
                         Width="550" 
                         Height="500"
-                        Margin="0,-100">
+                        Margin="0,50">
 
                 <RichTextBlock Width="500" Height="400">
                     <Paragraph FontSize="16" FontFamily="Arial Black" TextAlignment="Justify" Foreground="White" >
