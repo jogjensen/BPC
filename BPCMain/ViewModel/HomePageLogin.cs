@@ -18,6 +18,7 @@ namespace BPCMain.ViewModel
         #region Instance Fields
 
         private string _errorMessage;
+        private bool _loginSuccess = false;
 
         private RelayCommand _faqCommand;
         private RelayCommand _aboutBpcCommand;
@@ -124,12 +125,9 @@ namespace BPCMain.ViewModel
                 {
                     if (_shared.UserPass.Equals(car.Password))
                     {
-                        _navigation.Navigate(typeof(View.NewUserCar));
+                        _loginSuccess = true;
+                        _navigation.Navigate(typeof(View.NewUserCompany));
                     }
-                }
-                else
-                {
-                    ErrorMessage = "Fejl i login";
                 }
             }
         }
@@ -141,14 +139,11 @@ namespace BPCMain.ViewModel
             {
                 if (_shared.UserUser == customer.CvrNo)
                 {
-                    if (_shared.UserPass == customer.Password)
+                    if (_shared.UserPass.Equals(customer.Password))
                     {
-                        _navigation.Navigate(typeof(AboutUs));
+                        _loginSuccess = true;
+                        _navigation.Navigate(typeof(View.NewUserCompany));
                     }
-                }
-                else
-                {
-                    ErrorMessage = "Fejl i login";
                 }
             }
         }
@@ -157,6 +152,8 @@ namespace BPCMain.ViewModel
         {
             CheckUserInfoCar();
             CheckUserInfoCustomer();
+            if (!_loginSuccess)
+                ErrorMessage = "Fejl i login.";
         }
         #endregion
     }
