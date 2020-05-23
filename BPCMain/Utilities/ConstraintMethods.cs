@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.SmartCards;
@@ -18,16 +19,15 @@ namespace BPCMain.Utilities
 			if (!OnlyNumbersCheck(car.TelephoneNo) ||
 				 !OnlyNumbersCheck(car.MobileNo) ||
 				 !OnlyNumbersCheck(car.PostalCode) ||
-				 //!OnlyNumbersCheck(car.CvrNo) ||
 				 !StringLengthCheck(car.FirstName, 2, 50) ||
 				 !StringLengthCheck(car.LastName, 2, 50) ||
 				 !CheckNumber(car.CvrNo, 10000000, 99999999) ||
-				 !StringLengthCheck(car.EMail, 10, 30) ||
+				 !StringLengthCheck(car.EMail, 3, 50) ||
 				 !StringLengthCheck(car.TelephoneNo, 8, 8) ||
-				 !StringLengthCheck(car.MobileNo, 8, 8) ||
-				 !StringLengthCheck(car.Address, 5, 30) ||
+				 !StringLengthCheck(car.MobileNo, 0, 8) ||
+				 !StringLengthCheck(car.Address, 1, 30) ||
 				 !StringLengthCheck(car.PostalCode, 4, 4) ||
-				 !StringLengthCheck(car.Country, 2, 30) ||
+				 !StringLengthCheck(car.Country, 1, 30) ||
 				 !StringLengthCheck(car.Password, 6, 16)) return false;
 			return true;
 
@@ -78,14 +78,14 @@ namespace BPCMain.Utilities
 
 		public static bool OnlyNumbersCheck(string str)
 		{
-			//bool isOnlyNumbers = true;
-			//foreach (char c in str)
-			//{
-			//	int unicode = c;
-			//	if (unicode < 48 || unicode > 57) isOnlyNumbers = false;
-			//}
-			//return isOnlyNumbers;
-			return true;
+			bool isOnlyNumbers = true;
+			if (str.Equals("N/A")) return true;
+			foreach (char c in str)
+			{
+				int unicode = c;
+				if (unicode < 48 || unicode > 57) isOnlyNumbers = false;
+			}
+			return isOnlyNumbers;
 		}
 
 		//Mangler at blive testet
