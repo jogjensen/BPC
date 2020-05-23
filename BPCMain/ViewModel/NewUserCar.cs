@@ -148,17 +148,18 @@ namespace BPCMain.ViewModel
 		public async void NewCar()
 		{
 			Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, Address, PostalCode, Country, Password, City, MobileNo);
+
+			if (CreateCarCheck(newCar)) //metode i ConstraintMethods
+			{
+				//save new Car in database
 				await CreateNewCar(newCar);
 				navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
-			
-			//if (CreateCarCheck(newCar)) //metode i ConstraintMethods
-			//{
-			//save new Car in database
-			//}
-			//else
-			//{
-			//	ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
-			//}
+			}
+			else
+			{
+				ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
+				navigation.Navigate(typeof(BPCMain.View.HomePageLogin));
+			}
 		}
 
 		#region Methods
