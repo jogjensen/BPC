@@ -158,7 +158,6 @@ namespace BPCMain.ViewModel
 			else
 			{
 				ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
-				navigation.Navigate(typeof(BPCMain.View.HomePageLogin));
 			}
 		}
 
