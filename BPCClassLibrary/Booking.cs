@@ -41,7 +41,7 @@ namespace BPCClassLibrary
         public Booking()
         { }
 
-        public Booking(Datastructures.Status status, int companyCvrNo, int numOfCarsNeeded, string typeOfGoods, double totalWidth, double totalLength, double totalHeight, double totalWeight, DateTime startDate, string startAddress, string startPostalCode, string startCity, string startCountry, DateTime endDate, string endAddress, string endPostalCode, string endCity, string endCountry, int truckDriverId, string contactPerson, string comment = "")
+        public Booking(Datastructures.Status status, int companyCvrNo, int numOfCarsNeeded, string typeOfGoods, double totalWidth, double totalLength, double totalHeight, double totalWeight, DateTime startDate, string startAddress, string startPostalCode, string startCity, string startCountry, DateTime endDate, string endAddress, string endPostalCode, string endCity, string endCountry, int truckDriverId, string contactPerson, string comment)
         {
             _status = status;
             _companyCvrNo = companyCvrNo;
@@ -64,6 +64,8 @@ namespace BPCClassLibrary
             _truckDriverId = truckDriverId;
             _contactPerson = contactPerson;
             _comment = comment;
+            if (comment == null) comment = "N/A";
+
         }
         #endregion
 
