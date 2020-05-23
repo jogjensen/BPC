@@ -58,13 +58,9 @@ namespace BPCMain.ViewModel
 
 		private string _errorMessage;
 
-
-		private ObservableCollection<CarBooking> _carBookings;
-
-		
         private Booking _selectedBooking;
         private ObservableCollection<Booking> _bookings;
-
+        private ObservableCollection<CarBooking> _carBookings;
 		private NavigationService navigation = new NavigationService();
 		private RestWorker restworker = new RestWorker();
 		#endregion
