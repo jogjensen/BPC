@@ -148,7 +148,7 @@ namespace BPCMain.ViewModel
             }
         }
 
-        public async void CheckUserInfo()
+        public void CheckUserInfo()
         {
             CheckUserInfoCar();
             CheckUserInfoCustomer();
