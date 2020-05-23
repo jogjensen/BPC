@@ -29,7 +29,7 @@
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Kontakt os" Command="{Binding Shared.Instance.ContactBpcCommand}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45" Grid.Row="0" VerticalAlignment="Top">
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding Shared.Instance.BackCommand}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Tilbage" Command="{Binding Shared.Instance.BackCommand}"/>
             </StackPanel>
         </Grid>
         <!--Header-->
@@ -47,7 +47,7 @@
         <!--
 			</Grid.ColumnDefinitions>-->
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Width="1400">
 
             <StackPanel Margin="100,50">
                 <StackPanel Style="{StaticResource PanelStyle3}">

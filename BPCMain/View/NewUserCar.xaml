@@ -29,7 +29,7 @@
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Kontakt os" Command="{Binding ContactBpcCommand}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Tilbage" Command="{Binding BackCommand}"/>
             </StackPanel>
         </Grid>
         <!--Header-->
@@ -103,14 +103,14 @@
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
-				           Text="Password*"/>
+				           Text="Kodeord*"/>
 						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Password, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle2}"
 						           Text="Alle bokse med * skal udfyldes"/>
 
-						<Button Content="opret bruger"
+						<Button Content="Opret bruger"
 						        Margin="40,20,0,0"
 						        x:Name="OpretBruger"
 						        Style="{StaticResource MenuBarButtonStyle}"

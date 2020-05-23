@@ -99,7 +99,7 @@ namespace BPCMain.ViewModel
         #endregion
 
         #region Navigation Methods
-
+        // Navigation methods - To target page
         private void NavigateToFaq()
         {
             _navigation.Navigate(typeof(Faq));
@@ -130,6 +130,7 @@ namespace BPCMain.ViewModel
 
         #region Login Logic
 
+        // Reads through a car list from the DB, through REST worker and checks if information is similar to input
         public async void CheckUserInfoCar()
         {
             List<Car> carList = (List<Car>)await restWorker.GetAllObjectsAsync<Car>(tableName: Datastructures.TableName.Car);
@@ -146,6 +147,7 @@ namespace BPCMain.ViewModel
             }
         }
 
+        // Reads through a customer list from the DB, through REST worker and checks if information is similar to input
         public async void CheckUserInfoCustomer()
         {
             List<Customer> customerList = (List<Customer>)await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
@@ -162,6 +164,7 @@ namespace BPCMain.ViewModel
             }
         }
 
+        // Method runs both aforementioned methods and is stored in a RelayCommand which is bound to the login button
         public void CheckUserInfo()
         {
             CheckUserInfoCar();
