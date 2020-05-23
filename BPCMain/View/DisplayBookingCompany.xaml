@@ -13,34 +13,27 @@
         <viewModel:BookingVM/>
     </Page.DataContext>
 
-
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+        <Image Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
 
         <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookings" />
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="My side" />
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookings" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}"/>
             </StackPanel>
         </Grid>
 
-
-        <Grid Background="Black" 
-             Opacity="0.50" 
-             Width="1400" 
-             Height="850" 
-             VerticalAlignment="Top" 
-             Margin="100"
-             HorizontalAlignment="Center"/>
-
-
-                    <StackPanel Orientation="Vertical" 
+        <StackPanel Orientation="Vertical" 
                         VerticalAlignment="Top" 
                         Width="600" Height="100" 
-                        Margin="0,100" 
+                        Margin="0,75" 
                         HorizontalAlignment="Center">
 
                         <TextBlock Text="Mine Bookinger" 
@@ -49,23 +42,18 @@
                            HorizontalAlignment="Center"
                            Style="{StaticResource HeaderTextBlockStyle}"
                            FontWeight="Bold"/>
-
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical" 
-                        VerticalAlignment="Top" 
-                        Width="600" 
-                        Height="400"
-                        Margin="0,50">
-
                     </StackPanel>
 
         <StackPanel Orientation="Vertical" 
-                    Width="1100"
-                    Height="700">
+                    HorizontalAlignment="Center" 
+                    Width="1100" 
+                    Height="700" 
+                    Margin="200">
 
             <StackPanel Orientation="Horizontal"
-            Margin="0,10">
+            Margin="10"
+            Width="1200">
+
                 <TextBlock Text="Ordre Nr" Style="{StaticResource TextBlockStyle1}" Width="100"/>
                 <TextBlock Text="Start By" Style="{StaticResource TextBlockStyle1}"  Width="100"/>
                 <TextBlock Text="Dato og Tid" Style="{StaticResource TextBlockStyle1}" Width="150"/>
@@ -73,10 +61,9 @@
                 <TextBlock Text="Dato og tid" Style="{StaticResource TextBlockStyle1}" Width="150"/>
                 <TextBlock Text="Godsart" Style="{StaticResource TextBlockStyle1}" Width="100"/>
                 <TextBlock Text="Status" Style="{StaticResource TextBlockStyle1}" Width="100"/>
-
             </StackPanel>
 	        <ScrollViewer>
-		        <StackPanel Orientation="Horizontal">
+		        <StackPanel Orientation="Horizontal" >
 					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding OrderNo}"/>
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity, Mode=TwoWay}"/>
 					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate, Mode=TwoWay}"/>
@@ -86,7 +73,6 @@
 					<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status, Mode=TwoWay}"/>
 				</StackPanel>
 	        </ScrollViewer>
-
 
 	        <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking}" 
 	                  ScrollViewer.VerticalScrollBarVisibility="Visible" 
@@ -122,16 +108,10 @@
 							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndPostalCode, Mode=TwoWay}"/>
 							<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCountry, Mode=TwoWay}"/>
                             
-                           
-                            
                         </StackPanel>
 			        </DataTemplate>
 		        </ListView.ItemTemplate>
 	        </ListView>
         </StackPanel>
-            
-       
     </Grid>
-
-
 </Page>

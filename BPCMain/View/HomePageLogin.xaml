@@ -28,12 +28,13 @@
         <Grid Background="Black" 
              Opacity="0.50" 
              Width="600" 
-             Height="700" 
+             Height="700"
              VerticalAlignment="Top" 
              Margin="100"/>
 
         <StackPanel Orientation="Vertical" 
                     Width="1000">
+                    
 
 			<StackPanel Style="{StaticResource HeaderPanelStyle1}">
 

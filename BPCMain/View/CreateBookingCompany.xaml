@@ -13,7 +13,6 @@
         <viewModel:BookingVM/>
     </Page.DataContext>
 
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -21,7 +20,7 @@
             <RowDefinition Height="850"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="0" Grid.RowSpan="3" Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill" />
+        <Image Grid.Row="0" Grid.RowSpan="3" Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill"/>
 
         <StackPanel Grid.Row="0" Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
@@ -29,10 +28,15 @@
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookinger" />
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Min side" />
-            </StackPanel>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45" Grid.Row="0" VerticalAlignment="Top">
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}"/>
         </StackPanel>
 
-        <!--Header-->
+<!--Header-->
         <StackPanel Grid.Row="1" Style="{StaticResource HeaderPanelStyle1}">
             <TextBlock Text="Ny Booking" Style="{StaticResource Header1}"/>
         </StackPanel>
