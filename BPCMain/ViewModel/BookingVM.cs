@@ -63,6 +63,7 @@ namespace BPCMain.ViewModel
         private ObservableCollection<CarBooking> _carBookings;
 		private NavigationService navigation = new NavigationService();
 		private RestWorker restworker = new RestWorker();
+        private SharedUser _shared;
 		#endregion
 
 		#region Properties
@@ -260,6 +261,11 @@ namespace BPCMain.ViewModel
 	        get { return _carBookings; }
         }
 
+        public SharedUser Shared
+        {
+            get { return _shared; }
+        }
+
 		#endregion
 
 		#region Properties RelayCommands 
@@ -286,6 +292,7 @@ namespace BPCMain.ViewModel
 
 		public BookingVM()
 		{
+			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
             _createBookingCompany = new RelayCommand(NewBooking, null);
