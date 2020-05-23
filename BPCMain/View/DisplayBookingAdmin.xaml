@@ -5,10 +5,113 @@
     xmlns:local="using:BPCMain.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:BPCMain.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.DataContext>
+        <viewModel:BookingVM/>
+    </Page.DataContext>
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+
+        <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookings" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}"/>
+            </StackPanel>
+        </Grid>
+        <StackPanel Orientation="Vertical" 
+                    VerticalAlignment="Top" 
+                    Width="600" Height="100" 
+                    Margin="0,75" 
+                    HorizontalAlignment="Center">
+
+            <TextBlock Text="Bookinger" 
+                       Width="750" Height="100" 
+                       TextAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Style="{StaticResource HeaderTextBlockStyle}"
+                       FontWeight="Bold"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    Width="1100" 
+                    Height="700" 
+                    Margin="200">
+
+            <StackPanel Orientation="Horizontal"
+            Margin="10">
+                <TextBlock Text="Ordre Nr" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                <TextBlock Text="Start By" Style="{StaticResource TextBlockStyle1}"  Width="100"/>
+                <TextBlock Text="Dato og Tid" Style="{StaticResource TextBlockStyle1}" Width="150"/>
+                <TextBlock Text="Slut By" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                <TextBlock Text="Dato og tid" Style="{StaticResource TextBlockStyle1}" Width="150"/>
+                <TextBlock Text="Godsart" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                <TextBlock Text="Status" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                <TextBlock Text="Antal biler" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+            </StackPanel>
+            <ScrollViewer>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding OrderNo}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCity, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndDate, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TypeOfGoods, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="3"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking}" 
+	                  ScrollViewer.VerticalScrollBarVisibility="Visible" 
+	                  Background="#696969" Margin="0,0,120,0">
+                <!--SelectionChanged="ListView_SelectionChanged"-->
+                      
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding OrderNo, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding CompanyCvrNo, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding NumOfCarsNeeded, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Comment, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding Contactperson, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TruckdriverEMail, Mode=TwoWay}"/>
+                            </StackPanel>
+
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartAddress, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartPostalCode, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCountry, Mode=TwoWay}"/>
+
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TypeOfGoods, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TotalWidth, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TotalLength, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TotalHeight, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding TotalWeight, Mode=TwoWay}"/>
+
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndDate, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndAddress, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCity, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndPostalCode, Mode=TwoWay}"/>
+                                <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCountry, Mode=TwoWay}"/>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>
