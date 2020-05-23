@@ -294,7 +294,7 @@ namespace BPCMain.ViewModel
 			_carBookings = new ObservableCollection<CarBooking>();
             _createBookingCompany = new RelayCommand(NewBooking, null);
 			_requestJobCar = new RelayCommand(RequestJob, null);
-			//_cancelJobCar = new RelayCommand(CancelJob, null);
+			_cancelJobCar = new RelayCommand(CancelJob, null);
 		}
 
 		#endregion
@@ -391,7 +391,17 @@ namespace BPCMain.ViewModel
 			await UpdateBooking(SelectedBooking);
 		}
 
+		public async void CancelJob()
+		{
+			SelectedBooking.Status = Datastructures.Status.Open;
+			await UpdateBooking(SelectedBooking);
 
+			//if ((Int32) SelectedBooking.Status == (Int32) Datastructures.Status.Pending)
+			//{
+			//	SelectedBooking.Status = Datastructures.Status.Open;
+			//}
+
+		}
 
 		public async Task<bool> UpdateBooking(Booking updatedBooking)
 		{
