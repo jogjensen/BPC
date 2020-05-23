@@ -125,7 +125,7 @@ namespace BPCMain.ViewModel
 
         public async void NewUser()
         {
-	        Customer newCustomer = new Customer(CompanyName, CvrNo, TruckdriverId, EMail, TelephoneNo, Address, PostalCode, City, Country, Password, MobileNo);
+            Customer newCustomer = new Customer(CompanyName, CvrNo, 0, EMail, TelephoneNo, Address, PostalCode, City, Country, Password, MobileNo);
 	        if (ConstraintMethods.CreateUserCheck(newCustomer))
 	        {
 		        await CreateNewCustomer(newCustomer);
@@ -134,7 +134,8 @@ namespace BPCMain.ViewModel
 	        else
 	        {
 		        ErrorMessage = "Fejl i oplysninger";
-	        }
+		        navigation.Navigate(typeof(BPCMain.View.HomePageLogin));
+            }
 
         }
         public async Task<bool> CreateNewCustomer(Customer newCustomer)

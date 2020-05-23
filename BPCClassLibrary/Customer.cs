@@ -42,7 +42,8 @@ namespace BPCClassLibrary
             _city = city;
             _country = country;
             _password = password;
-            _truckdriverId = truckdriverId;
+            _truckdriverId = 0;
+
         }
 
         #region Properties

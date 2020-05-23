@@ -56,53 +56,53 @@
                 <StackPanel Style="{StaticResource PanelStyle2}">
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" Text="Firma navn*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding CompanyName}">
+                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding CompanyName, Mode=TwoWay}">
                         </TextBox>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}"
 				           Text="Cvr-nummer*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding CvrNo}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding CvrNo, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}"
 					        Text="Email*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EMail}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EMail, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Telefonnummer*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding TelephoneNo}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding TelephoneNo, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Mobilnummer*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" 
 						           Text="Gadenavn og nr.*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Address}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Address, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Postnummer*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding PostalCode}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding PostalCode, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="By*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding City}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding City, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Land*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Country}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Country, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" 
 						           Text="Password*"/>
-                        <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Password}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Password, Mode=TwoWay}"/>
                     </StackPanel>
                     
                     <StackPanel Style="{StaticResource PanelStyle3}">

@@ -37,13 +37,13 @@ namespace BPCMain.Utilities
         {
             if (
                 !StringLengthCheck(newCustomer.CompanyName, 2,50)||
-				!CheckNumber(newCustomer.CvrNo, 100000,999999999)||
-                !StringLengthCheck(newCustomer.EMail,6,50)||
-				!StringLengthCheck(newCustomer.TelephoneNo,6,16)||
+				!CheckNumber(newCustomer.CvrNo, 10000000,99999999)||
+                !StringLengthCheck(newCustomer.EMail,3,50)||
+				!StringLengthCheck(newCustomer.TelephoneNo,8,8)||
                 !OnlyNumbersCheck(newCustomer.TelephoneNo) ||
-				!StringLengthCheck(newCustomer.MobileNo,6,16)||
+				!StringLengthCheck(newCustomer.MobileNo,0,16)||
 				!OnlyNumbersCheck(newCustomer.MobileNo)||
-				!StringLengthCheck(newCustomer.Address,10,80)||
+				!StringLengthCheck(newCustomer.Address,6,80)||
 				!StringLengthCheck(newCustomer.PostalCode,4,10)||
 				!OnlyNumbersCheck(newCustomer.PostalCode)||
 				!StringLengthCheck(newCustomer.Country,2,40)||
