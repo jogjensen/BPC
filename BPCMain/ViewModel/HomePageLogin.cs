@@ -134,7 +134,7 @@ namespace BPCMain.ViewModel
 
         public async void CheckUserInfoCustomer()
         {
-            IList<Customer> customerList = await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
+            List<Customer> customerList = (List<Customer>) await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
             foreach (var customer in customerList)
             {
                 if (_shared.UserUser == customer.CvrNo)
@@ -148,7 +148,7 @@ namespace BPCMain.ViewModel
             }
         }
 
-        public async void CheckUserInfo()
+        public void CheckUserInfo()
         {
             CheckUserInfoCar();
             CheckUserInfoCustomer();

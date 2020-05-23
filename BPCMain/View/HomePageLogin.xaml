@@ -39,6 +39,7 @@
 			<StackPanel Style="{StaticResource HeaderPanelStyle1}">
 
                 <TextBlock Text="BookPilotCar" 
+                           Margin="0,20"
                            Style="{StaticResource Header1}"/>
 
             </StackPanel>
@@ -58,7 +59,7 @@
 
                         <TextBox.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Username:" Foreground="White"/>
+                                <TextBlock Text="CVR-nummer:" Foreground="White"/>
                             </DataTemplate>
                         </TextBox.HeaderTemplate>
                     </TextBox>
@@ -77,7 +78,7 @@
 
                         <PasswordBox.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Password:" Foreground="White"/>
+                                <TextBlock Text="Kodeord:" Foreground="White"/>
                             </DataTemplate>
                         </PasswordBox.HeaderTemplate>
                     </PasswordBox>
@@ -95,7 +96,7 @@
                             Margin="10"
                             Command="{Binding TryLogin}"/>
 
-                    <CheckBox Content="Remember me" 
+                    <CheckBox Content="Husk mig" 
                               Margin="10" 
                               VerticalAlignment="Bottom" 
                               FontSize="16" 

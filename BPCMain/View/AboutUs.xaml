@@ -52,14 +52,16 @@
                            Style="{StaticResource HeaderTextBlockStyle}"
                            FontWeight="Bold"/>
 
-                <TextBlock Text="About Us"
+                <TextBlock Text="Om os"
                            Width="750"
                            Height="50"
                            TextAlignment="Center"
                            HorizontalAlignment="Center"
                            Style="{StaticResource BodyTextBlockStyle}"
                            FontWeight="Bold"
-                           Foreground="White"/>
+                           Foreground="White"
+                           FontSize="25"
+                           />
 
             </StackPanel>
             <StackPanel Orientation="Vertical" 
@@ -69,8 +71,15 @@
                         Margin="0,-100">
 
                 <RichTextBlock Width="500" Height="400">
-                    <Paragraph FontSize="16" FontFamily="Arial Black" TextAlignment="Justify">
-                        skide skægt det her h3h3 skide skægt det her h3h3 skide skægt det her h3h3 skide skægt det her h3h3 skide skægt det her h3h3 skide skægt det her h3h3
+                    <Paragraph FontSize="16" FontFamily="Arial Black" TextAlignment="Justify" Foreground="White" >
+                        Nu kommer digitaliseringen for alvor til følgebilernes verden. 
+                        Hos BookPilotcar har vi fundet den gyldne vej mellem følgebilschauffører og disponenter. 
+                        Vi har skabt en platform hvor disse to parter kan forenes over samme mål; at gøre distributionen af følgebiler til særtransporter nem, overskuelig og ligetil. 
+                        Dette opnås helt uden at gå ned på kvaliteten, da det er de samme firmaer der kører transporten og de samme chauffører der guider dem gennem landets gader.
+                        Vi ønsker ikke at blande os i branchen som den står, kun at gøre kontakten mellem de involverede parter mere intuitiv og overskuelig.
+                        Det er endvidere vores håb at vi vil kunne komme den negative konkurrence, der florerer i branchen, til livs.
+
+
                     </Paragraph>
                 </RichTextBlock>
             </StackPanel>

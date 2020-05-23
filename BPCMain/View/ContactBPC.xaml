@@ -5,10 +5,127 @@
     xmlns:local="using:BPCMain.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:BPCMain.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <!--<Page.DataContext>
+        <viewModel:/>
+    </Page.DataContext>-->
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+        <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Om os" Command="{Binding AboutBpcCommand}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Tilbage" Command="{Binding BackCommand}"/>
+            </StackPanel>
+        </Grid>
+        <Grid Background="Black" 
+             Opacity="0.50" 
+             Width="600" 
+             Height="800" 
+             VerticalAlignment="Top" 
+             Margin="100"/>
+
+        <StackPanel Orientation="Vertical" 
+                    Width="1000">
+
+            <StackPanel Orientation="Vertical" 
+                        VerticalAlignment="Top" 
+                        Width="600" Height="150" 
+                        Margin="0,150" 
+                        HorizontalAlignment="Center">
+
+                <TextBlock Text="BookPilotCar" 
+                           Width="750" 
+                           Height="100" 
+                           TextAlignment="Center" 
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource HeaderTextBlockStyle}"
+                           FontWeight="Bold"/>
+
+                <TextBlock Text="Kontakt os"
+                           Width="750"
+                           Height="50"
+                           TextAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource BodyTextBlockStyle}"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           FontSize="25"
+                           />
+
+            </StackPanel>
+            <StackPanel Orientation="Vertical" 
+                        VerticalAlignment="Top" 
+                        Width="550" 
+                        Height="600"
+                        Margin="0,-150">
+
+                <StackPanel Style="{StaticResource PanelStyle3}">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" 
+                               Text="Navn*"/>
+                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource PanelStyle3}">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" 
+                               Text="Efternavn*"/>
+                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource PanelStyle3}">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" 
+                               Text="Telefonnummer*"/>
+                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource PanelStyle3}">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" 
+                               Text="Email*"/>
+                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource PanelStyle3}" Height="60">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Margin="100,0" Width="400"
+                               Text="Hvad drejer henvendelsen sig om?"/>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource PanelStyle3}">
+                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Comment}" Height="100" Width="500"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource PanelStyle3}">
+                    <TextBlock Style="{StaticResource TextBlockStyle2}"
+                               Text="Alle bokse med * skal udfyldes"/>
+
+                    <Button Content="Send"
+                            Margin="40,20,0,0"
+                            x:Name="Send"
+                            Style="{StaticResource MenuBarButtonStyle}"
+                            FontSize="22"
+                            Command="{Binding CreateCar}">
+                    </Button>
+                </StackPanel>
+
+                <TextBlock Style="{StaticResource TextBlockStyle2}" Margin="0,0,180,0">
+                 Andre kontakt informationer
+                <LineBreak/>
+                Zealand 1
+                <LineBreak/>
+                4200 Roskilde
+                <LineBreak/>
+                Tlf: 91131592
+                <LineBreak/>
+                Email: bpc@support.com
+                <LineBreak/>
+                CVR: 39393811
+                </TextBlock>
+
+
+            </StackPanel>
+        </StackPanel>
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
     </Grid>
 </Page>
