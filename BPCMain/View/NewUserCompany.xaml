@@ -81,7 +81,7 @@
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
                         <TextBlock Style="{StaticResource TextBlockStyle1}" 
-				           Text="Postnummer"/>
+				           Text="Postnummer*"/>
                         <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding PostalCode}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource PanelStyle3}">
