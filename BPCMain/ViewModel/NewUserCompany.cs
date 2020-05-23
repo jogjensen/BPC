@@ -140,12 +140,9 @@ namespace BPCMain.ViewModel
         }
         public async Task<bool> CreateNewCustomer(Customer newCustomer)
         {
-	        var Task = await restworker.CreateObjectAsync<Customer>(newCustomer, Datastructures.TableName.Customer);
-	        var result = Task;
-	        return result;
+	        bool created = await restworker.CreateObjectAsync<Customer>(newCustomer, Datastructures.TableName.Customer);
+	        return created;
         }
-
-
         #endregion
     }
 }
