@@ -21,16 +21,15 @@
 
 		<Image Grid.Row="0" Grid.RowSpan="3" Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill" />
 
-		<StackPanel Grid.Row="0" Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+		<!--<StackPanel Grid.Row="0" Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
 			<StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
 				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Om os" Command="{Binding AboutBpcCommand}"/>
 				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
 				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookinger" />
 				<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Min side" />
 			</StackPanel>
-
+		</StackPanel>-->
 			<!--Header-->
-		</StackPanel>
 		<StackPanel Grid.Row="1" Style="{StaticResource HeaderPanelStyle1}">
 			<TextBlock Text="Ny Bruger" Style="{StaticResource Header1}"/>
 		</StackPanel>
@@ -49,60 +48,60 @@
 			            Style="{StaticResource PanelStyle1}">
 				<StackPanel Style="{StaticResource PanelStyle2}">
 					<StackPanel Style="{StaticResource PanelStyle3}">
-						<TextBlock Style="{StaticResource TextBlockStyle1}"				           Text="Fornavn*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding FirstName}">
+						<TextBlock Style="{StaticResource TextBlockStyle1}" Text="Fornavn*"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding FirstName, Mode=TwoWay}">
 						</TextBox>
-						
+
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}"
 				           Text="Efternavn*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding LastName}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding LastName, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}"
 					        Text="CVR-nummer*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding CvrNo}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding CvrNo, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Gadenavn og nr.*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Address}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Address, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Postnummer*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding PostalCode}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding PostalCode, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
 						           Text="By*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding City}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding City, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Telefonnummer*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding TelephoneNo}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding TelephoneNo, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Mobilnummer"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding MobileNo, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Land*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Country}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Country, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
 						           Text="Email adresse*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EMail}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EMail, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Password*"/>
-						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Password}"/>
+						<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Password, Mode=TwoWay}"/>
 					</StackPanel>
 					<StackPanel Style="{StaticResource PanelStyle3}">
 						<TextBlock Style="{StaticResource TextBlockStyle2}"
