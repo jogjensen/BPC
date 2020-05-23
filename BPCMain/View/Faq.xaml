@@ -14,7 +14,7 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+        <Image Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
         <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
@@ -24,15 +24,11 @@
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}"/>
             </StackPanel>
         </Grid>
-        <Grid Background="Black" 
-             Opacity="0.50" 
-             Width="600" 
-             Height="700" 
-             VerticalAlignment="Top" 
-             Margin="100"/>
+        
+             
 
         <StackPanel Orientation="Vertical" 
-                    Width="1000">
+                    Width="1200">
 
             <StackPanel Orientation="Vertical" 
                         VerticalAlignment="Top" 
@@ -60,15 +56,46 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" 
                         VerticalAlignment="Top" 
-                        Width="550" 
+                        Width="1200" 
                         Height="500"
-                        Margin="0,-100">
+                        Margin="0,-150">
 
-                <RichTextBlock Width="500" Height="400">
-                    <Paragraph FontSize="16" FontFamily="Arial Black" TextAlignment="Justify">
-                        To Singleton or not to Singleton?
-                    </Paragraph>
-                </RichTextBlock>
+                <StackPanel Style="{StaticResource PanelStyle3}" Height="35" Width="1000">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width="450"
+                               Text="Kan jeg få slettet alt data og information?"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource PanelStyle3}" Margin="0,0,500,40" Width="450" Height="30">
+                    <TextBlock Text ="Ja, du bedes kontakte os gennem kontakt os formularen " 
+                               Height="100" 
+                               Width="450"
+                               
+                               Foreground="White"/>
+                </StackPanel>
+
+
+                <StackPanel Style="{StaticResource PanelStyle3}" Height="35" Margin="0,-30,0,0" Width="1000">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width="950"
+                               Text="Hvor kan jeg komme i kontakt med BookPilotcar i nødsituationer, eller med generelle spørgsmål?"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource PanelStyle3}" Margin="0,0,500,40" Width="450" Height="30">
+                    <TextBlock Text ="Ja, du bedes kontakte os gennem kontakt os formularen " 
+                               Height="100" 
+                               Width="450"
+                               
+                               Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource PanelStyle3}" Height="35" Margin="0,-30,0,0" Width="1000" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width="1200"
+                               Text="Kan jeg komme med input til eventuelle ændringer til hjemmesiden?"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource PanelStyle3}" Margin="0,0,500,40" Width="450" Height="30">
+                    <TextBlock Text ="Ja, du bedes kontakte os gennem kontakt os formularen " 
+                               Height="100" 
+                               Width="450"
+                               
+                               Foreground="White"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <Grid.ColumnDefinitions>
