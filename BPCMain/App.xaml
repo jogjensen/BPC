@@ -94,6 +94,7 @@
 
         <Style x:Key="TextBlockStyle4" TargetType="TextBlock">
             <Setter Property="Width" Value="200"/>
+			<Setter Property="Height" Value="25"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontFamily" Value="Arial Black"/>
             <Setter Property="Margin" Value="5"/>
@@ -127,8 +128,16 @@
 			<Setter Property="VerticalAlignment" Value="Center"/>
 			<!--<Setter Property="PlaceholderText" Value="Skal udfyldes"/>-->
 		</Style>
+        <Style x:Key="TextBoxStyle3" TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="200"/>
+			<Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+        </Style>
 
-		<!-- Button Styles -->
+
+        <!-- Button Styles -->
 		<Style x:Key="ButtonStyle" TargetType="Button">
 			<Setter Property="Width" Value="300"/>
 			<Setter Property="Foreground" Value="Black"/>

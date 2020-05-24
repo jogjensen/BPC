@@ -14,6 +14,7 @@ namespace BPCMain.ViewModel
     class CreateBookingCompany : BookingVM
     {
 		private RelayCommand _createBookingCompany;
+		
 
 
 		public CreateBookingCompany()
@@ -56,7 +57,7 @@ namespace BPCMain.ViewModel
 			return newBooking;
 		}
 
-		public async Task<bool> NewCarBooking(int orderNo)
+		private async Task<bool> NewCarBooking(int orderNo)
 		{
 			for (int i = 0; i < NumOfCarsNeeded; i++)
 			{
@@ -67,30 +68,22 @@ namespace BPCMain.ViewModel
 			return true;
 		}
 
-		public async Task<bool> CreateNewBooking(Booking newBooking)
+		private async Task<bool> CreateNewBooking(Booking newBooking)
 		{
 			bool created = await restworker.CreateObjectAsync<Booking>(newBooking, Datastructures.TableName.Booking);
 			return created;
 		}
 
-		public async Task<bool> CreateTruckdriver(Truckdriver truckdriver)
+		private async Task<bool> CreateTruckdriver(Truckdriver truckdriver)
 		{
 			bool created = await restworker.CreateObjectAsync<Truckdriver>(truckdriver, Datastructures.TableName.Truckdriver);
 			return created;
 		}
 
-		public async Task<bool> CreateNewCarBooking(CarBooking newCarBooking)
+		private async Task<bool> CreateNewCarBooking(CarBooking newCarBooking)
 		{
 			bool created = await restworker.CreateObjectAsync<CarBooking>(newCarBooking, Datastructures.TableName.CarBooking);
 			return created;
-		}
-
-		public async Task<bool> UpdateBooking(Booking updatedBooking)
-		{
-			var Task = await restworker.UpdateObjectAsync<Booking>(updatedBooking, updatedBooking.OrderNo,
-				Datastructures.TableName.Booking);
-			var result = Task;
-			return result;
 		}
 
 		#endregion
