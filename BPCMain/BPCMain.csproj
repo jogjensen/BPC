@@ -137,6 +137,9 @@
     <Compile Include="View\AboutUs.xaml.cs">
       <DependentUpon>AboutUs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DisplayAllCars.xaml.cs">
+      <DependentUpon>DisplayAllCars.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ContactBPC.xaml.cs">
       <DependentUpon>ContactBPC.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\AboutUs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DisplayAllCars.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
