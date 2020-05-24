@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.SmartCards;
+using Windows.Media.Protection.PlayReady;
 using Windows.UI.Composition;
 using BPCClassLibrary;
 
@@ -14,6 +15,7 @@ namespace BPCMain.Utilities
 {
 	public static class ConstraintMethods
 	{
+	
 		public static bool CreateCarCheck(Car car)
 		{
 			if (!OnlyNumbersCheck(car.TelephoneNo) ||
@@ -53,13 +55,17 @@ namespace BPCMain.Utilities
 
         public static bool CreateBookingCheck(Booking booking)
         {
-
-	        return true;
+	        if (
+		        !CheckNumber(booking.CompanyCvrNo, 10000000, 99999999) ||
+				!CheckNumber(booking.NumOfCarsNeeded, 1, 4)) return false;
+			return true;
         }
 
         public static bool CreatetruckdriverCheck(Truckdriver truckdriver)
         {
-
+	        if (
+		        !StringLengthCheck(truckdriver.EMail, 3, 50) ||
+		        !CheckNumber(truckdriver.TelephoneNo, 10000000, 99999999)) return false;
 	        return true;
         }
 

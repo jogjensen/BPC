@@ -162,6 +162,11 @@ namespace BPCMain.ViewModel
                     }
                 }
             }
+            //ukønt admin-hack.
+            if (_shared.UserUser == 2020 && _shared.UserPass.Equals("Admin"))
+            {
+                _navigation.Navigate(typeof(View.DisplayBookingAdmin));
+            }
         }
 
         // Method runs both aforementioned methods and is stored in a RelayCommand which is bound to the login button
