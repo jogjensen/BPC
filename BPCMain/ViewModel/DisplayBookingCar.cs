@@ -59,11 +59,11 @@ namespace BPCMain.ViewModel
 
 
 
-		//public async void CancelJob()
-		//{
-		//	SelectedBooking.Status = Datastructures.Status.Open;
-		//	await UpdateBooking(SelectedBooking);
-		//}
+		public async void CancelJob()
+		{
+			SelectedBooking.Status = Datastructures.Status.Open;
+			await UpdateBooking(SelectedBooking);
+		}
 
 		public async Task<bool> UpdateBooking(Booking updatedBooking)
 		{

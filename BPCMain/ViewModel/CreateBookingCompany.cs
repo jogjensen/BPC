@@ -28,14 +28,16 @@ namespace BPCMain.ViewModel
 		{
 			Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
 
-			Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
+			Truckdriver truckdriver = new Truckdriver(Shared.UserUser, TruckDriverTelNo, TruckdriverEMail);
 
-			if (CreateBookingCheck(newBooking))
+			if (true/*CreateBookingCheck(newBooking)*/)
 			{
 				await CreateNewBooking(newBooking);
 				await GetAllBookingAsync();
 				newBooking = GetNewBooking(_shared.UserUser);
 				await NewCarBooking(newBooking.OrderNo);
+				await CreateTruckdriver(truckdriver);
+				navigation.Navigate(typeof(View.DisplayBookingCompany));
 			}
 		}
 		//Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
