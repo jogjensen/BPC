@@ -15,21 +15,6 @@ namespace BPCMain.ViewModel
     {
 		private RelayCommand _createBookingCompany;
 
-		//if (ConstraintMethods.CreateBookingCheck(newBooking)) //metode i ConstraintMethods
-		//	{
-		//		//save newBooking in database
-		//		await CreateNewBooking(newBooking);
-		////save newCarBooking in database
-		////await CreateNewCarBooking()
-		////save new Truckdriver in database
-		//await CreateTruckdriver(truckdriver);
-		////evt. popup successful Booking
-		//navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
-		//	}
-		//	else
-		//	{
-		//		string ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
-		//	}
 
 		public CreateBookingCompany()
 		{
@@ -53,7 +38,7 @@ namespace BPCMain.ViewModel
 				await NewCarBooking(newBooking.OrderNo);
 			}
 		}
-
+		//Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
 		private Booking GetNewBooking(int cvrNo)
 		{
 			Booking newBooking = new Booking();
