@@ -5,12 +5,25 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BPCMain.Utilities;
 
 namespace BPCMain.ViewModel
 {
 	class DisplayBookingCar : BookingVM
 	{
+		private RelayCommand _acceptBookingCar;
+
 		private ObservableCollection<Car> _cars = new ObservableCollection<Car>();
+
+		public RelayCommand AcceptBookingCar
+		{
+			get { return _acceptBookingCar; }
+		}
+
+		public DisplayBookingCar()
+		{
+			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
+		}
 
 		#region DisplayBookingCar Methods
 
@@ -24,8 +37,12 @@ namespace BPCMain.ViewModel
 			{
 				if (cb.OrderNo.Equals(SelectedBooking.OrderNo) && cb.CarId == 0)
 				{
-					cb.CarId = CurrentCar.Id;
-					await UpdateCarBooking(cb);
+					//cb.CarId = CurrentCar.Id;
+					
+					updatedCarBooking.CarId = CurrentCar.Id;
+					updatedCarBooking.OrderNo = cb.OrderNo;
+					updatedCarBooking.CarBookingId = cb.CarBookingId;
+					await UpdateCarBooking(updatedCarBooking);
 					break;
 				}
 			}
@@ -34,23 +51,10 @@ namespace BPCMain.ViewModel
 			navigation.Navigate(typeof(View.DisplayBookingCar));
 		}
 
-		public async void DisplayMyBookings()
+		public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
 		{
-			await GetAllCarBookingsTask();
-			GetCurrentCar();
-			foreach (CarBooking cb in CarBookings)
-			{
-				if (cb.CarId != CurrentCar.Id)
-				{
-					foreach (Booking b in Bookings)
-					{
-						if (b.OrderNo == cb.OrderNo)
-						{
-							MyCarBookings.Add(b);
-						}
-					}
-				}
-			}
+			var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, upDatedCarBooking.CarBookingId, Datastructures.TableName.CarBooking);
+			return Task;
 		}
 
 		public async void CancelJob()
@@ -58,7 +62,6 @@ namespace BPCMain.ViewModel
 			SelectedBooking.Status = Datastructures.Status.Open;
 			await UpdateBooking(SelectedBooking);
 		}
-
 
 		public async Task<bool> UpdateBooking(Booking updatedBooking)
 		{
