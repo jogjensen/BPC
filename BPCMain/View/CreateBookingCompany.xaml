@@ -209,7 +209,7 @@
 						        x:Name="Createbooking1"
 						        Style="{StaticResource MenuBarButtonStyle}"
 						        FontSize="22"
-						        Command="{Binding CreateBookingCompany}">
+						        Command="{Binding CreateBookingCompanyRC}">
                     </Button>
                 </StackPanel>
             </StackPanel>
