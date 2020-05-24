@@ -87,7 +87,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Status" ></TextBlock>
-                    <ComboBox Width="150" FontSize="16" FontFamily="Arial Black" SelectedItem="{Binding SelectedBooking.Status}">
+                    <ComboBox Width="150" FontSize="16" FontFamily="Arial Black" SelectedItem="{Binding SelectedBooking.Status, Mode=TwoWay}">
                         <ComboBoxItem Content="PendingAccept"/>
                         <ComboBoxItem Content="Open"/>
                         <ComboBoxItem Content="PendingClosing"/>
