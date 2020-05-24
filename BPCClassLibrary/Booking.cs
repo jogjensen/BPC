@@ -64,7 +64,7 @@ namespace BPCClassLibrary
             _truckDriverId = truckDriverId;
             _contactPerson = contactPerson;
             _comment = comment;
-            if (comment == null) comment = "N/A";
+            if (comment == null) _comment = "N/A";
 
         }
         #endregion
