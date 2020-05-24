@@ -35,7 +35,7 @@
                         Margin="0,75" 
                         HorizontalAlignment="Center">
 
-            <TextBlock Text="Mine Bookinger" 
+            <TextBlock Text="Tilbudte opgaver" 
                            Width="750" Height="100" 
                            TextAlignment="Center" 
                            HorizontalAlignment="Center"

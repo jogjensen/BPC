@@ -141,7 +141,7 @@ namespace BPCMain.ViewModel
                     if (_shared.UserPass.Equals(car.Password))
                     {
                         _loginSuccess = true;
-                        _navigation.Navigate(typeof(View.CreateBookingCompany));
+                        _navigation.Navigate(typeof(View.DisplayBookingCar));
                     }
                 }
             }

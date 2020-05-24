@@ -34,7 +34,7 @@
                         Margin="0,75" 
                         HorizontalAlignment="Center">
 
-			<TextBlock Text="Mine Bookinger" 
+			<TextBlock Text="Mine Opgaver" 
                            Width="750" Height="100" 
                            TextAlignment="Center" 
                            HorizontalAlignment="Center"

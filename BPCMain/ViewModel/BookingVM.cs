@@ -343,10 +343,7 @@ namespace BPCMain.ViewModel
 			get { return _acceptBookingAdmin; }
 		}
 
-		public RelayCommand AcceptBookingCar
-		{
-			get { return _acceptBookingCar; }
-		}
+		
 
 		#endregion
 
@@ -452,11 +449,7 @@ namespace BPCMain.ViewModel
 		//	return Task;
 		//}
 
-			public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
-		{
-			var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, CurrentCar.Id, Datastructures.TableName.CarBooking);
-			return Task;
-		}
+		
 
 		protected async Task<bool> GetAllCarsTask()
 		{
