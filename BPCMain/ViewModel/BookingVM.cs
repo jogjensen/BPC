@@ -450,7 +450,7 @@ namespace BPCMain.ViewModel
 
 			public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
 		{
-			var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, Car.Id, Datastructures.TableName.CarBooking);
+			var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, CurrentCar.Id, Datastructures.TableName.CarBooking);
 			return Task;
 		}
 
