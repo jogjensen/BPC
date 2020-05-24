@@ -48,10 +48,11 @@ namespace BPCMain.ViewModel
 		//CarBooking
 		private int _carBookingId;
 		//RelayCommands
-		
 
 
 		private RelayCommand _createBookingCompany;
+		private RelayCommand _acceptBookingAdmin;
+		private RelayCommand _acceptBookingCar;
 		private RelayCommand _requestJobCar;
 		private RelayCommand _cancelJobCar;
 
@@ -286,7 +287,16 @@ namespace BPCMain.ViewModel
 		public RelayCommand CancelJobCar
 		{
 			get { return _cancelJobCar; }
-			set { _cancelJobCar = value; }
+		}
+
+		public RelayCommand AcceptBookingAdmin
+		{
+			get { return _acceptBookingAdmin; }
+		}
+
+		public RelayCommand AcceptBookingCar
+		{
+			get { return _acceptBookingCar; }
 		}
 
 		#endregion
@@ -301,6 +311,12 @@ namespace BPCMain.ViewModel
             _createBookingCompany = new RelayCommand(NewBooking, null);
 			_requestJobCar = new RelayCommand(RequestJob, null);
 			_cancelJobCar = new RelayCommand(CancelJob, null);
+
+			_createBookingCompany = new RelayCommand(CreateBooking, null);
+			//_acceptBookingCar = new RelayCommand(AcceptBookingCar, null);
+			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
+
+			AddBookingToList();
 		}
 
 		#endregion
@@ -318,8 +334,6 @@ namespace BPCMain.ViewModel
                     Bookings.Add(booking);
                 }
             }
-
-          
         }
 
         public async Task<IList<Booking>> GetAllBookings()
@@ -380,12 +394,6 @@ namespace BPCMain.ViewModel
 
 		#region DisplayBookingCompany RelayCommands
 
-		public async Task<bool> CreateNewBooking(Booking newBooking)
-		{
-			var Task = await restworker.CreateObjectAsync<Booking>(newBooking, Datastructures.TableName.Booking);
-			var result = Task;
-			return result;
-		}
 
 		#endregion
 		
@@ -428,6 +436,10 @@ namespace BPCMain.ViewModel
 
 		#region DisplayBookingAdmin Methods
 
+		public async void CreateBooking()
+		{
+
+		}
 
 		#endregion
 
@@ -436,5 +448,19 @@ namespace BPCMain.ViewModel
 
 
 		#endregion
+
+
+		public async void AcceptBooking()
+		{
+
+		}
+
+		public async Task<bool> CreateNewBooking(Booking newBooking)
+		{
+			var Task = await restworker.CreateObjectAsync<Booking>(newBooking, Datastructures.TableName.Booking);
+			var result = Task;
+			return result;
+		}
+
 	}
 }
