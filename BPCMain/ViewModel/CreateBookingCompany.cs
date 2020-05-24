@@ -28,7 +28,7 @@ namespace BPCMain.ViewModel
 		{
 			Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
 
-			Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
+			Truckdriver truckdriver = new Truckdriver(_shared.UserUser, TruckDriverTelNo, TruckdriverEMail);
 
 			if (CreateBookingCheck(newBooking))
 			{

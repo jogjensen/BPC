@@ -359,10 +359,9 @@ namespace BPCMain.ViewModel
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
 			_myCarBookings = new ObservableCollection<Booking>();
-			_createBookingCompany = new RelayCommand(NewBooking, null);
+			
 			_cancelJobCar = new RelayCommand(CancelJob, null);
 
-			_createBookingCompany = new RelayCommand(NewBooking, null);
 			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
@@ -402,18 +401,18 @@ namespace BPCMain.ViewModel
 
 		}
 
-		public async void NewBooking()
-		{
-			//Status = Datastructures.Status.Open;
+		//public async void NewBooking()
+		//{
+		//	//Status = Datastructures.Status.Open;
 
-			Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
+		//	Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
 
-			Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
-
-
+		//	Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
 
 
-		}
+
+
+		//}
 
 
 
