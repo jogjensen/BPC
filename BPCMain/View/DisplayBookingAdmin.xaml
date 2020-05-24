@@ -87,7 +87,12 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Status" ></TextBlock>
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.Status}"/>
+                    <ComboBox Width="150" FontSize="16" FontFamily="Arial Black" SelectedItem="{Binding SelectedBooking.Status}">
+                        <ComboBoxItem Content="PendingAccept"/>
+                        <ComboBoxItem Content="Open"/>
+                        <ComboBoxItem Content="PendingClosing"/>
+                        <ComboBoxItem Content="Closed"/>
+                    </ComboBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -193,8 +198,9 @@
             <!--<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding SelectedBooking.Contactperson}"/>
                         <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding SelectedBooking.TruckdriverEMail}"/>-->
         </StackPanel>
+        
 
- 
-       
+
+
     </Grid>
 </Page>
