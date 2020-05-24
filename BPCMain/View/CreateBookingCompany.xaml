@@ -179,7 +179,7 @@
                 <StackPanel Style="{StaticResource PanelStyle3}">
                     <TextBlock Style="{StaticResource TextBlockStyle1}" 
                                Text="Telefonnummer*"/>
-					<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding TruckDriverTelNo, Mode=TwoWay}"/>
+					<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding TruckdriverId, Mode=TwoWay}"/>
                 </StackPanel>
 
                 <StackPanel Style="{StaticResource PanelStyle3}">
