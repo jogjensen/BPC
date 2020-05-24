@@ -48,6 +48,10 @@ namespace BPCMain.ViewModel
 		protected string _contactperson;
 		//CarBooking
 		protected int _carBookingId;
+		protected int _carId;
+
+		//Car
+		protected Car _currentCar;
 		//RelayCommands
 
 
@@ -62,20 +66,26 @@ namespace BPCMain.ViewModel
 		protected string _truckdriverEMail;
 
 		protected string _errorMessage;
-		
-        protected Booking _selectedBooking;
-        protected Booking _selectedAdminBooking;
-        protected ObservableCollection<Booking> _bookings;
-        protected ObservableCollection<CarBooking> _carBookings;
+
+		protected Booking _selectedBooking;
+		protected Booking _selectedAdminBooking;
+		protected ObservableCollection<Booking> _bookings;
+		protected ObservableCollection<CarBooking> _carBookings;
 		protected ObservableCollection<Car> _cars;
 		protected NavigationService navigation = new NavigationService();
 		protected RestWorker restworker = new RestWorker();
 		protected SharedUser _shared;
 		#endregion
 
-		#region CarProperties
+		#region CollectionsProperties
 
-		
+		public ObservableCollection<Car> Cars
+		{
+			get { return _cars; }
+			set { _cars = value; }
+		}
+
+
 
 		#endregion
 
@@ -253,32 +263,53 @@ namespace BPCMain.ViewModel
 			set { _errorMessage = value; }
 		}
 
-        public Booking SelectedBooking
-        {
-            get { return _selectedBooking;}
-            set
-            {
-                _selectedBooking = value;
+		public Booking SelectedBooking
+		{
+			get { return _selectedBooking; }
+			set
+			{
+				_selectedBooking = value;
 				OnPropertyChanged();
-            }
+			}
+		}
 
-        }
+		public Car CurrentCar
+		{
+			get { return _currentCar; }
+			set { _currentCar = value; }
+		}
 
-        public ObservableCollection<Booking> Bookings
-        {
-            get { return _bookings; }
-            set { _bookings = value; OnPropertyChanged(); }
-        }
+		//public int CarId
+		//{
+		//	get { return CarId; }
+		//	set { CarId = value; }
+		//}
 
-        public ObservableCollection<CarBooking> CarBookings
-        {
-	        get { return _carBookings; }
-        }
+		public ObservableCollection<Booking> Bookings
+		{
+			get { return _bookings; }
+			set
+			{
+				_bookings = value;
+				OnPropertyChanged();
+			}
+		}
 
-        public SharedUser Shared
-        {
-            get { return _shared; }
-        }
+		public ObservableCollection<CarBooking> CarBookings
+		{
+			get { return _carBookings; }
+			set
+			{
+				_carBookings = value;
+				OnPropertyChanged();
+			}
+
+		}
+
+		public SharedUser Shared
+		{
+			get { return _shared; }
+		}
 
 		#endregion
 
@@ -319,7 +350,7 @@ namespace BPCMain.ViewModel
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
-            _createBookingCompany = new RelayCommand(NewBooking, null);
+			_createBookingCompany = new RelayCommand(NewBooking, null);
 			//_requestJobCar = new RelayCommand(RequestJob, null);
 			_cancelJobCar = new RelayCommand(CancelJob, null);
 
@@ -327,6 +358,7 @@ namespace BPCMain.ViewModel
 			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
+			GetCurrentCar();
 			//Booking bk = new Booking(Datastructures.Status.Closed, 3, 1, "22", 2, 2, 2, 2, DateTime.Now, "dwad", "4444", "dwad", "dwad", DateTime.Now, "dwad", "4444", "dwad", "dwad", 4, "dwad", "dwadwa");
 			//_bookings.Add(bk);
 		}
@@ -342,30 +374,41 @@ namespace BPCMain.ViewModel
 			return true;
 		}
 
-		
+		protected async void GetCurrentCar()
+		{
+			GetAllCarsTask();
+			foreach (Car c in Cars)
+			{
+				if (c.CvrNo.Equals(Shared.UserUser))
+				{
+					CurrentCar = c;
+				}
+			};
+		}
 
+		
 
 		protected async void GetBookingsAsync()
 		{
 			_ = await GetAllBookingAsync();
-			
+
 		}
 
 		public async void NewBooking()
 		{
 			//Status = Datastructures.Status.Open;
-			
+
 			Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
-			
+
 			Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
 
 
 
-			
+
 		}
 
 
-		
+
 		#endregion
 
 		#region DisplayBookingCompany RelayCommands
@@ -379,8 +422,8 @@ namespace BPCMain.ViewModel
 		{
 			SelectedBooking.Status = Datastructures.Status.PendingClosing;
 			//await UpdateCarBooking()
-			await UpdateBooking(SelectedBooking);
-			
+			await UpdateBookingTask(SelectedBooking);
+
 		}
 
 
@@ -388,10 +431,10 @@ namespace BPCMain.ViewModel
 		public async void CancelJob()
 		{
 			SelectedBooking.Status = Datastructures.Status.Open;
-			await UpdateBooking(SelectedBooking);
+			await UpdateBookingTask(SelectedBooking);
 		}
 
-		public async Task<bool> UpdateBooking(Booking updatedBooking)
+		public async Task<bool> UpdateBookingTask(Booking updatedBooking)
 		{
 			var Task = await restworker.UpdateObjectAsync<Booking>(updatedBooking, updatedBooking.OrderNo,
 				Datastructures.TableName.Booking);
@@ -405,17 +448,23 @@ namespace BPCMain.ViewModel
 		//	return Task;
 		//}
 
-		protected async Task<bool> GetAllCarsAsync()
+			public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
+		{
+			var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, Car.Id, Datastructures.TableName.CarBooking);
+			return Task;
+		}
+
+		protected async Task<bool> GetAllCarsTask()
 		{
 			List<Car> list = (List<Car>)await restworker.GetAllObjectsAsync<Car>(Datastructures.TableName.Car);
 			Cars = new ObservableCollection<Car>(list);
 			return true;
 		}
 
-		protected async Task<bool> getAllCarBookingsTask()
+		protected async Task<bool> GetAllCarBookingsTask()
 		{
-			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
-			Bookings = new ObservableCollection<Booking>(list);
+			List<CarBooking> list = (List<CarBooking>)await restworker.GetAllObjectsAsync<CarBooking>(Datastructures.TableName.Booking);
+			CarBookings = new ObservableCollection<CarBooking>(list);
 			return true;
 		}
 
@@ -423,7 +472,7 @@ namespace BPCMain.ViewModel
 
 		#region DisplayBookingCar RelayCommands
 
-		
+
 
 		#endregion
 

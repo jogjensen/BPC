@@ -16,20 +16,54 @@ namespace BPCMain.ViewModel
 
 		public async void AcceptBookCar()
 		{
+			await GetAllCarBookingsTask();
+			await GetAllCarsTask();
+			CarBooking updatedCarBooking = new CarBooking();
+			GetCurrentCar();
+			foreach (CarBooking cb in CarBookings)
+			{
+				if (cb.OrderNo.Equals(SelectedBooking.OrderNo) && cb.CarId == 0)
+				{
+					cb.CarId = CurrentCar.Id;
+					await UpdateCarBooking(cb);
+					break;
+				}
+			}
 			SelectedBooking.Status = Datastructures.Status.PendingClosing;
-			//await UpdateCarBooking()
 			await UpdateBooking(SelectedBooking);
+			navigation.Navigate(typeof(View.DisplayBookingCar));
 		}
 
-
-
-
-
-		public async void CancelJob()
+		public async void DisplayMyBookings()
 		{
-			SelectedBooking.Status = Datastructures.Status.Open;
-			await UpdateBooking(SelectedBooking);
+			await GetAllCarBookingsTask();
+			GetCurrentCar();
+			foreach (CarBooking cb in CarBookings)
+			{
+				if (cb.CarId != CurrentCar.Id)
+				{
+					CarBookings.Remove(cb);
+				}
+			}
+
+			foreach (Booking b in Bookings)
+			{
+				if (b.OrderNo != OrderNo)
+				{
+					Bookings.Remove(b);
+				}
+			}
 		}
+
+
+
+
+
+		//public async void CancelJob()
+		//{
+		//	SelectedBooking.Status = Datastructures.Status.Open;
+		//	await UpdateBooking(SelectedBooking);
+		//}
 
 		public async Task<bool> UpdateBooking(Booking updatedBooking)
 		{
@@ -37,26 +71,6 @@ namespace BPCMain.ViewModel
 				Datastructures.TableName.Booking);
 			var result = Task;
 			return result;
-		}
-
-		public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
-		{
-			var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, )  // Datastructures.TableName.Booking);
-			return Task;
-		}
-
-		protected async Task<bool> GetAllCarsAsync()
-		{
-			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
-			Bookings = new ObservableCollection<Booking>(list);
-			return true;
-		}
-
-		protected async Task<bool> getAllCarBookingsTask()
-		{
-			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
-			Bookings = new ObservableCollection<Booking>(list);
-			return true;
 		}
 
 		#endregion
