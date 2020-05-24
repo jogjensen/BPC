@@ -67,6 +67,7 @@ namespace BPCMain.ViewModel
         protected Booking _selectedAdminBooking;
         protected ObservableCollection<Booking> _bookings;
         protected ObservableCollection<CarBooking> _carBookings;
+		protected ObservableCollection<Car> _cars;
 		protected NavigationService navigation = new NavigationService();
 		protected RestWorker restworker = new RestWorker();
 		protected SharedUser _shared;
@@ -449,8 +450,8 @@ namespace BPCMain.ViewModel
 
 		protected async Task<bool> GetAllCarsAsync()
 		{
-			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
-			Bookings = new ObservableCollection<Booking>(list);
+			List<Car> list = (List<Car>)await restworker.GetAllObjectsAsync<Car>(Datastructures.TableName.Car);
+			Cars = new ObservableCollection<Car>(list);
 			return true;
 		}
 
