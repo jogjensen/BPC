@@ -17,57 +17,57 @@ namespace BPCMain.ViewModel
 
 		#region Instance field
 		//General information
-		private int _orderNo;
-		private Datastructures.Status _status;
-		private int _companyCvrNo;
-		private int _numOfCarsNeeded;
-		private string _comment;
+		protected int _orderNo;
+		protected Datastructures.Status _status;
+		protected int _companyCvrNo;
+		protected int _numOfCarsNeeded;
+		protected string _comment;
 		//Payload information
-		private string _typeOfGoods;
-		private double _totalWidth;
-		private double _totalLength;
-		private double _totalHeight;
-		private double _totalWeight;
+		protected string _typeOfGoods;
+		protected double _totalWidth;
+		protected double _totalLength;
+		protected double _totalHeight;
+		protected double _totalWeight;
 		//Departure information
-		private CalendarDatePicker _sDate;
-		private TimePicker _sTime;
-		private DateTime _startDate;
-		private string _startAddress;
-		private string _startCity;
-		private string _startPostalCode;
-		private string _startCountry;
+		protected CalendarDatePicker _sDate;
+		protected TimePicker _sTime;
+		protected DateTime _startDate;
+		protected string _startAddress;
+		protected string _startCity;
+		protected string _startPostalCode;
+		protected string _startCountry;
 		//Destination information
-		private DateTime _endDate;
-		private string _endAddress;
-		private string _endCity;
-		private string _endPostalCode;
-		private string _endCountry;
+		protected DateTime _endDate;
+		protected string _endAddress;
+		protected string _endCity;
+		protected string _endPostalCode;
+		protected string _endCountry;
 		//Truck
-		private int _truckdriverId;
-		private string _contactperson;
+		protected int _truckdriverId;
+		protected string _contactperson;
 		//CarBooking
-		private int _carBookingId;
+		protected int _carBookingId;
 		//RelayCommands
 
 
-		private RelayCommand _createBookingCompany;
-		private RelayCommand _acceptBookingAdmin;
-		private RelayCommand _acceptBookingCar;
-		private RelayCommand _requestJobCar;
-		private RelayCommand _cancelJobCar;
+		protected RelayCommand _createBookingCompany;
+		protected RelayCommand _acceptBookingAdmin;
+		protected RelayCommand _acceptBookingCar;
+		protected RelayCommand _requestJobCar;
+		protected RelayCommand _cancelJobCar;
 
 		//new Truckdriver
-		private int _truckDriverTelNo;
-		private string _truckdriverEMail;
+		protected int _truckDriverTelNo;
+		protected string _truckdriverEMail;
 
-		private string _errorMessage;
-
-        private Booking _selectedBooking;
-        private ObservableCollection<Booking> _bookings;
-        private ObservableCollection<CarBooking> _carBookings;
-		private NavigationService navigation = new NavigationService();
-		private RestWorker restworker = new RestWorker();
-        private SharedUser _shared;
+		protected string _errorMessage;
+		
+        protected Booking _selectedBooking;
+        protected ObservableCollection<Booking> _bookings;
+        protected ObservableCollection<CarBooking> _carBookings;
+		protected NavigationService navigation = new NavigationService();
+		protected RestWorker restworker = new RestWorker();
+		protected SharedUser _shared;
 		#endregion
 
 		#region Properties
@@ -305,6 +305,7 @@ namespace BPCMain.ViewModel
 
 		public BookingVM()
 		{
+
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
@@ -316,15 +317,26 @@ namespace BPCMain.ViewModel
 			//_acceptBookingCar = new RelayCommand(AcceptBookingCar, null);
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
+			//Booking bk = new Booking(Datastructures.Status.Closed, 3, 1, "22", 2, 2, 2, 2, DateTime.Now, "dwad", "4444", "dwad", "dwad", DateTime.Now, "dwad", "4444", "dwad", "dwad", 4, "dwad", "dwadwa");
+			//_bookings.Add(bk);
 		}
 
 		#endregion
 
 		#region DisplayBookingCompany Methods
 
-		private async void GetBookingsAsync()
+		protected async Task<bool> GetAllBookingAsync()
 		{
-			 _bookings = (ObservableCollection<Booking>) await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+			_bookings = new ObservableCollection<Booking>(list);
+			return true;
+		}
+
+
+		protected async void GetBookingsAsync()
+		{
+			_ = await GetAllBookingAsync();
+			
 		}
 
 		public async void NewBooking()
