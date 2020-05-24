@@ -396,7 +396,7 @@ namespace BPCMain.ViewModel
 
 
 		#endregion
-		
+
 		#region DisplayBookingCar Methods
 
 		public async void RequestJob()
