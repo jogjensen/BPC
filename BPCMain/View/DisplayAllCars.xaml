@@ -5,17 +5,86 @@
     xmlns:local="using:BPCMain.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:BPCMain.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+        <Page.DataContext>
+            <viewModel:NewUserCar/>
+        </Page.DataContext>
 
-        <!--<Page.DataContext>
-            <viewModel:/>
-        </Page.DataContext>-->
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Image Source="ms-appx:///Assets/freeway Opacity 50.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
 
+            <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding}"/>
+                    <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding}"/>
+                    <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookings" Command="{Binding}"/>
+                    <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny booking" Command="{Binding}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
+                    <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Tilbage" Command="{Binding BackCommand}"/>
+                </StackPanel>
+            </Grid>
 
+            <StackPanel Orientation="Vertical" 
+                        VerticalAlignment="Top" 
+                        Width="600" Height="100" 
+                        Margin="0,75" 
+                        HorizontalAlignment="Center">
 
+                <TextBlock Text="Alle følgebiler" 
+                           Width="750" Height="100" 
+                           TextAlignment="Center" 
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource HeaderTextBlockStyle}"
+                           FontWeight="Bold"/>
+            </StackPanel>
 
-    </Grid>
+            <StackPanel Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    Width="1400" 
+                    Height="700" >
+
+                <StackPanel Orientation="Horizontal"
+            Margin="10"
+            Width="1200"
+            Height="50">
+                    <TextBlock Text="Car ID" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                    <TextBlock Text="Navn" Style="{StaticResource TextBlockStyle1}"  Width="100"/>
+                    <TextBlock Text="Efternavn" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                    <TextBlock Text="Email" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                    <TextBlock Text="Telefon" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                    <TextBlock Text="Mobil" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                    <TextBlock Text="Adresse" Style="{StaticResource TextBlockStyle1}" Width="150"/>
+                    <TextBlock Text="PostNR" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                    <TextBlock Text="Land" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                    <TextBlock Text="By" Style="{StaticResource TextBlockStyle1}" Width="150"/>
+            </StackPanel>
+                <StackPanel Height="400">
+                    <!--MANGLER MANGLER MANGLER--> 
+                    <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking, Mode=TwoWay}" 
+                              ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                              Background="#696969" Width="1200">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding CarId}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding FirstName}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding LastName}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EMail}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TelephoneNo}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding MobileNo}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding Address}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding PostalCode}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Country}"/>
+                                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding City}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
 </Page>
