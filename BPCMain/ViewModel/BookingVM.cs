@@ -376,7 +376,7 @@ namespace BPCMain.ViewModel
 
 		protected async void GetCurrentCar()
 		{
-			GetAllCarsTask();
+			await GetAllCarsTask();
 			foreach (Car c in Cars)
 			{
 				if (c.CvrNo.Equals(Shared.UserUser))
