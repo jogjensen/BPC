@@ -63,6 +63,8 @@ namespace BPCMain.ViewModel
 			{
 				CarBooking newCarBooking = new CarBooking(orderNo);
 
+				newCarBooking.CarId = 0;
+
 				await CreateNewCarBooking(newCarBooking);
 			}
 			return true;

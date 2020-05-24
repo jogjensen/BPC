@@ -53,11 +53,10 @@ namespace BPCMain.ViewModel
 		//Car
 		protected Car _currentCar;
 		//RelayCommands
-
+		
 
 		//protected RelayCommand _createBookingCompany;
 		protected RelayCommand _acceptBookingAdmin;
-		protected RelayCommand _acceptBookingCar;
 		protected RelayCommand _requestJobCar;
 		protected RelayCommand _cancelJobCar;
 
@@ -328,6 +327,8 @@ namespace BPCMain.ViewModel
 		//	get { return _createBookingCompany; }
 		//}
 
+		
+
 		public RelayCommand RequestJobCar
 		{
 			get { return _requestJobCar; }
@@ -343,7 +344,7 @@ namespace BPCMain.ViewModel
 			get { return _acceptBookingAdmin; }
 		}
 
-		
+
 
 		#endregion
 
@@ -357,13 +358,12 @@ namespace BPCMain.ViewModel
 			_carBookings = new ObservableCollection<CarBooking>();
 
 			_myCarBookings = new ObservableCollection<Booking>();
+			
+			//_cancelJobCar = new RelayCommand(CancelJob, null);
 
-            _cancelJobCar = new RelayCommand(CancelJob, null);
-
-			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
-			GetCurrentCar();
+			//GetCurrentCarTask();
 			//Booking bk = new Booking(Datastructures.Status.Closed, 3, 1, "22", 2, 2, 2, 2, DateTime.Now, "dwad", "4444", "dwad", "dwad", DateTime.Now, "dwad", "4444", "dwad", "dwad", 4, "dwad", "dwadwa");
 			//_bookings.Add(bk);
 		}
@@ -379,17 +379,11 @@ namespace BPCMain.ViewModel
 			return true;
 		}
 
-		protected async void GetCurrentCar()
-		{
-			await GetAllCarsTask();
-			foreach (Car c in Cars)
-			{
-				if (c.CvrNo.Equals(Shared.UserUser))
-				{
-					CurrentCar = c;
-				}
-			};
-		}
+		//protected async Car GetCurrentCar()
+		//{
+		//	return await GetAllCarsTask();
+
+		//}
 
 		protected virtual async void GetBookingsAsync()
 		{
@@ -417,21 +411,21 @@ namespace BPCMain.ViewModel
 
 		#region DisplayBookingCar Methods
 
-		public async void AcceptBookCar()
-		{
-			SelectedBooking.Status = Datastructures.Status.PendingClosing;
-			//await UpdateCarBooking()
-			await UpdateBookingTask(SelectedBooking);
+		//public async void AcceptBookCar()
+		//{
+		//	SelectedBooking.Status = Datastructures.Status.PendingClosing;
+		//	//await UpdateCarBooking()
+		//	await UpdateBookingTask(SelectedBooking);
 
-		}
+		//}
 
 
 
-		public async void CancelJob()
-		{
-			SelectedBooking.Status = Datastructures.Status.Open;
-			await UpdateBookingTask(SelectedBooking);
-		}
+		//public async void CancelJob()
+		//{
+		//	SelectedBooking.Status = Datastructures.Status.Open;
+		//	await UpdateBookingTask(SelectedBooking);
+		//}
 
 		public async Task<bool> UpdateBookingTask(Booking updatedBooking)
 		{
@@ -447,7 +441,7 @@ namespace BPCMain.ViewModel
 		//	return Task;
 		//}
 
-		
+
 
 		protected async Task<bool> GetAllCarsTask()
 		{
@@ -455,11 +449,28 @@ namespace BPCMain.ViewModel
 			Cars = new ObservableCollection<Car>(list);
 			return true;
 		}
-
-		protected async Task<bool> GetAllCarBookingsTask()
+		protected async Task<bool> GetCurrentCarTask()
 		{
-			List<CarBooking> list = (List<CarBooking>)await restworker.GetAllObjectsAsync<CarBooking>(Datastructures.TableName.Booking);
-			CarBookings = new ObservableCollection<CarBooking>(list);
+			List<Car> list = (List<Car>)await restworker.GetAllObjectsAsync<Car>(Datastructures.TableName.Car);
+			Cars = new ObservableCollection<Car>(list);
+			foreach (Car c in list)
+			{
+				if (c.CvrNo.Equals(Shared.UserUser))
+				{
+					CurrentCar = c;
+				}
+			}
+			return true;
+		}
+
+		protected virtual async Task<bool> GetAllCarBookingsTask()
+		{
+			CarBookings.Clear();
+			List<CarBooking> list = (List<CarBooking>)await restworker.GetAllObjectsAsync<CarBooking>(Datastructures.TableName.CarBooking);
+			foreach (CarBooking cb in list)
+			{
+					CarBookings.Add(cb);
+			}
 			return true;
 		}
 
@@ -485,13 +496,6 @@ namespace BPCMain.ViewModel
 
 
 		#endregion
-
-
-		public async void AcceptBooking()
-		{
-
-		}
-
 
 	}
 }

@@ -1,9 +1,4 @@
 ﻿using BPCClassLibrary;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BPCMain.ViewModel
 {
@@ -18,7 +13,7 @@ namespace BPCMain.ViewModel
 		public async void DisplayMyBookings()
 		{
 			await GetAllCarBookingsTask();
-			GetCurrentCar();
+			await GetCurrentCarTask();
 			foreach (CarBooking cb in CarBookings)
 			{
 				if (cb.CarId != CurrentCar.Id)

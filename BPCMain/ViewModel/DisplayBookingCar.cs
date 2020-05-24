@@ -12,33 +12,55 @@ namespace BPCMain.ViewModel
 	class DisplayBookingCar : BookingVM
 	{
 		private RelayCommand _acceptBookingCar;
+		protected RelayCommand _getallBookingsStart;
 
-		private ObservableCollection<Car> _cars = new ObservableCollection<Car>();
+		private ObservableCollection<Car> cars1 = new ObservableCollection<Car>();
+		private ObservableCollection<Booking> availableBookings = new ObservableCollection<Booking>();
 
 		public RelayCommand AcceptBookingCar
 		{
 			get { return _acceptBookingCar; }
 		}
 
+		public RelayCommand GetallBookingsStart
+		{
+			get { return _getallBookingsStart; }
+		}
+
+		public ObservableCollection<Booking> AvailableBookings
+		{
+			get { return availableBookings; }
+			set { availableBookings = value; }
+		}
+
 		public DisplayBookingCar()
 		{
 			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
+			_getallBookingsStart = new RelayCommand(GetAllBookingsAsync, null);
+			GetAllBookingsAsync();
 		}
+
+
 
 		#region DisplayBookingCar Methods
 
 		public async void AcceptBookCar()
 		{
 			await GetAllCarBookingsTask();
-			await GetAllCarsTask();
+			await GetAllBookingAsync();
 			CarBooking updatedCarBooking = new CarBooking();
-			GetCurrentCar();
+			await GetCurrentCarTask();
+			//foreach (Booking b in Bookings)
+			//{
+			//	if (b.Status != 0)
+			//	{
+			//		Bookings.Remove(b);
+			//	}
+			//}
 			foreach (CarBooking cb in CarBookings)
 			{
-				if (cb.OrderNo.Equals(SelectedBooking.OrderNo) && cb.CarId == 0)
+				if (cb.OrderNo == SelectedBooking.OrderNo && cb.CarId == 0)
 				{
-					//cb.CarId = CurrentCar.Id;
-					
 					updatedCarBooking.CarId = CurrentCar.Id;
 					updatedCarBooking.OrderNo = cb.OrderNo;
 					updatedCarBooking.CarBookingId = cb.CarBookingId;
@@ -50,6 +72,34 @@ namespace BPCMain.ViewModel
 			await UpdateBooking(SelectedBooking);
 			navigation.Navigate(typeof(View.DisplayBookingCar));
 		}
+
+		protected async void GetAllBookingsAsync()
+		{
+			_ = await GetAllBookingsTask();
+
+		}
+
+		protected async Task<bool> GetAllBookingsTask()
+		{
+			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+			foreach (Booking b in list)
+			{
+				if (b.Status == 0) AvailableBookings.Add(b);
+			}
+			return true;
+		}
+
+		protected override async Task<bool> GetAllCarBookingsTask()
+		{
+			CarBookings.Clear();
+			IList<CarBooking> list = await restworker.GetAllObjectsAsync<CarBooking>(Datastructures.TableName.CarBooking);
+			foreach (CarBooking cb in list)
+			{
+				CarBookings.Add(cb);
+			}
+			return true;
+		}
+
 
 		public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
 		{
