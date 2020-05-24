@@ -84,7 +84,16 @@
 			<Setter Property="FontWeight" Value="Bold"/>
 		</Style>
 
-		<!-- TextBox Styles -->
+        <Style x:Key="TextBlockStyle4" TargetType="TextBlock">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <!-- TextBox Styles -->
 		<Style x:Key="TextBoxStyle1" TargetType="TextBox">
 			<Setter Property="FontSize" Value="16"/>
 			<Setter Property="Width" Value="200"/>

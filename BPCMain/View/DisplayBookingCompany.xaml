@@ -62,8 +62,8 @@
                 <TextBlock Text="Godsart" Style="{StaticResource TextBlockStyle1}" Width="100"/>
                 <TextBlock Text="Status" Style="{StaticResource TextBlockStyle1}" Width="150"/>
             </StackPanel>
-            
-	        <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking}" 
+            <StackPanel Height="300">
+                <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking, Mode=TwoWay}" 
 	                  ScrollViewer.VerticalScrollBarVisibility="Visible" 
 	                  Background="#696969" Margin="0,0,0,0" SelectionChanged="ListView_SelectionChanged" Width="1100">
 		        <ListView.ItemTemplate>
@@ -80,16 +80,51 @@
                     </DataTemplate>
 		        </ListView.ItemTemplate>
 	        </ListView>
+            </StackPanel>
 
-            <ScrollViewer >
-                <StackPanel Orientation="Horizontal" Width="1100" VerticalAlignment="Bottom">
-                    <StackPanel Orientation="Horizontal" Width="1100" Height="100">
+                <StackPanel Orientation="Horizontal" Width="1100" VerticalAlignment="Bottom" Height="290">
+                <StackPanel Orientation="Vertical">
+                
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="OrderNo" ></TextBlock>
                         <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.OrderNo}"/>
-                        <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.Status}"/>
-                        <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.CompanyCvrNo}"/>
-                        <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.NumOfCarsNeeded}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Status" ></TextBlock>
+                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.Status}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="CVR" ></TextBlock>
+                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.CompanyCvrNo}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Antal biler" ></TextBlock>
+                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.NumOfCarsNeeded}"/>
+                        </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Kommentar" />
+                            <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.Comment}"/>
+                        </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Kommentar2" />
                         <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.Comment}"/>
-                        <!--<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding SelectedBooking.Contactperson}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Kommentar3" />
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.Comment}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Kommentar" />
+                        <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.Comment}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!--<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding SelectedBooking.Contactperson}"/>
                         <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding SelectedBooking.TruckdriverEMail}"/>-->
                     </StackPanel>
 
@@ -111,8 +146,7 @@
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding SelectedBooking.EndPostalCode}"/>
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding SelectedBooking.EndCountry}"/>
 
-                </StackPanel>
-            </ScrollViewer>
+                
 
         </StackPanel>
     </Grid>
