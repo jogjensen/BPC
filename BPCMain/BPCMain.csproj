@@ -159,6 +159,9 @@
     <Compile Include="View\DisplayBookingCompany.xaml.cs">
       <DependentUpon>DisplayBookingCompany.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DisplayMyBookingCar.xaml.cs">
+      <DependentUpon>DisplayMyBookingCar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Faq.xaml.cs">
       <DependentUpon>Faq.xaml</DependentUpon>
     </Compile>
@@ -223,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DisplayBookingCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DisplayMyBookingCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

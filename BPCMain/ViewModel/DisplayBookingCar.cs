@@ -42,19 +42,18 @@ namespace BPCMain.ViewModel
 			{
 				if (cb.CarId != CurrentCar.Id)
 				{
-					CarBookings.Remove(cb);
-				}
-			}
-
-			foreach (Booking b in Bookings)
-			{
-				if (b.OrderNo != OrderNo)
-				{
-					Bookings.Remove(b);
+					foreach (Booking b in Bookings)
+					{
+						if (b.OrderNo == cb.OrderNo)
+						{
+							MyCarBookings.Add(b);
+						}
+					}
 				}
 			}
 		}
 
+<<<<<<< HEAD
 
 
 
@@ -64,6 +63,13 @@ namespace BPCMain.ViewModel
 			SelectedBooking.Status = Datastructures.Status.Open;
 			await UpdateBooking(SelectedBooking);
 		}
+=======
+		//public async void CancelJob()
+		//{
+		//	SelectedBooking.Status = Datastructures.Status.Open;
+		//	await UpdateBooking(SelectedBooking);
+		//}
+>>>>>>> 6b6a0c9604e2b7553a15df5ebed1c12140200f3e
 
 		public async Task<bool> UpdateBooking(Booking updatedBooking)
 		{
