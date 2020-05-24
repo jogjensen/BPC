@@ -130,6 +130,7 @@
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="ViewModel\AboutFaqContact.cs" />
     <Compile Include="ViewModel\BaseVM.cs" />
+    <Compile Include="ViewModel\BookingAdminVM.cs" />
     <Compile Include="ViewModel\BookingVM.cs" />
     <Compile Include="ViewModel\HomePageLogin.cs" />
     <Compile Include="ViewModel\NewUserCar.cs" />

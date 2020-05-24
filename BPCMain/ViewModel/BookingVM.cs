@@ -315,34 +315,17 @@ namespace BPCMain.ViewModel
 			_createBookingCompany = new RelayCommand(CreateBooking, null);
 			//_acceptBookingCar = new RelayCommand(AcceptBookingCar, null);
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
-
-			AddBookingToList();
+			GetBookingsAsync();
 		}
 
 		#endregion
 
 		#region DisplayBookingCompany Methods
 
-        public async void AddBookingToList()
-        {
-			IList<Booking> bookingList = new List<Booking>();
-            bookingList = await GetAllBookings();
-            foreach (Booking booking in bookingList)
-            {
-                if (SharedUser.Instance.UserUser == booking.CompanyCvrNo)
-                {
-                    Bookings.Add(booking);
-                }
-            }
-        }
-
-        public async Task<IList<Booking>> GetAllBookings()
-        {
-            var Task = await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
-            var result = Task;
-
-            return result;
-        }
+		private async void GetBookingsAsync()
+		{
+			 _bookings = (ObservableCollection<Booking>) await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+		}
 
 		public async void NewBooking()
 		{
