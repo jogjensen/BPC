@@ -358,13 +358,10 @@ namespace BPCMain.ViewModel
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
-<<<<<<< HEAD
-			//_createBookingCompany = new RelayCommand(NewBooking, null);
-			//_requestJobCar = new RelayCommand(RequestJob, null);
-=======
+
 			_myCarBookings = new ObservableCollection<Booking>();
 			_createBookingCompany = new RelayCommand(NewBooking, null);
->>>>>>> 6b6a0c9604e2b7553a15df5ebed1c12140200f3e
+
 			_cancelJobCar = new RelayCommand(CancelJob, null);
 
 			//_createBookingCompany = new RelayCommand(NewBooking, null);
