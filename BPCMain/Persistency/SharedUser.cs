@@ -120,12 +120,12 @@ namespace BPCMain.Persistency
 
         public void NavigateToBookingCar()
         {
-            _navigation.Navigate(typeof(DisplayBookingCar));
+            _navigation.Navigate(typeof(View.DisplayBookingCar));
         }
 
         public void NavigateToBookingCompany()
         {
-            _navigation.Navigate(typeof(DisplayBookingCompany));
+            _navigation.Navigate(typeof(View.DisplayBookingCompany));
         }
         #endregion
 
