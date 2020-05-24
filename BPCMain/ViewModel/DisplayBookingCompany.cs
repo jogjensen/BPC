@@ -44,22 +44,20 @@ namespace BPCMain.ViewModel
 
 		public async Task<bool> CreateNewBooking(Booking newBooking)
 		{
-			var Task = await restworker.CreateObjectAsync<Booking>(newBooking, Datastructures.TableName.Booking);
-			var result = Task;
-			return result;
+			bool created = await restworker.CreateObjectAsync<Booking>(newBooking, Datastructures.TableName.Booking);
+			return created;
 		}
 
-		public async Task<bool> CreateTruckdriver<T>(T truckdriver)
+		public async Task<bool> CreateTruckdriver(Truckdriver truckdriver)
 		{
-			var Task = await restworker.CreateObjectAsync<T>(truckdriver, Datastructures.TableName.Truckdriver);
-			var result = Task;
-			return result;
+			bool created = await restworker.CreateObjectAsync<Truckdriver>(truckdriver, Datastructures.TableName.Truckdriver);
+			return created;
 		}
 
 		public async Task<bool> CreateNewCarBooking(CarBooking newCarBooking)
 		{
-			var Task = await restworker.CreateObjectAsync<CarBooking>(newCarBooking, Datastructures.TableName.CarBooking);
-			return Task;
+			bool created = await restworker.CreateObjectAsync<CarBooking>(newCarBooking, Datastructures.TableName.CarBooking);
+			return created;
 		}
 
 	}
