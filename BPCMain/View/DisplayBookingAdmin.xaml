@@ -22,8 +22,6 @@
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding}"/>
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookings" Command="{Binding}"/>
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Tilbage" Command="{Binding BackCommand}"/>
@@ -59,8 +57,14 @@
                 <TextBlock Text="Status" Style="{StaticResource TextBlockStyle1}" Width="100"/>
                 <TextBlock Text="Antal biler" Style="{StaticResource TextBlockStyle1}" Width="100"/>
             </StackPanel>
-            <ScrollViewer>
-                <StackPanel Orientation="Horizontal">
+
+            <StackPanel Height="400">
+                <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking, Mode=TwoWay}"
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          Background="#696969"  Width="1200">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding OrderNo}"/>
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding StartCity, Mode=TwoWay}"/>
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding StartDate, Mode=TwoWay}"/>
@@ -70,12 +74,13 @@
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status, Mode=TwoWay}"/>
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="3"/>
                 </StackPanel>
-            </ScrollViewer>
-
-
+                            </DataTemplate>
+                </ListView.ItemTemplate>
+                    </ListView>
+            </StackPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Width="1400" VerticalAlignment="Bottom" Height="290" Margin="0,10">
+        <StackPanel Orientation="Horizontal" Width="1400" VerticalAlignment="Bottom" Height="290" Margin="0,50">
             <StackPanel Orientation="Vertical" Width="350">
                 <StackPanel >
                     <TextBlock Style="{StaticResource Header2}" Text="Ordre informationer"/>
@@ -192,8 +197,7 @@
                     <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.EndCountry, Mode=TwoWay}"/>
                 </StackPanel>
 
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Opdater booking" Height="30" Foreground="Black" Background="Yellow" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" Margin="0,-50,10,0" HorizontalAlignment="Right" Content="Godkend booking" Height="30" Width="160" Background="Green" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Opdater booking" Height="30" Foreground="Black" Background="Yellow" Command="{Binding UpdateBookingRC}"/>
 
             </StackPanel>
 
