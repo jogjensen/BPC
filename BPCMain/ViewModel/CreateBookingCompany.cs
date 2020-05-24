@@ -36,6 +36,7 @@ namespace BPCMain.ViewModel
 				await GetAllBookingAsync();
 				newBooking = GetNewBooking(_shared.UserUser);
 				await NewCarBooking(newBooking.OrderNo);
+				navigation.Navigate(typeof(View.DisplayBookingCompany));
 			}
 		}
 		//Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
