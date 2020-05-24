@@ -48,6 +48,9 @@ namespace BPCMain.ViewModel
 		//CarBooking
 		private int _carBookingId;
 		//RelayCommands
+		
+
+
 		private RelayCommand _createBookingCompany;
 		private RelayCommand _requestJobCar;
 		private RelayCommand _cancelJobCar;
@@ -390,7 +393,7 @@ namespace BPCMain.ViewModel
 
 		public async void RequestJob()
 		{
-			SelectedBooking.Status = Datastructures.Status.Pending;
+			SelectedBooking.Status = Datastructures.Status.PendingAccept;
 			await UpdateBooking(SelectedBooking);
 		}
 
