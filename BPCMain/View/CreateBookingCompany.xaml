@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <viewModel:BookingVM/>
+        <viewModel:CreateBookingCompany/>
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -121,7 +121,7 @@
                 <StackPanel Style="{StaticResource PanelStyle3}">
                     <TextBlock Style="{StaticResource TextBlockStyle1}" 
 						           Text="By*"/>
-                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EndCity}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EndCity, Mode=TwoWay}"/>
                 </StackPanel>
 
                 <StackPanel Style="{StaticResource PanelStyle3}">
@@ -209,7 +209,7 @@
 						        x:Name="Createbooking1"
 						        Style="{StaticResource MenuBarButtonStyle}"
 						        FontSize="22"
-						        Command="{Binding CreateBookingCompany}">
+						        Command="{Binding CreateBookingCompanyRC}">
                     </Button>
                 </StackPanel>
             </StackPanel>
