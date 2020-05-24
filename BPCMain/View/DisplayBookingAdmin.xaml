@@ -105,8 +105,7 @@
                     <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.Comment, Mode=TwoWay}"/>
                 </StackPanel>
 
-
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Opdater booking" Height="30" Foreground="Black" Background="Yellow" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="SLET BOOKING" Height="30" Background="Red" Command="{Binding}"/>
 
             </StackPanel>
 
@@ -188,7 +187,7 @@
                     <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.EndCountry, Mode=TwoWay}"/>
                 </StackPanel>
 
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="SLET BOOKING" Height="30" Background="Red" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Opdater booking" Height="30" Foreground="Black" Background="Yellow" Command="{Binding}"/>
                 <Button Style="{StaticResource MenuBarButtonStyle}" Margin="0,-50,0,0" HorizontalAlignment="Right" Content="Godkend booking" Height="30" Background="Green" Command="{Binding}"/>
 
             </StackPanel>
