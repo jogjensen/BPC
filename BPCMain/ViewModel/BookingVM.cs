@@ -257,7 +257,7 @@ namespace BPCMain.ViewModel
         public ObservableCollection<Booking> Bookings
         {
             get { return _bookings; }
-            set { _bookings = value; }
+            set { _bookings = value; OnPropertyChanged(); }
         }
 
         public ObservableCollection<CarBooking> CarBookings
