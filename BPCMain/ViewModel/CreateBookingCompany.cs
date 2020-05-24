@@ -32,11 +32,11 @@ namespace BPCMain.ViewModel
 
 			if (true/*CreateBookingCheck(newBooking)*/)
 			{
+				await CreateTruckdriver(truckdriver);
 				await CreateNewBooking(newBooking);
 				await GetAllBookingAsync();
 				newBooking = GetNewBooking(_shared.UserUser);
 				await NewCarBooking(newBooking.OrderNo);
-				await CreateTruckdriver(truckdriver);
 				navigation.Navigate(typeof(View.DisplayBookingCompany));
 			}
 		}
