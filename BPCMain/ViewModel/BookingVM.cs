@@ -55,7 +55,7 @@ namespace BPCMain.ViewModel
 		//RelayCommands
 
 
-		protected RelayCommand _createBookingCompany;
+		//protected RelayCommand _createBookingCompany;
 		protected RelayCommand _acceptBookingAdmin;
 		protected RelayCommand _acceptBookingCar;
 		protected RelayCommand _requestJobCar;
@@ -323,10 +323,10 @@ namespace BPCMain.ViewModel
 
 		#region Properties RelayCommands 
 
-		public RelayCommand CreateBookingCompany
-		{
-			get { return _createBookingCompany; }
-		}
+		//public RelayCommand CreateBookingCompany
+		//{
+		//	get { return _createBookingCompany; }
+		//}
 
 		public RelayCommand RequestJobCar
 		{
@@ -358,10 +358,13 @@ namespace BPCMain.ViewModel
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
+
 			_myCarBookings = new ObservableCollection<Booking>();
-			
+			_createBookingCompany = new RelayCommand(NewBooking, null);
+
 			_cancelJobCar = new RelayCommand(CancelJob, null);
 
+			//_createBookingCompany = new RelayCommand(NewBooking, null);
 			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
@@ -408,10 +411,6 @@ namespace BPCMain.ViewModel
 		//	Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
 
 		//	Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
-
-
-
-
 		//}
 
 
