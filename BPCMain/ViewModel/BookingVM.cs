@@ -328,7 +328,7 @@ namespace BPCMain.ViewModel
 		protected async Task<bool> GetAllBookingAsync()
 		{
 			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
-			_bookings = new ObservableCollection<Booking>(list);
+			Bookings = new ObservableCollection<Booking>(list);
 			return true;
 		}
 
