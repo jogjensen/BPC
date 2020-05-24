@@ -10,6 +10,7 @@ using Windows.UI.Xaml.Controls;
 using BPCClassLibrary;
 using BPCMain.Persistency;
 using BPCMain.Utilities;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BPCMain.ViewModel
 {
@@ -77,6 +78,9 @@ namespace BPCMain.ViewModel
 		protected RestWorker restworker = new RestWorker();
 		protected SharedUser _shared;
 		#endregion
+
+		protected string[] _statusArray;
+		protected string _statusString;
 
 		#region CollectionsProperties
 
@@ -320,6 +324,18 @@ namespace BPCMain.ViewModel
 
 		#endregion
 
+		public string StatusString
+		{
+			get => _statusString;
+			set => _statusString = value;
+		}
+
+		public string[] StatusArray
+		{
+			get => _statusArray;
+		}
+
+
 		#region Properties RelayCommands 
 
 		//public RelayCommand CreateBookingCompany
@@ -352,7 +368,8 @@ namespace BPCMain.ViewModel
 
 		public BookingVM()
 		{
-
+			_statusString = "PendingAccept";
+			_statusArray = new string[]{ "PendingAccept","Open","PendingClosed","Closed"};
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();

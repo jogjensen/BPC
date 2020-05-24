@@ -64,6 +64,7 @@ namespace BPCMain.ViewModel
 
 		protected async Task<bool> UpdateBookingCompanyTask(Booking updatedBooking)
 		{
+			updatedBooking.Status = (Datastructures.Status)Enum.Parse(typeof(Datastructures.Status), StatusString, true);
 			bool updated = await restworker.UpdateObjectAsync<Booking>(updatedBooking, updatedBooking.OrderNo, Datastructures.TableName.Booking);
 			return updated;
 		}

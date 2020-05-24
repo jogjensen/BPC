@@ -80,7 +80,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Width="1400" VerticalAlignment="Bottom" Height="290" Margin="0,50">
+        <StackPanel Orientation="Horizontal" Width="1400" VerticalAlignment="Bottom" Height="310" Margin="0,50">
             <StackPanel Orientation="Vertical" Width="350">
                 <StackPanel >
                     <TextBlock Style="{StaticResource Header2}" Text="Ordre informationer"/>
