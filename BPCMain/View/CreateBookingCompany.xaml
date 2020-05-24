@@ -53,7 +53,7 @@
             <StackPanel Margin="100,50">
                 <StackPanel Style="{StaticResource PanelStyle3}">
                     <TextBlock Style="{StaticResource TextBlockStyle1}"	Text="Kontaktperson*"/>
-                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Contactperson}">
+                    <TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding Contactperson, Mode=TwoWay}">
                     </TextBox>
                     <!--<CalendarDatePicker Date="{Binding SDate}" DateFormat="{}{month.integer} {day.integer}, {year.integer}" />-->
                     <TimePicker SelectedTime="{Binding STime}"/>
@@ -127,7 +127,7 @@
                 <StackPanel Style="{StaticResource PanelStyle3}">
                     <TextBlock Style="{StaticResource TextBlockStyle1}" 
 				           Text="Land*"/>
-					<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EndCity, Mode=TwoWay}"/>
+					<TextBox Style="{StaticResource TextBoxStyle2}" Text ="{Binding EndCountry, Mode=TwoWay}"/>
                 </StackPanel>
             </StackPanel>
 
