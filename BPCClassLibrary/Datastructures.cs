@@ -11,7 +11,7 @@ namespace BPCClassLibrary
         {
             PendingAccept = 0,
             Open = 1,
-            PendingCars = 2,
+            PendingClosing = 2,
             Closed = 3
         };
 
