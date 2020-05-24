@@ -375,7 +375,7 @@ namespace BPCMain.ViewModel
 
 		#region DisplayBookingCompany Methods
 
-		protected async Task<bool> GetAllBookingAsync()
+		protected virtual async Task<bool> GetAllBookingAsync()
 		{
 			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
 			Bookings = new ObservableCollection<Booking>(list);
@@ -394,9 +394,7 @@ namespace BPCMain.ViewModel
 			};
 		}
 
-		
-
-		protected async void GetBookingsAsync()
+		protected virtual async void GetBookingsAsync()
 		{
 			_ = await GetAllBookingAsync();
 

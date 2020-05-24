@@ -2,6 +2,7 @@
 using BPCMain.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BPCMain.ViewModel
 {
-    class BookingAdminVM : BookingVM
+    class BookingAdminVM : DisplayBookingCompany
     {
         private RelayCommand _deleteBooking;
 
@@ -18,23 +19,24 @@ namespace BPCMain.ViewModel
             _deleteBooking = new RelayCommand(DeleteBookingAsync, null);
         }
 
-        private async void DeleteBookingAsync()
+        protected override async Task<bool> GetAllBookingAsync()
         {
-            await DeleteBookingTask();
+            List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+            Bookings = new ObservableCollection<Booking>(list);
+            return true;
         }
 
-        private async Task<bool> DeleteBookingTask()
-        {
-            bool deleted = await restworker.DeleteObjectAsync<Booking>(SelectedBooking.OrderNo, Datastructures.TableName.Booking);
-            Bookings.Remove(SelectedBooking);
-            return deleted;
-        }
+        //private async void DeleteBookingAsync()
+        //{
+        //    await DeleteBookingTask();
+        //}
 
+        //private async Task<bool> DeleteBookingTask()
+        //{
+        //    bool deleted = await restworker.DeleteObjectAsync<Booking>(SelectedBooking.OrderNo, Datastructures.TableName.Booking);
+        //    Bookings.Remove(SelectedBooking);
+        //    return deleted;
+        //}
 
-
-        public RelayCommand DeleteBookingRC
-        {
-            get { return _deleteBooking; }
-        }
     }
 }
