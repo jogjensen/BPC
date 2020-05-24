@@ -30,8 +30,8 @@ namespace BPCMain.ViewModel
 		protected double _totalHeight;
 		protected double _totalWeight;
 		//Departure information
-		protected CalendarDatePicker _sDate;
-		protected TimePicker _sTime;
+		//protected CalendarDatePicker _sDate;
+		//protected TimePicker _sTime;
 		protected DateTime _startDate;
 		protected string _startAddress;
 		protected string _startCity;
@@ -163,17 +163,17 @@ namespace BPCMain.ViewModel
 			}
 		}
 
-		public CalendarDatePicker SDate
-		{
-			get { return _sDate; }
-			set { _sDate = value; }
-		}
+		//public CalendarDatePicker SDate
+		//{
+		//	get { return _sDate; }
+		//	set { _sDate = value; }
+		//}
 
-		public TimePicker STime
-		{
-			get { return _sTime; }
-			set { _sTime = value; }
-		}
+		//public TimePicker STime
+		//{
+		//	get { return _sTime; }
+		//	set { _sTime = value; }
+		//}
 
 		public string StartAddress
 		{
