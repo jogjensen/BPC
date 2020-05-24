@@ -9,8 +9,9 @@ namespace BPCClassLibrary
         //Used for booking status
         public enum Status
         {
+            PendingAccept = 0,
             Open = 1,
-            Pending = 2,
+            PendingClosing = 2,
             Closed = 3
         };
 
