@@ -313,7 +313,7 @@ namespace BPCMain.ViewModel
 			_requestJobCar = new RelayCommand(RequestJob, null);
 			_cancelJobCar = new RelayCommand(CancelJob, null);
 
-			_createBookingCompany = new RelayCommand(CreateBooking, null);
+			_createBookingCompany = new RelayCommand(NewBooking, null);
 			//_acceptBookingCar = new RelayCommand(AcceptBookingCar, null);
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
@@ -341,15 +341,15 @@ namespace BPCMain.ViewModel
 
 		public async void NewBooking()
 		{
-			Status = Datastructures.Status.Open;
+			//Status = Datastructures.Status.Open;
 			
-			Booking newBooking = new Booking(Status, CompanyCvrNo, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCity, StartCountry, EndDate, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
+			Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
 			
 			Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
 
 			if (ConstraintMethods.CreateBookingCheck(newBooking)) //metode i ConstraintMethods
 			{
-				//save new Car in database
+				//save new Booking in database
 				await CreateNewBooking(newBooking);
 				//save new Truckdriver in database
 				await CreateTruckdriver(truckdriver);
