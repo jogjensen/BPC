@@ -75,7 +75,7 @@
 
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Width="1400" VerticalAlignment="Bottom" Height="290">
+        <StackPanel Orientation="Horizontal" Width="1400" VerticalAlignment="Bottom" Height="290" Margin="0,10">
             <StackPanel Orientation="Vertical" Width="350">
                 <StackPanel >
                     <TextBlock Style="{StaticResource Header2}" Text="Ordre informationer"/>
@@ -92,18 +92,21 @@
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="CVR" ></TextBlock>
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.CompanyCvrNo}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.CompanyCvrNo, Mode=TwoWay}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Antal biler" ></TextBlock>
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.NumOfCarsNeeded}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.NumOfCarsNeeded, Mode=TwoWay}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Kommentar" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.Comment}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.Comment, Mode=TwoWay}"/>
                 </StackPanel>
+
+
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Opdater booking" Height="30" Foreground="Black" Background="Yellow" Command="{Binding}"/>
 
             </StackPanel>
 
@@ -113,23 +116,23 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Dato" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.StartDate}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.StartDate, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Adresse" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.StartAddress}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.StartAddress, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="By" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.StartCity}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.StartCity, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Postnummer" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.StartPostalCode}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.StartPostalCode, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Land" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.StartCountry}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.StartCountry, Mode=TwoWay}"/>
                 </StackPanel>
 
             </StackPanel>
@@ -140,23 +143,23 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Godsart" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.TypeOfGoods}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.TypeOfGoods, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Total bredde" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.TotalWidth}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.TotalWidth, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Total højde" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.TotalHeight}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.TotalHeight, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Total længde" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.TotalLength}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.TotalLength, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Total vægt" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.TotalWeight}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.TotalWeight, Mode=TwoWay}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -166,23 +169,23 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Dato" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.EndDate}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.EndDate, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Adresse" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.EndAddress}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.EndAddress, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="By" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.EndCity}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.EndCity, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Postnummer" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.EndPostalCode}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.EndPostalCode, Mode=TwoWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle4}" Width="100" Text="Land" />
-                    <TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.EndCountry}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle3}" Text="{Binding SelectedBooking.EndCountry, Mode=TwoWay}"/>
                 </StackPanel>
 
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="SLET BOOKING" Height="30" Background="Red" Command="{Binding}"/>
