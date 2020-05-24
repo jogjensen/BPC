@@ -70,6 +70,8 @@ namespace BPCMain.ViewModel
 		protected Booking _selectedBooking;
 		protected Booking _selectedAdminBooking;
 		protected ObservableCollection<Booking> _bookings;
+		protected ObservableCollection<Booking> _myCarBookings;
+
 		protected ObservableCollection<CarBooking> _carBookings;
 		protected ObservableCollection<Car> _cars;
 		protected NavigationService navigation = new NavigationService();
@@ -295,6 +297,12 @@ namespace BPCMain.ViewModel
 			}
 		}
 
+		public ObservableCollection<Booking> MyCarBookings
+		{
+			get { return _myCarBookings; }
+			set { _myCarBookings = value; }
+		}
+
 		public ObservableCollection<CarBooking> CarBookings
 		{
 			get { return _carBookings; }
@@ -350,8 +358,8 @@ namespace BPCMain.ViewModel
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
+			_myCarBookings = new ObservableCollection<Booking>();
 			_createBookingCompany = new RelayCommand(NewBooking, null);
-			//_requestJobCar = new RelayCommand(RequestJob, null);
 			_cancelJobCar = new RelayCommand(CancelJob, null);
 
 			_createBookingCompany = new RelayCommand(NewBooking, null);
@@ -376,7 +384,7 @@ namespace BPCMain.ViewModel
 
 		protected async void GetCurrentCar()
 		{
-			GetAllCarsTask();
+			await GetAllCarsTask();
 			foreach (Car c in Cars)
 			{
 				if (c.CvrNo.Equals(Shared.UserUser))
