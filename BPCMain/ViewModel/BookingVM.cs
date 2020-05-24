@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.AllJoyn;
 using Windows.UI.Xaml.Controls;
 using BPCClassLibrary;
 using BPCMain.Persistency;
@@ -63,12 +64,20 @@ namespace BPCMain.ViewModel
 		protected string _errorMessage;
 		
         protected Booking _selectedBooking;
+        protected Booking _selectedAdminBooking;
         protected ObservableCollection<Booking> _bookings;
         protected ObservableCollection<CarBooking> _carBookings;
 		protected NavigationService navigation = new NavigationService();
 		protected RestWorker restworker = new RestWorker();
 		protected SharedUser _shared;
 		#endregion
+
+		#region CarProperties
+
+		
+
+		#endregion
+
 
 		#region Properties
 
@@ -310,11 +319,11 @@ namespace BPCMain.ViewModel
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
             _createBookingCompany = new RelayCommand(NewBooking, null);
-			_requestJobCar = new RelayCommand(RequestJob, null);
+			//_requestJobCar = new RelayCommand(RequestJob, null);
 			_cancelJobCar = new RelayCommand(CancelJob, null);
 
 			_createBookingCompany = new RelayCommand(NewBooking, null);
-			//_acceptBookingCar = new RelayCommand(AcceptBookingCar, null);
+			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
 			//Booking bk = new Booking(Datastructures.Status.Closed, 3, 1, "22", 2, 2, 2, 2, DateTime.Now, "dwad", "4444", "dwad", "dwad", DateTime.Now, "dwad", "4444", "dwad", "dwad", 4, "dwad", "dwadwa");
@@ -332,6 +341,8 @@ namespace BPCMain.ViewModel
 			return true;
 		}
 
+		
+
 
 		protected async void GetBookingsAsync()
 		{
@@ -347,10 +358,14 @@ namespace BPCMain.ViewModel
 			
 			Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
 
+
+
 			if (ConstraintMethods.CreateBookingCheck(newBooking)) //metode i ConstraintMethods
 			{
-				//save new Booking in database
+				//save newBooking in database
 				await CreateNewBooking(newBooking);
+				//save newCarBooking in database
+				//await CreateNewCarBooking()
 				//save new Truckdriver in database
 				await CreateTruckdriver(truckdriver);
 				//evt. popup successful Booking
@@ -362,14 +377,8 @@ namespace BPCMain.ViewModel
 			}
 		}
 
-		public async Task<bool> CreateTruckdriver<T>(T truckdriver)
-		{
-			var Task = await restworker.CreateObjectAsync<T>(truckdriver, Datastructures.TableName.Truckdriver);
-			var result = Task;
-			return result;
-		}
 
-		public async void newCarBooking()
+		public async void NewCarBooking()
 		{
 			for (int i = 0; i < NumOfCarsNeeded; i++)
 			{
@@ -377,6 +386,20 @@ namespace BPCMain.ViewModel
 				
 				await CreateNewCarBooking(newCarBooking);
 			}
+		}
+
+		public async Task<bool> CreateNewBooking(Booking newBooking)
+		{
+			var Task = await restworker.CreateObjectAsync<Booking>(newBooking, Datastructures.TableName.Booking);
+			var result = Task;
+			return result;
+		}
+
+		public async Task<bool> CreateTruckdriver<T>(T truckdriver)
+		{
+			var Task = await restworker.CreateObjectAsync<T>(truckdriver, Datastructures.TableName.Truckdriver);
+			var result = Task;
+			return result;
 		}
 
 		public async Task<bool> CreateNewCarBooking(CarBooking newCarBooking)
@@ -394,22 +417,20 @@ namespace BPCMain.ViewModel
 
 		#region DisplayBookingCar Methods
 
-		public async void RequestJob()
+		public async void AcceptBookCar()
 		{
-			SelectedBooking.Status = Datastructures.Status.PendingAccept;
+			SelectedBooking.Status = Datastructures.Status.PendingClosing;
+			//await UpdateCarBooking()
 			await UpdateBooking(SelectedBooking);
+			
 		}
+
+
 
 		public async void CancelJob()
 		{
 			SelectedBooking.Status = Datastructures.Status.Open;
 			await UpdateBooking(SelectedBooking);
-
-			//if ((Int32) SelectedBooking.Status == (Int32) Datastructures.Status.Pending)
-			//{
-			//	SelectedBooking.Status = Datastructures.Status.Open;
-			//}
-
 		}
 
 		public async Task<bool> UpdateBooking(Booking updatedBooking)
@@ -420,12 +441,31 @@ namespace BPCMain.ViewModel
 			return result;
 		}
 
+		//public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
+		//{
+		//	//var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, )  // Datastructures.TableName.Booking);
+		//	return Task;
+		//}
+
+		protected async Task<bool> GetAllCarsAsync()
+		{
+			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+			Bookings = new ObservableCollection<Booking>(list);
+			return true;
+		}
+
+		protected async Task<bool> getAllCarBookingsTask()
+		{
+			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+			Bookings = new ObservableCollection<Booking>(list);
+			return true;
+		}
 
 		#endregion
 
 		#region DisplayBookingCar RelayCommands
 
-
+		
 
 		#endregion
 
@@ -450,12 +490,6 @@ namespace BPCMain.ViewModel
 
 		}
 
-		public async Task<bool> CreateNewBooking(Booking newBooking)
-		{
-			var Task = await restworker.CreateObjectAsync<Booking>(newBooking, Datastructures.TableName.Booking);
-			var result = Task;
-			return result;
-		}
 
 	}
 }
