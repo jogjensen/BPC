@@ -42,22 +42,16 @@ namespace BPCMain.ViewModel
 			{
 				if (cb.CarId != CurrentCar.Id)
 				{
-					CarBookings.Remove(cb);
-				}
-			}
-
-			foreach (Booking b in Bookings)
-			{
-				if (b.OrderNo != OrderNo)
-				{
-					Bookings.Remove(b);
+					foreach (Booking b in Bookings)
+					{
+						if (b.OrderNo == cb.OrderNo)
+						{
+							MyCarBookings.Add(b);
+						}
+					}
 				}
 			}
 		}
-
-
-
-
 
 		//public async void CancelJob()
 		//{

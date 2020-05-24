@@ -11,7 +11,7 @@
 
 
     <Page.DataContext>
-        <viewModel:BookingVM/>
+        <viewModel:DisplayBookingCar/>
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
