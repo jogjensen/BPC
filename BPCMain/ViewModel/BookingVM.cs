@@ -360,7 +360,6 @@ namespace BPCMain.ViewModel
 			_carBookings = new ObservableCollection<CarBooking>();
 
 			_myCarBookings = new ObservableCollection<Booking>();
-			_createBookingCompany = new RelayCommand(NewBooking, null);
 
 			_cancelJobCar = new RelayCommand(CancelJob, null);
 
