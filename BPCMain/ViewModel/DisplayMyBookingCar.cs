@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using BPCClassLibrary;
 using System.Threading.Tasks;
+using BPCMain.Utilities;
 
 namespace BPCMain.ViewModel
 {
@@ -9,7 +10,19 @@ namespace BPCMain.ViewModel
 
 		public DisplayMyBookingCar()
 		{
-			//DisplayMyBookings();
+			_cancelJobCar = new RelayCommand(CancelJob, null);
+		}
+
+		//public async void CancelJob()
+		//{
+		//	SelectedBooking.Status = Datastructures.Status.Open;
+		//	await UpdateBookingTask(SelectedBooking);
+		//}
+
+		public async void CancelJob()
+		{
+			SelectedBooking.Status = Datastructures.Status.PendingAccept;
+			await UpdateBooking(SelectedBooking);
 		}
 
 		protected override async Task<bool> GetAllBookingAsync()
@@ -39,24 +52,6 @@ namespace BPCMain.ViewModel
 			_ = await GetAllBookingAsync();
 		}
 
-		//public async void DisplayMyBookings()
-		//{
-		//	foreach (CarBooking cb in CarBookings)
-		//	{
-		//		if (cb.CarId != CurrentCar.Id)
-		//		{
-		//			foreach (Booking b in Bookings)
-		//			{
-		//				if (b.OrderNo == cb.OrderNo)
-		//				{
-		//					MyCarBookings.Add(b);
-		//				}
-		//			}
-		//		}
-		//	}
-
-
-		//}
 		protected override async Task<bool> GetAllCarBookingsTask()
 		{
 			CarBookings.Clear();

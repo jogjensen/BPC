@@ -76,8 +76,6 @@ namespace BPCMain.ViewModel
             _displayFaqCommand = new RelayCommand(NavigateToFaq, null);
             _displayMyBookingCarCommand = new RelayCommand(NavigateToMyBookingCar, null);
             _acceptBookingCar = new RelayCommand(AcceptBookCar, null);
-            _getallBookingsStart = new RelayCommand(GetAllBookingsAsync, null);
-            GetAllBookingsAsync();
         }
 		#endregion
 
@@ -110,16 +108,7 @@ namespace BPCMain.ViewModel
 		{
 			CarBooking updatedCarBooking = new CarBooking();
 			await GetAllCarBookingsTask();
-			//await GetAllBookingAsync();
 			await GetCurrentCarTask();
-
-			//foreach (Booking b in Bookings)
-			//{
-			//	if (b.Status != Datastructures.Status.Open)
-			//	{
-			//		Bookings.Remove(b);
-			//	}
-			//}
 			foreach (CarBooking cb in CarBookings)
 			{
 				if (cb.OrderNo == SelectedBooking.OrderNo && cb.CarId == 1)
@@ -165,11 +154,7 @@ namespace BPCMain.ViewModel
 			return Task;
 		}
 
-		public async void CancelJob()
-		{
-			SelectedBooking.Status = Datastructures.Status.PendingAccept;
-			await UpdateBooking(SelectedBooking);
-		}
+		
 
 		public async Task<bool> UpdateBooking(Booking updatedBooking)
 		{

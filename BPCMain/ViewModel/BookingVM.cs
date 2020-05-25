@@ -408,13 +408,10 @@ namespace BPCMain.ViewModel
 
 			_myCarBookings = new ObservableCollection<Booking>();
 			
-			//_cancelJobCar = new RelayCommand(CancelJob, null);
+			
 
 			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
-			//GetCurrentCarTask();
-			//Booking bk = new Booking(Datastructures.Status.Closed, 3, 1, "22", 2, 2, 2, 2, DateTime.Now, "dwad", "4444", "dwad", "dwad", DateTime.Now, "dwad", "4444", "dwad", "dwad", 4, "dwad", "dwadwa");
-			//_bookings.Add(bk);
 		}
 
 		#endregion
@@ -428,29 +425,11 @@ namespace BPCMain.ViewModel
 			return true;
 		}
 
-		//protected async Car GetCurrentCar()
-		//{
-		//	return await GetAllCarsTask();
-
-		//}
-
 		protected virtual async void GetBookingsAsync()
 		{
 			_ = await GetAllBookingAsync();
 
 		}
-
-		//public async void NewBooking()
-		//{
-		//	//Status = Datastructures.Status.Open;
-
-		//	Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
-
-		//	Truckdriver truckdriver = new Truckdriver(CompanyCvrNo, TruckDriverTelNo, TruckdriverEMail);
-		//}
-
-
-
 		#endregion
 
 		#region DisplayBookingCompany RelayCommands
@@ -460,21 +439,7 @@ namespace BPCMain.ViewModel
 
 		#region DisplayBookingCar Methods
 
-		//public async void AcceptBookCar()
-		//{
-		//	SelectedBooking.Status = Datastructures.Status.PendingClosing;
-		//	//await UpdateCarBooking()
-		//	await UpdateBookingTask(SelectedBooking);
-
-		//}
-
-
-
-		//public async void CancelJob()
-		//{
-		//	SelectedBooking.Status = Datastructures.Status.Open;
-		//	await UpdateBookingTask(SelectedBooking);
-		//}
+		
 
 		public async Task<bool> UpdateBookingTask(Booking updatedBooking)
 		{
@@ -484,11 +449,7 @@ namespace BPCMain.ViewModel
 			return result;
 		}
 
-		//public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
-		//{
-		//	//var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, )  // Datastructures.TableName.Booking);
-		//	return Task;
-		//}
+		
 
 
 
