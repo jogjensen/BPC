@@ -18,10 +18,7 @@
 
         <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Bookings" Command="{Binding}"/>
-                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Ny side" Command="{Binding}"/>
+                <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Vis alle biler" Command="{Binding DisplayAllCarsCommand}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="300" Height="45">
                 <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Left" Content="Tilbage" Command="{Binding BackCommand}"/>
@@ -54,7 +51,7 @@
                 <TextBlock Text="Slut By" Style="{StaticResource TextBlockStyle1}" Width="100"/>
                 <TextBlock Text="Dato og tid" Style="{StaticResource TextBlockStyle1}" Width="150"/>
                 <TextBlock Text="Godsart" Style="{StaticResource TextBlockStyle1}" Width="100"/>
-                <TextBlock Text="Status" Style="{StaticResource TextBlockStyle1}" Width="100"/>
+                <TextBlock Text="Status" Style="{StaticResource TextBlockStyle1}" Width="200"/>
                 <TextBlock Text="Antal biler" Style="{StaticResource TextBlockStyle1}" Width="100"/>
             </StackPanel>
 
@@ -71,7 +68,7 @@
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding EndCity, Mode=TwoWay}"/>
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding EndDate, Mode=TwoWay}"/>
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding TypeOfGoods, Mode=TwoWay}"/>
-                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="{Binding Status, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="200" Text="{Binding Status, Mode=TwoWay}"/>
                     <TextBlock Style="{StaticResource TextBlockStyle1}" Width ="100" Text="3"/>
                 </StackPanel>
                             </DataTemplate>

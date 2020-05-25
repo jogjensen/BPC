@@ -11,11 +11,23 @@ namespace BPCMain.ViewModel
 {
 	class DisplayBookingCar : BookingVM
 	{
+        #region Instance Fields
+
 		private RelayCommand _acceptBookingCar;
 		protected RelayCommand _getallBookingsStart;
 
+        private RelayCommand _backCommand;
+        private RelayCommand _displayOmBpcCommand;
+        private RelayCommand _displayFaqCommand;
+        private RelayCommand _displayMyBookingCarCommand;
+
+        private NavigationService _navigation;
+
 		private ObservableCollection<Car> cars1 = new ObservableCollection<Car>();
 		private ObservableCollection<Booking> availableBookings = new ObservableCollection<Booking>();
+        #endregion
+
+		#region Properties
 
 		public RelayCommand AcceptBookingCar
 		{
@@ -27,22 +39,70 @@ namespace BPCMain.ViewModel
 			get { return _getallBookingsStart; }
 		}
 
+        public RelayCommand BackCommand
+        {
+            get { return _backCommand; }
+        }
+
+        public RelayCommand DisplayOmBpcCommand
+        {
+            get { return _displayOmBpcCommand; }
+        }
+
+        public RelayCommand DisplayFaqCommand
+        {
+            get { return _displayFaqCommand; }
+        }
+
+        public RelayCommand DisplayMyBookingCarCommand
+        {
+            get { return _displayMyBookingCarCommand; }
+        }
+
 		public ObservableCollection<Booking> AvailableBookings
 		{
 			get { return availableBookings; }
 			set { availableBookings = value; }
 		}
+		#endregion
+
+		#region Constructor
 
 		public DisplayBookingCar()
-		{
-			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
+        {
+            _navigation = new NavigationService();
+            _backCommand = new RelayCommand(GoBack, null);
+            _displayOmBpcCommand = new RelayCommand(NavigateToOmBpc, null);
+            _displayFaqCommand = new RelayCommand(NavigateToFaq, null);
+            _displayMyBookingCarCommand = new RelayCommand(NavigateToMyBookingCar, null);
+            _acceptBookingCar = new RelayCommand(AcceptBookCar, null);
+            _getallBookingsStart = new RelayCommand(GetAllBookingsAsync, null);
+            GetAllBookingsAsync();
+        }
+		#endregion
 
-			//_getallBookingsStart = new RelayCommand(GetAllBookingsAsync, null);
-			//GetAvailableBookings();
-			//GetAllBookingsAsync();
-		}
+		#region Navigation Methods
 
+		public void GoBack()
+        {
+			_navigation.GoBack();
+        }
 
+        public void NavigateToOmBpc()
+        {
+			_navigation.Navigate(typeof(BPCMain.View.AboutUs));
+        }
+
+        public void NavigateToFaq()
+        {
+			_navigation.Navigate(typeof(BPCMain.View.Faq));
+        }
+
+        public void NavigateToMyBookingCar()
+        {
+			_navigation.Navigate(typeof(BPCMain.View.DisplayMyBookingCar));
+        }
+        #endregion
 
 		#region DisplayBookingCar Methods
 
