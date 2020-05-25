@@ -7,23 +7,84 @@ namespace BPCMain.ViewModel
 {
 	class DisplayMyBookingCar : BookingVM
 	{
+		private RelayCommand _backCommand;
+		private RelayCommand _displayOmBpcCommand;
+		private RelayCommand _displayFaqCommand;
+		private RelayCommand _displayBookingCarCommand;
+
+		private NavigationService _navigation;
+
+		public RelayCommand BackCommand
+		{
+			get { return _backCommand; }
+		}
+
+		public RelayCommand DisplayOmBpcCommand
+		{
+			get { return _displayOmBpcCommand; }
+		}
+
+		public RelayCommand DisplayFaqCommand
+		{
+			get { return _displayFaqCommand; }
+		}
+
+		public RelayCommand DisplayBookingCarCommand
+		{
+			get { return _displayBookingCarCommand; }
+		}
 
 		public DisplayMyBookingCar()
 		{
-			_cancelJobCar = new RelayCommand(CancelJob, null);
+			_cancelJobCar = new RelayCommand(CancelBooking, null);
+			_navigation = new NavigationService();
+			_backCommand = new RelayCommand(GoBack, null);
+			_displayOmBpcCommand = new RelayCommand(NavigateToOmBpc, null);
+			_displayFaqCommand = new RelayCommand(NavigateToFaq, null);
+			_displayBookingCarCommand = new RelayCommand(NavigateToBookingCar, null);
+		}
+
+		public async void CancelBooking()
+		{
+			CarBooking updatedCarBooking = new CarBooking();
+			await GetAllCarBookingsTask();
+			await GetCurrentCarTask();
+			foreach (CarBooking cb in CarBookings)
+			{
+				if (cb.OrderNo == SelectedBooking.OrderNo && cb.CarId == CurrentCar.Id)
+				{
+					updatedCarBooking.CarId = 1;
+					updatedCarBooking.OrderNo = cb.OrderNo;
+					updatedCarBooking.CarBookingId = cb.CarBookingId;
+					await UpdateCarBooking(updatedCarBooking);
+					SelectedBooking.Status = Datastructures.Status.Open;
+					await UpdateBooking(SelectedBooking);
+					await GetAllBookingAsync();
+					break;
+				}
+			}
+		}
+
+		public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
+		{
+			var Task = await restworker.UpdateObjectAsync<CarBooking>(upDatedCarBooking, upDatedCarBooking.CarBookingId, Datastructures.TableName.CarBooking);
+			return Task;
+		}
+
+		public async Task<bool> UpdateBooking(Booking updatedBooking)
+		{
+			var Task = await restworker.UpdateObjectAsync<Booking>(updatedBooking, updatedBooking.OrderNo,
+				Datastructures.TableName.Booking);
+			var result = Task;
+			return result;
 		}
 
 		//public async void CancelJob()
 		//{
 		//	SelectedBooking.Status = Datastructures.Status.Open;
-		//	await UpdateBookingTask(SelectedBooking);
-		//}
 
-		public async void CancelJob()
-		{
-			SelectedBooking.Status = Datastructures.Status.PendingAccept;
-			await UpdateBooking(SelectedBooking);
-		}
+		//	await UpdateBooking(SelectedBooking);
+		//}
 
 		protected override async Task<bool> GetAllBookingAsync()
 		{
@@ -62,5 +123,28 @@ namespace BPCMain.ViewModel
 			}
 			return true;
 		}
+
+		#region Navigation Methods
+
+		public void GoBack()
+		{
+			_navigation.GoBack();
+		}
+
+		public void NavigateToOmBpc()
+		{
+			_navigation.Navigate(typeof(BPCMain.View.AboutUs));
+		}
+
+		public void NavigateToFaq()
+		{
+			_navigation.Navigate(typeof(BPCMain.View.Faq));
+		}
+
+		public void NavigateToBookingCar()
+		{
+			_navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
+		}
+		#endregion
 	}
 }

@@ -14,7 +14,6 @@ namespace BPCMain.ViewModel
         #region Instance Fields
 
 		private RelayCommand _acceptBookingCar;
-		protected RelayCommand _getallBookingsStart;
 
         private RelayCommand _backCommand;
         private RelayCommand _displayOmBpcCommand;
@@ -32,11 +31,6 @@ namespace BPCMain.ViewModel
 		public RelayCommand AcceptBookingCar
 		{
 			get { return _acceptBookingCar; }
-		}
-
-		public RelayCommand GetallBookingsStart
-		{
-			get { return _getallBookingsStart; }
 		}
 
         public RelayCommand BackCommand
@@ -122,7 +116,6 @@ namespace BPCMain.ViewModel
 			}
 			SelectedBooking.Status = Datastructures.Status.PendingClosing;
 			await UpdateBooking(SelectedBooking);
-			navigation.Navigate(typeof(View.DisplayMyBookingCar));
 		}
 
 		protected override async Task<bool> GetAllBookingAsync()
