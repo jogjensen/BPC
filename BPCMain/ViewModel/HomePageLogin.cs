@@ -183,10 +183,9 @@ namespace BPCMain.ViewModel
 
 
         // Method runs both aforementioned methods and is stored in a RelayCommand which is bound to the login button
-        public bool CheckUserInfo()
+        public void CheckUserInfo()
         {
-            if (AdminLogin(2020, "Admin"))
-                return true;
+            AdminLogin(2020, "Admin");
             
             CheckUserInfoCar();
             CheckUserInfoCustomer();
