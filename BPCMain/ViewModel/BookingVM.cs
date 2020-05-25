@@ -329,8 +329,7 @@ namespace BPCMain.ViewModel
 			get => _statusString;
 			set
 			{
-				StatusString = value;
-				Status = (Datastructures.Status)Enum.Parse(typeof(Datastructures.Status), $"{StatusString}");
+				_statusString = value;
 			}
 		}
 
@@ -339,22 +338,7 @@ namespace BPCMain.ViewModel
 			get => _statusArray;
 			
 		}
-		public string PendingAccept
-		{
-			get => StatusArray[0];
-		}
-		public string Open
-		{
-			get => StatusArray[1];
-		}
-		public string PendingClosed
-		{
-			get => StatusArray[2];
-		}
-		public string Closed
-		{
-			get => StatusArray[3];
-		}
+		
 
 
 		#region Properties RelayCommands 
