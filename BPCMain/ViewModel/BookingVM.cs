@@ -60,6 +60,10 @@ namespace BPCMain.ViewModel
 		protected RelayCommand _acceptBookingAdmin;
 		protected RelayCommand _requestJobCar;
 		protected RelayCommand _cancelJobCar;
+        private RelayCommand _backCommand;
+        private RelayCommand _displayOmBpcCommand;
+        private RelayCommand _displayFaqCommand;
+        private RelayCommand _displayCreateBookingCompCommand;
 
 		//new Truckdriver
 		protected int _truckDriverTelNo;
@@ -106,7 +110,10 @@ namespace BPCMain.ViewModel
 		public Datastructures.Status Status
 		{
 			get { return _status; }
-			set { _status = value; }
+			set { 
+				_status = value;
+				OnPropertyChanged();
+				}
 		}
 
 		public int CompanyCvrNo
@@ -329,8 +336,8 @@ namespace BPCMain.ViewModel
 			get => _statusString;
 			set
 			{
-				StatusString = value;
-				Status = (Datastructures.Status)Enum.Parse(typeof(Datastructures.Status), $"{StatusString}");
+				_statusString = value;
+				OnPropertyChanged();
 			}
 		}
 
@@ -338,22 +345,6 @@ namespace BPCMain.ViewModel
 		{
 			get => _statusArray;
 			
-		}
-		public string PendingAccept
-		{
-			get => StatusArray[0];
-		}
-		public string Open
-		{
-			get => StatusArray[1];
-		}
-		public string PendingClosed
-		{
-			get => StatusArray[2];
-		}
-		public string Closed
-		{
-			get => StatusArray[3];
 		}
 
 
@@ -364,7 +355,25 @@ namespace BPCMain.ViewModel
 		//	get { return _createBookingCompany; }
 		//}
 
-		
+        public RelayCommand BackCommand
+        {
+            get { return _backCommand; }
+        }
+
+        public RelayCommand DisplayOmBpcCommand
+        {
+            get { return _displayOmBpcCommand; }
+        }
+
+        public RelayCommand DisplayFaqCommand
+        {
+            get { return _displayFaqCommand; }
+        }
+
+        public RelayCommand DisplayCreateBookingCompCommand
+        {
+            get { return _displayCreateBookingCompCommand; }
+        }
 
 		public RelayCommand RequestJobCar
 		{
@@ -380,17 +389,19 @@ namespace BPCMain.ViewModel
 		{
 			get { return _acceptBookingAdmin; }
 		}
-
-
-
 		#endregion
 
 		#region Constructor
 
 		public BookingVM()
 		{
+			navigation = new NavigationService();
+			_backCommand = new RelayCommand(GoBack, null);
+			_displayFaqCommand = new RelayCommand(NavigateToFaq, null);
+			_displayOmBpcCommand = new RelayCommand(NavigateToOmBpc, null);
+			_displayCreateBookingCompCommand = new RelayCommand(NavigateToCreateBookingCompany, null);
 			_statusString = "PendingAccept";
-			_statusArray = new string[]{ "PendingAccept","Open","PendingClosed","Closed"};
+			_statusArray = new string[]{ "PendingAccept","Open","PendingClosing","Closed"};
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
@@ -535,5 +546,27 @@ namespace BPCMain.ViewModel
 
 		#endregion
 
+        #region Navigation Methods
+
+        public void GoBack()
+        {
+			navigation.GoBack();
+        }
+
+        public void NavigateToOmBpc()
+        {
+			navigation.Navigate(typeof(BPCMain.View.AboutUs));
+        }
+
+        public void NavigateToFaq()
+        {
+			navigation.Navigate(typeof(BPCMain.View.Faq));
+        }
+
+        public void NavigateToCreateBookingCompany()
+        {
+			navigation.Navigate(typeof(BPCMain.View.CreateBookingCompany));
+        }
+        #endregion
 	}
 }

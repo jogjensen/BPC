@@ -12,11 +12,27 @@ namespace BPCMain.ViewModel
 {
     class BookingAdminVM : DisplayBookingCompany
     {
+        #region Instance Fields
+
         private RelayCommand _deleteBooking;
+        private RelayCommand _backCommand;
+        private RelayCommand _displayAllBookingsCommand;
+        private RelayCommand _displayAllCarsCommand;
+
+        private NavigationService _navigation;
+        #endregion
+
+        #region Constructor
 
         public BookingAdminVM()
         {
+            _navigation = new NavigationService();
+            _backCommand = new RelayCommand(GoBack, null);
+            _displayAllBookingsCommand = new RelayCommand(NavigateToDisplayAllBookings, null);
+            _displayAllCarsCommand = new RelayCommand(NavigateToDisplayAllCars, null);
         }
+        #endregion
+
 
         protected override async Task<bool> GetAllBookingAsync()
         {
@@ -25,7 +41,40 @@ namespace BPCMain.ViewModel
             return true;
         }
 
+        #region RelayCommands
 
+        public RelayCommand BackCommand
+        {
+            get { return _backCommand; }
+        }
+
+        public RelayCommand DisplayAllCarsCommand
+        {
+            get { return _displayAllCarsCommand; }
+        }
+
+        public RelayCommand DisplayAllBookingsCommand
+        {
+            get { return _displayAllBookingsCommand; }
+        }
+        #endregion
+
+        #region Navigation Methods
+        public void NavigateToDisplayAllCars()
+        {
+            _navigation.Navigate(typeof(BPCMain.View.DisplayAllCars));
+        }
+
+        public void NavigateToDisplayAllBookings()
+        {
+            _navigation.Navigate(typeof(BPCMain.View.DisplayBookingAdmin));
+        }
+
+        public void GoBack()
+        {
+            _navigation.GoBack();
+        }
+        #endregion
         //private async void DeleteBookingAsync()
         //{
         //    await DeleteBookingTask();
@@ -37,6 +86,5 @@ namespace BPCMain.ViewModel
         //    Bookings.Remove(SelectedBooking);
         //    return deleted;
         //}
-
     }
 }

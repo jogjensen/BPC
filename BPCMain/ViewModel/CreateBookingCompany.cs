@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using static BPCMain.Utilities.ConstraintMethods;
 using BPCMain;
 using BPCMain.Persistency;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BPCMain.ViewModel
 {
@@ -36,11 +37,32 @@ namespace BPCMain.ViewModel
 				await CreateTruckdriver(truckdriver);
 				await CreateNewBooking(newBooking);
 				await GetAllBookingAsync();
+				
+				
+
 				newBooking = GetNewBooking(_shared.UserUser);
 				await NewCarBooking(newBooking.OrderNo);
 				navigation.Navigate(typeof(View.DisplayBookingCompany));
 			}
 		}
+
+        private Booking GetNewBooking2(int cvrNo)
+        {
+	        Booking newBooking = new Booking();
+			
+	        foreach (Booking booking in Bookings)
+	        {
+				Booking b = new Booking();
+				b = booking;
+				b.OrderNo = 0;
+		        if (b.Equals(newBooking))
+		        {
+			        newBooking = booking;
+		        }
+	        }
+	        return newBooking;
+        }
+
 		//Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
 		private Booking GetNewBooking(int cvrNo)
 		{
@@ -59,15 +81,17 @@ namespace BPCMain.ViewModel
 
 		private async Task<bool> NewCarBooking(int orderNo)
 		{
+			bool created = false;
 			for (int i = 0; i < NumOfCarsNeeded; i++)
 			{
 				CarBooking newCarBooking = new CarBooking(orderNo);
 
-				newCarBooking.CarId = 0;
+				newCarBooking.CarId = 1;
 
-				await CreateNewCarBooking(newCarBooking);
+				created = await CreateNewCarBooking(newCarBooking);
+				
 			}
-			return true;
+			return created;
 		}
 
 		private async Task<bool> CreateNewBooking(Booking newBooking)
