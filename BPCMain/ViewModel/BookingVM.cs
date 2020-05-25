@@ -327,12 +327,16 @@ namespace BPCMain.ViewModel
 		public string StatusString
 		{
 			get => _statusString;
-			set => _statusString = value;
+			set
+			{
+				Status = (Datastructures.Status)Enum.Parse(typeof(Datastructures.Status), $"{StatusString}");
+			}
 		}
 
 		public string[] StatusArray
 		{
 			get => _statusArray;
+			
 		}
 		public string PendingAccept
 		{
