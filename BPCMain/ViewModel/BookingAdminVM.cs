@@ -16,7 +16,6 @@ namespace BPCMain.ViewModel
 
         public BookingAdminVM()
         {
-            _deleteBooking = new RelayCommand(DeleteBookingAsync, null);
         }
 
         protected override async Task<bool> GetAllBookingAsync()
@@ -25,6 +24,7 @@ namespace BPCMain.ViewModel
             Bookings = new ObservableCollection<Booking>(list);
             return true;
         }
+
 
         //private async void DeleteBookingAsync()
         //{
