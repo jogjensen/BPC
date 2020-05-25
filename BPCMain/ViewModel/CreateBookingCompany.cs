@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using static BPCMain.Utilities.ConstraintMethods;
 using BPCMain;
 using BPCMain.Persistency;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BPCMain.ViewModel
 {
@@ -80,15 +81,17 @@ namespace BPCMain.ViewModel
 
 		private async Task<bool> NewCarBooking(int orderNo)
 		{
+			bool created = false;
 			for (int i = 0; i < NumOfCarsNeeded; i++)
 			{
 				CarBooking newCarBooking = new CarBooking(orderNo);
 
-				newCarBooking.CarId = 0;
+				newCarBooking.CarId = 1;
 
-				await CreateNewCarBooking(newCarBooking);
+				created = await CreateNewCarBooking(newCarBooking);
+				
 			}
-			return true;
+			return created;
 		}
 
 		private async Task<bool> CreateNewBooking(Booking newBooking)

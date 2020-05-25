@@ -106,7 +106,10 @@ namespace BPCMain.ViewModel
 		public Datastructures.Status Status
 		{
 			get { return _status; }
-			set { _status = value; }
+			set { 
+				_status = value;
+				OnPropertyChanged();
+				}
 		}
 
 		public int CompanyCvrNo
@@ -327,13 +330,19 @@ namespace BPCMain.ViewModel
 		public string StatusString
 		{
 			get => _statusString;
-			set => _statusString = value;
+			set
+			{
+				_statusString = value;
+				OnPropertyChanged();
+			}
 		}
 
 		public string[] StatusArray
 		{
 			get => _statusArray;
+			
 		}
+		
 
 
 		#region Properties RelayCommands 
@@ -369,7 +378,7 @@ namespace BPCMain.ViewModel
 		public BookingVM()
 		{
 			_statusString = "PendingAccept";
-			_statusArray = new string[]{ "PendingAccept","Open","PendingClosed","Closed"};
+			_statusArray = new string[]{ "PendingAccept","Open","PendingClosing","Closed"};
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
