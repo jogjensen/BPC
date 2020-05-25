@@ -46,24 +46,7 @@ namespace BPCMain.ViewModel
 			}
 		}
 
-        private Booking GetNewBooking2(int cvrNo)
-        {
-	        Booking newBooking = new Booking();
-			
-	        foreach (Booking booking in Bookings)
-	        {
-				Booking b = new Booking();
-				b = booking;
-				b.OrderNo = 0;
-		        if (b.Equals(newBooking))
-		        {
-			        newBooking = booking;
-		        }
-	        }
-	        return newBooking;
-        }
-
-		//Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
+        //Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
 		private Booking GetNewBooking(int cvrNo)
 		{
 			Booking newBooking = new Booking();

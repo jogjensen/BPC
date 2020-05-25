@@ -36,8 +36,10 @@ namespace BPCMain.ViewModel
 		public DisplayBookingCar()
 		{
 			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
-			_getallBookingsStart = new RelayCommand(GetAllBookingsAsync, null);
-			GetAllBookingsAsync();
+
+			//_getallBookingsStart = new RelayCommand(GetAllBookingsAsync, null);
+			//GetAvailableBookings();
+			//GetAllBookingsAsync();
 		}
 
 
@@ -46,20 +48,21 @@ namespace BPCMain.ViewModel
 
 		public async void AcceptBookCar()
 		{
-			await GetAllCarBookingsTask();
-			await GetAllBookingAsync();
 			CarBooking updatedCarBooking = new CarBooking();
+			await GetAllCarBookingsTask();
+			//await GetAllBookingAsync();
 			await GetCurrentCarTask();
+
 			//foreach (Booking b in Bookings)
 			//{
-			//	if (b.Status != 0)
+			//	if (b.Status != Datastructures.Status.Open)
 			//	{
 			//		Bookings.Remove(b);
 			//	}
 			//}
 			foreach (CarBooking cb in CarBookings)
 			{
-				if (cb.OrderNo == SelectedBooking.OrderNo && cb.CarId == 0)
+				if (cb.OrderNo == SelectedBooking.OrderNo && cb.CarId == 1)
 				{
 					updatedCarBooking.CarId = CurrentCar.Id;
 					updatedCarBooking.OrderNo = cb.OrderNo;
@@ -70,21 +73,16 @@ namespace BPCMain.ViewModel
 			}
 			SelectedBooking.Status = Datastructures.Status.PendingClosing;
 			await UpdateBooking(SelectedBooking);
-			navigation.Navigate(typeof(View.DisplayBookingCar));
+			navigation.Navigate(typeof(View.DisplayMyBookingCar));
 		}
 
-		protected async void GetAllBookingsAsync()
+		protected override async Task<bool> GetAllBookingAsync()
 		{
-			_ = await GetAllBookingsTask();
-
-		}
-
-		protected async Task<bool> GetAllBookingsTask()
-		{
+			Bookings.Clear();
 			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
 			foreach (Booking b in list)
 			{
-				if (b.Status == 0) AvailableBookings.Add(b);
+				if (b.Status == Datastructures.Status.Open) Bookings.Add(b);
 			}
 			return true;
 		}
@@ -109,7 +107,7 @@ namespace BPCMain.ViewModel
 
 		public async void CancelJob()
 		{
-			SelectedBooking.Status = Datastructures.Status.Open;
+			SelectedBooking.Status = Datastructures.Status.PendingAccept;
 			await UpdateBooking(SelectedBooking);
 		}
 

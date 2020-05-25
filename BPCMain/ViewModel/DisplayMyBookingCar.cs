@@ -1,4 +1,6 @@
-﻿using BPCClassLibrary;
+﻿using System.Collections.Generic;
+using BPCClassLibrary;
+using System.Threading.Tasks;
 
 namespace BPCMain.ViewModel
 {
@@ -7,28 +9,63 @@ namespace BPCMain.ViewModel
 
 		public DisplayMyBookingCar()
 		{
-			DisplayMyBookings();
+			//DisplayMyBookings();
 		}
 
-		public async void DisplayMyBookings()
+		protected override async Task<bool> GetAllBookingAsync()
 		{
-			await GetAllCarBookingsTask();
-			await GetCurrentCarTask();
-			foreach (CarBooking cb in CarBookings)
+			Bookings.Clear();
+			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
+			foreach (Booking b in list)
 			{
-				if (cb.CarId != CurrentCar.Id)
+				if (b.Status == Datastructures.Status.PendingClosing)
 				{
-					foreach (Booking b in Bookings)
+					foreach (CarBooking cb in CarBookings)
 					{
-						if (b.OrderNo == cb.OrderNo)
+						if (cb.CarId == CurrentCar.Id && b.OrderNo == cb.OrderNo)
 						{
-							MyCarBookings.Add(b);
+								Bookings.Add(b);
 						}
 					}
 				}
 			}
+			return true;
+		}
+
+		protected override async void GetBookingsAsync()
+		{
+			await GetCurrentCarTask();
+			await GetAllCarBookingsTask();
+			_ = await GetAllBookingAsync();
+		}
+
+		//public async void DisplayMyBookings()
+		//{
+		//	foreach (CarBooking cb in CarBookings)
+		//	{
+		//		if (cb.CarId != CurrentCar.Id)
+		//		{
+		//			foreach (Booking b in Bookings)
+		//			{
+		//				if (b.OrderNo == cb.OrderNo)
+		//				{
+		//					MyCarBookings.Add(b);
+		//				}
+		//			}
+		//		}
+		//	}
 
 
+		//}
+		protected override async Task<bool> GetAllCarBookingsTask()
+		{
+			CarBookings.Clear();
+			IList<CarBooking> list = await restworker.GetAllObjectsAsync<CarBooking>(Datastructures.TableName.CarBooking);
+			foreach (CarBooking cb in list)
+			{
+				CarBookings.Add(cb);
+			}
+			return true;
 		}
 	}
 }

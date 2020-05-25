@@ -61,7 +61,7 @@
                 <TextBlock Text="Status" Style="{StaticResource TextBlockStyle1}" Width="150"/>
             </StackPanel>
             <StackPanel Height="400">
-                <ListView ItemsSource="{Binding AvailableBookings}" SelectedItem="{Binding SelectedBooking, Mode=TwoWay}" 
+                <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking, Mode=TwoWay}" 
 	                  ScrollViewer.VerticalScrollBarVisibility="Visible" 
 	                  Background="#696969" Width="1200">
                     <ListView.ItemTemplate>
