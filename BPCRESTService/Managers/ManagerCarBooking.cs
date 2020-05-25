@@ -64,7 +64,7 @@ namespace BPCRESTService.Managers
 				{
 					//command.Parameters.AddWithValue("@CarBookingId", carBooking.CarBookingId);
 					command.Parameters.AddWithValue("@OrderNo", carBooking.OrderNo);
-					//command.Parameters.AddWithValue("@CarId", carBooking.CarId);
+					command.Parameters.AddWithValue("@CarId", carBooking.CarId);
 
 					int rows = command.ExecuteNonQuery();
 					created = rows == 1;
