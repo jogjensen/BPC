@@ -11,20 +11,20 @@ namespace BPCMain.ViewModel
 {
 	class DisplayBookingCar : BookingVM
 	{
-        #region Instance Fields
+		#region Instance Fields
 
 		private RelayCommand _acceptBookingCar;
 
-        private RelayCommand _backCommand;
-        private RelayCommand _displayOmBpcCommand;
-        private RelayCommand _displayFaqCommand;
-        private RelayCommand _displayMyBookingCarCommand;
+		private RelayCommand _backCommand;
+		private RelayCommand _displayOmBpcCommand;
+		private RelayCommand _displayFaqCommand;
+		private RelayCommand _displayMyBookingCarCommand;
 
-        private NavigationService _navigation;
+		private NavigationService _navigation;
 
 		private ObservableCollection<Car> cars1 = new ObservableCollection<Car>();
 		private ObservableCollection<Booking> availableBookings = new ObservableCollection<Booking>();
-        #endregion
+		#endregion
 
 		#region Properties
 
@@ -33,25 +33,25 @@ namespace BPCMain.ViewModel
 			get { return _acceptBookingCar; }
 		}
 
-        public RelayCommand BackCommand
-        {
-            get { return _backCommand; }
-        }
+		public RelayCommand BackCommand
+		{
+			get { return _backCommand; }
+		}
 
-        public RelayCommand DisplayOmBpcCommand
-        {
-            get { return _displayOmBpcCommand; }
-        }
+		public RelayCommand DisplayOmBpcCommand
+		{
+			get { return _displayOmBpcCommand; }
+		}
 
-        public RelayCommand DisplayFaqCommand
-        {
-            get { return _displayFaqCommand; }
-        }
+		public RelayCommand DisplayFaqCommand
+		{
+			get { return _displayFaqCommand; }
+		}
 
-        public RelayCommand DisplayMyBookingCarCommand
-        {
-            get { return _displayMyBookingCarCommand; }
-        }
+		public RelayCommand DisplayMyBookingCarCommand
+		{
+			get { return _displayMyBookingCarCommand; }
+		}
 
 		public ObservableCollection<Booking> AvailableBookings
 		{
@@ -63,38 +63,38 @@ namespace BPCMain.ViewModel
 		#region Constructor
 
 		public DisplayBookingCar()
-        {
-            _navigation = new NavigationService();
-            _backCommand = new RelayCommand(GoBack, null);
-            _displayOmBpcCommand = new RelayCommand(NavigateToOmBpc, null);
-            _displayFaqCommand = new RelayCommand(NavigateToFaq, null);
-            _displayMyBookingCarCommand = new RelayCommand(NavigateToMyBookingCar, null);
-            _acceptBookingCar = new RelayCommand(AcceptBookCar, null);
-        }
+		{
+			_navigation = new NavigationService();
+			_backCommand = new RelayCommand(GoBack, null);
+			_displayOmBpcCommand = new RelayCommand(NavigateToOmBpc, null);
+			_displayFaqCommand = new RelayCommand(NavigateToFaq, null);
+			_displayMyBookingCarCommand = new RelayCommand(NavigateToMyBookingCar, null);
+			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
+		}
 		#endregion
 
 		#region Navigation Methods
 
 		public void GoBack()
-        {
+		{
 			_navigation.GoBack();
-        }
+		}
 
-        public void NavigateToOmBpc()
-        {
+		public void NavigateToOmBpc()
+		{
 			_navigation.Navigate(typeof(BPCMain.View.AboutUs));
-        }
+		}
 
-        public void NavigateToFaq()
-        {
+		public void NavigateToFaq()
+		{
 			_navigation.Navigate(typeof(BPCMain.View.Faq));
-        }
+		}
 
-        public void NavigateToMyBookingCar()
-        {
+		public void NavigateToMyBookingCar()
+		{
 			_navigation.Navigate(typeof(BPCMain.View.DisplayMyBookingCar));
-        }
-        #endregion
+		}
+		#endregion
 
 		#region DisplayBookingCar Methods
 
@@ -111,11 +111,14 @@ namespace BPCMain.ViewModel
 					updatedCarBooking.OrderNo = cb.OrderNo;
 					updatedCarBooking.CarBookingId = cb.CarBookingId;
 					await UpdateCarBooking(updatedCarBooking);
+					if ((--SelectedBooking.NumOfCarsNeeded) == 0)
+					{
+						SelectedBooking.Status = Datastructures.Status.PendingClosing;
+					}
+					await UpdateBooking(SelectedBooking);
 					break;
 				}
 			}
-			SelectedBooking.Status = Datastructures.Status.PendingClosing;
-			await UpdateBooking(SelectedBooking);
 		}
 
 		protected override async Task<bool> GetAllBookingAsync()
@@ -147,7 +150,7 @@ namespace BPCMain.ViewModel
 			return Task;
 		}
 
-		
+
 
 		public async Task<bool> UpdateBooking(Booking updatedBooking)
 		{

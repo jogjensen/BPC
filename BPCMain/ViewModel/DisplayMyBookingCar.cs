@@ -56,8 +56,9 @@ namespace BPCMain.ViewModel
 					updatedCarBooking.CarId = 1;
 					updatedCarBooking.OrderNo = cb.OrderNo;
 					updatedCarBooking.CarBookingId = cb.CarBookingId;
-					await UpdateCarBooking(updatedCarBooking);
+					SelectedBooking.NumOfCarsNeeded++;
 					SelectedBooking.Status = Datastructures.Status.Open;
+					await UpdateCarBooking(updatedCarBooking);
 					await UpdateBooking(SelectedBooking);
 					await GetAllBookingAsync();
 					break;
@@ -92,14 +93,11 @@ namespace BPCMain.ViewModel
 			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
 			foreach (Booking b in list)
 			{
-				if (b.Status == Datastructures.Status.PendingClosing)
+				foreach (CarBooking cb in CarBookings)
 				{
-					foreach (CarBooking cb in CarBookings)
+					if (cb.CarId == CurrentCar.Id && b.OrderNo == cb.OrderNo)
 					{
-						if (cb.CarId == CurrentCar.Id && b.OrderNo == cb.OrderNo)
-						{
-								Bookings.Add(b);
-						}
+						Bookings.Add(b);
 					}
 				}
 			}
