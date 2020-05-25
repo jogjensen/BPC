@@ -36,11 +36,32 @@ namespace BPCMain.ViewModel
 				await CreateTruckdriver(truckdriver);
 				await CreateNewBooking(newBooking);
 				await GetAllBookingAsync();
+				
+				
+
 				newBooking = GetNewBooking(_shared.UserUser);
 				await NewCarBooking(newBooking.OrderNo);
 				navigation.Navigate(typeof(View.DisplayBookingCompany));
 			}
 		}
+
+        private Booking GetNewBooking2(int cvrNo)
+        {
+	        Booking newBooking = new Booking();
+			
+	        foreach (Booking booking in Bookings)
+	        {
+				Booking b = new Booking();
+				b = booking;
+				b.OrderNo = 0;
+		        if (b.Equals(newBooking))
+		        {
+			        newBooking = booking;
+		        }
+	        }
+	        return newBooking;
+        }
+
 		//Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
 		private Booking GetNewBooking(int cvrNo)
 		{
