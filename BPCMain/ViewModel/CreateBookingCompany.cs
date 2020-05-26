@@ -32,7 +32,7 @@ namespace BPCMain.ViewModel
 
 			Truckdriver truckdriver = new Truckdriver(Shared.UserUser, TruckdriverId, TruckdriverEMail);
 
-			if (true/*CreateBookingCheck(newBooking)*/)
+			if (CreateBookingCheck(newBooking))
 			{
 				await CreateTruckdriver(truckdriver);
 				await CreateNewBooking(newBooking);

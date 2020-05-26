@@ -13,7 +13,7 @@ namespace BPCMain.Persistency
     {
         private const string URI = "https://bpcrestservice20200520092020.azurewebsites.net/api/";
 
-        public async Task<IList<T>> GetAllObjectsAsync<T>(TableName tableName)// where T: class
+        public async Task<IList<T>> GetAllObjectsAsync<T>(TableName tableName)
         {
             string objectName = tableName.ToString();
 

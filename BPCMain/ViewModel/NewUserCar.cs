@@ -186,7 +186,7 @@ namespace BPCMain.ViewModel
 			}
 			else
 			{
-				ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
+				ErrorMessage = "Fejl i oplysninger";
 			}
 		}
 
