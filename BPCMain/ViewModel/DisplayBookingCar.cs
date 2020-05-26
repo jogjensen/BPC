@@ -58,6 +58,16 @@ namespace BPCMain.ViewModel
 			get { return availableBookings; }
 			set { availableBookings = value; }
 		}
+
+		public ObservableCollection<Car> CarsList
+		{
+			get => cars1;
+			set
+			{
+				cars1 = value;
+				OnPropertyChanged();
+			}
+		}
 		#endregion
 
 		#region Constructor

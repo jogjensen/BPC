@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BPCMain.ViewModel
 {
-    class BookingAdminVM : DisplayBookingCompany
+    class BookingAdminVM : DisplayBookingCar
     {
         #region Instance Fields
 
@@ -20,12 +20,14 @@ namespace BPCMain.ViewModel
         private RelayCommand _displayAllCarsCommand;
 
         private NavigationService _navigation;
+        private Car _selectedCar;
         #endregion
 
         #region Constructor
 
         public BookingAdminVM()
         {
+            GetCarAsync();
             _navigation = new NavigationService();
             _backCommand = new RelayCommand(GoBack, null);
             _displayAllBookingsCommand = new RelayCommand(NavigateToDisplayAllBookings, null);
@@ -33,6 +35,17 @@ namespace BPCMain.ViewModel
         }
         #endregion
 
+        private async void GetCarAsync()
+        {
+            _ = await GetAllCarTask();
+        }
+
+        private async Task<bool> GetAllCarTask()
+        {
+            List<Car> list = (List<Car>)await restworker.GetAllObjectsAsync<Car>(Datastructures.TableName.Car);
+            CarsList = new ObservableCollection<Car>(list);
+            return true;
+        }
 
         protected override async Task<bool> GetAllBookingAsync()
         {
@@ -58,6 +71,12 @@ namespace BPCMain.ViewModel
             get { return _displayAllBookingsCommand; }
         }
         #endregion
+
+        public Car SelectedCar
+        {
+            get => _selectedCar;
+            set => _selectedCar = value;
+        }
 
         #region Navigation Methods
         public void NavigateToDisplayAllCars()
