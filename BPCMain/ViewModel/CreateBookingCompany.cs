@@ -12,33 +12,33 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace BPCMain.ViewModel
 {
-    class CreateBookingCompany : BookingVM
-    {
+	class CreateBookingCompany : BookingVM
+	{
 		private RelayCommand _createBookingCompany;
-		
+
 
 
 		public CreateBookingCompany()
 		{
 			_createBookingCompany = new RelayCommand(NewBooking, null);
-			
+
 		}
 
-        #region functions
+		#region functions
 
-        public async void NewBooking()
+		public async void NewBooking()
 		{
 			Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
 
 			Truckdriver truckdriver = new Truckdriver(Shared.UserUser, TruckdriverId, TruckdriverEMail);
 
-			if (true/*CreateBookingCheck(newBooking)*/)
+			if (CreateBookingCheck(newBooking))
 			{
 				await CreateTruckdriver(truckdriver);
 				await CreateNewBooking(newBooking);
 				await GetAllBookingAsync();
-				
-				
+
+
 
 				newBooking = GetNewBooking(_shared.UserUser);
 				await NewCarBooking(newBooking.OrderNo);
@@ -46,7 +46,7 @@ namespace BPCMain.ViewModel
 			}
 		}
 
-        //Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
+		//Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
 		private Booking GetNewBooking(int cvrNo)
 		{
 			Booking newBooking = new Booking();
@@ -72,7 +72,7 @@ namespace BPCMain.ViewModel
 				newCarBooking.CarId = 1;
 
 				created = await CreateNewCarBooking(newCarBooking);
-				
+
 			}
 			return created;
 		}
@@ -103,6 +103,6 @@ namespace BPCMain.ViewModel
 			get { return _createBookingCompany; }
 		}
 
-        #endregion
-    }
+		#endregion
+	}
 }
