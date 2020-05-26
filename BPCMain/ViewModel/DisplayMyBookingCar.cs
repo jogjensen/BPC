@@ -80,10 +80,6 @@ namespace BPCMain.ViewModel
 			return result;
 		}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 23b419041e552f6661821636eac413f9791be663
 		protected override async Task<bool> GetAllBookingAsync()
 		{
 			Bookings.Clear();
