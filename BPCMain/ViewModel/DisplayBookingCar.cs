@@ -114,8 +114,10 @@ namespace BPCMain.ViewModel
 					if ((--SelectedBooking.NumOfCarsNeeded) == 0)
 					{
 						SelectedBooking.Status = Datastructures.Status.PendingClosing;
+						await UpdateBooking(SelectedBooking);
+						await GetAllBookingAsync();
 					}
-					await UpdateBooking(SelectedBooking);
+					//navigation.Navigate(typeof(View.DisplayMyBookingCar));
 					break;
 				}
 			}

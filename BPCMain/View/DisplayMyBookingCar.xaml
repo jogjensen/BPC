@@ -189,7 +189,7 @@
 						<TextBlock Style="{StaticResource TextBlockStyle5}" Text="{Binding SelectedBooking.EndCountry}"/>
 					</StackPanel>
 
-					<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Accepter Booking" Height="30" Command="{Binding CancelJobCar}"/>
+					<Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Fortryd opgave" Height="30" Command="{Binding CancelJobCar}"/>
 				</StackPanel>
 
 				<!--<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="150" Text="{Binding SelectedBooking.Contactperson}"/>
