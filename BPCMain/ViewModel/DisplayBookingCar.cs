@@ -164,10 +164,5 @@ namespace BPCMain.ViewModel
 
 		#endregion
 
-		#region DisplayBookingCar RelayCommands
-
-
-
-		#endregion
 	}
 }

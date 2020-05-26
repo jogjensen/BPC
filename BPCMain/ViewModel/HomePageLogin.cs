@@ -157,23 +157,6 @@ namespace BPCMain.ViewModel
             }
         }
 
-        // Reads through a customer list from the DB, through REST worker and checks if information is similar to input
-        //public async void CheckUserInfoCustomer()
-        //{
-        //    List<Customer> customerList = (List<Customer>)await restWorker.GetAllObjectsAsync<Customer>(tableName: Datastructures.TableName.Customer);
-        //    foreach (var customer in customerList)
-        //    {
-        //        if (_shared.UserUser == customer.CvrNo)
-        //        {
-        //            if (_shared.UserPass.Equals(customer.Password))
-        //            {
-        //                _loginSuccess = true;
-        //                _navigation.Navigate(typeof(View.CreateBookingCompany));
-        //            }
-        //        }
-        //    }
-         
-        //}
         //uskønt admin hack
         private void AdminLogin(int name, string psw)
         {

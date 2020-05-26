@@ -31,8 +31,6 @@ namespace BPCMain.ViewModel
 		protected double _totalHeight;
 		protected double _totalWeight;
 		//Departure information
-		//protected CalendarDatePicker _sDate;
-		//protected TimePicker _sTime;
 		protected DateTime _startDate;
 		protected string _startAddress;
 		protected string _startCity;
@@ -53,10 +51,8 @@ namespace BPCMain.ViewModel
 
 		//Car
 		protected Car _currentCar;
-		//RelayCommands
-		
 
-		//protected RelayCommand _createBookingCompany;
+		//RelayCommands
 		protected RelayCommand _acceptBookingAdmin;
 		protected RelayCommand _requestJobCar;
 		protected RelayCommand _cancelJobCar;
@@ -83,20 +79,9 @@ namespace BPCMain.ViewModel
 		protected SharedUser _shared;
 		#endregion
 
+		//Enum Status Workaround
 		protected string[] _statusArray;
 		protected string _statusString;
-
-		#region CollectionsProperties
-
-		public ObservableCollection<Car> Cars
-		{
-			get { return _cars; }
-			set { _cars = value; }
-		}
-
-
-
-		#endregion
 
 
 		#region Properties
@@ -114,11 +99,6 @@ namespace BPCMain.ViewModel
 				_status = value;
 				OnPropertyChanged();
 				}
-		}
-
-		public int CompanyCvrNo
-		{
-			get { return 1; } //Find den i customer
 		}
 
 		public int NumOfCarsNeeded
@@ -166,24 +146,7 @@ namespace BPCMain.ViewModel
 		public DateTime StartDate
 		{
 			get { return _startDate; }
-			set
-			{
-				DateTime dt = new DateTime();
-				_startDate = value;
-			}
 		}
-
-		//public CalendarDatePicker SDate
-		//{
-		//	get { return _sDate; }
-		//	set { _sDate = value; }
-		//}
-
-		//public TimePicker STime
-		//{
-		//	get { return _sTime; }
-		//	set { _sTime = value; }
-		//}
 
 		public string StartAddress
 		{
@@ -291,12 +254,6 @@ namespace BPCMain.ViewModel
 			set { _currentCar = value; }
 		}
 
-		//public int CarId
-		//{
-		//	get { return CarId; }
-		//	set { CarId = value; }
-		//}
-
 		public ObservableCollection<Booking> Bookings
 		{
 			get { return _bookings; }
@@ -321,15 +278,18 @@ namespace BPCMain.ViewModel
 				_carBookings = value;
 				OnPropertyChanged();
 			}
+		}
 
+		public ObservableCollection<Car> Cars
+		{
+			get { return _cars; }
+			set { _cars = value; }
 		}
 
 		public SharedUser Shared
 		{
 			get { return _shared; }
 		}
-
-		#endregion
 
 		public string StatusString
 		{
@@ -344,18 +304,13 @@ namespace BPCMain.ViewModel
 		public string[] StatusArray
 		{
 			get => _statusArray;
-			
-		}
 
+		}
+		#endregion
 
 		#region Properties RelayCommands 
 
-		//public RelayCommand CreateBookingCompany
-		//{
-		//	get { return _createBookingCompany; }
-		//}
-
-        public RelayCommand BackCommand
+		public RelayCommand BackCommand
         {
             get { return _backCommand; }
         }
@@ -405,12 +360,8 @@ namespace BPCMain.ViewModel
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
-
 			_myCarBookings = new ObservableCollection<Booking>();
 			
-			
-
-			//_acceptBookingAdmin = new RelayCommand(AcceptBookingAdmin, null);
 			GetBookingsAsync();
 		}
 
@@ -428,18 +379,10 @@ namespace BPCMain.ViewModel
 		protected virtual async void GetBookingsAsync()
 		{
 			_ = await GetAllBookingAsync();
-
 		}
 		#endregion
 
-		#region DisplayBookingCompany RelayCommands
-
-
-		#endregion
-
 		#region DisplayBookingCar Methods
-
-		
 
 		public async Task<bool> UpdateBookingTask(Booking updatedBooking)
 		{
@@ -448,10 +391,6 @@ namespace BPCMain.ViewModel
 			var result = Task;
 			return result;
 		}
-
-		
-
-
 
 		protected async Task<bool> GetAllCarsTask()
 		{
@@ -486,26 +425,6 @@ namespace BPCMain.ViewModel
 
 		#endregion
 
-		#region DisplayBookingCar RelayCommands
-
-
-
-		#endregion
-
-		#region DisplayBookingAdmin Methods
-
-		public async void CreateBooking()
-		{
-
-		}
-
-		#endregion
-
-		#region DisplayBookingAdmin RelayCommands
-
-
-
-		#endregion
 
         #region Navigation Methods
 

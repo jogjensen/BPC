@@ -75,16 +75,6 @@ namespace BPCMain.ViewModel
             _navigation.GoBack();
         }
         #endregion
-        //private async void DeleteBookingAsync()
-        //{
-        //    await DeleteBookingTask();
-        //}
-
-        //private async Task<bool> DeleteBookingTask()
-        //{
-        //    bool deleted = await restworker.DeleteObjectAsync<Booking>(SelectedBooking.OrderNo, Datastructures.TableName.Booking);
-        //    Bookings.Remove(SelectedBooking);
-        //    return deleted;
-        //}
+       
     }
 }
