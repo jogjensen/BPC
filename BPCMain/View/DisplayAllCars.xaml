@@ -61,7 +61,7 @@
             </StackPanel>
                 <StackPanel Height="400">
                     <!--MANGLER MANGLER MANGLER--> 
-                    <ListView ItemsSource="{Binding Bookings}" SelectedItem="{Binding SelectedBooking, Mode=TwoWay}" 
+                    <ListView ItemsSource="{Binding CarsList}" SelectedItem="{Binding SelectedCar, Mode=TwoWay}" 
                               ScrollViewer.VerticalScrollBarVisibility="Visible" 
                               Background="#696969" Width="1200">
                         <ListView.ItemTemplate>
