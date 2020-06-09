@@ -80,6 +80,7 @@ namespace BPCMain.ViewModel
 			_displayFaqCommand = new RelayCommand(NavigateToFaq, null);
 			_displayMyBookingCarCommand = new RelayCommand(NavigateToMyBookingCar, null);
 			_acceptBookingCar = new RelayCommand(AcceptBookCar, null);
+
 		}
 		#endregion
 
@@ -106,6 +107,11 @@ namespace BPCMain.ViewModel
 		}
 		#endregion
 
+		protected override async void GetBookingsAsync()
+		{
+			_ = await GetAllBookingAsync();
+		}
+
 		#region DisplayBookingCar Methods
 
 		public async void AcceptBookCar()
@@ -129,6 +135,7 @@ namespace BPCMain.ViewModel
 					}
 					//navigation.Navigate(typeof(View.DisplayMyBookingCar));
 					break;
+
 				}
 			}
 		}

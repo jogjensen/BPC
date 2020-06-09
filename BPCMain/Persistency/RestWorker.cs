@@ -38,17 +38,18 @@ namespace BPCMain.Persistency
             }
         }
 
+        // Metoden tager et objekt og et tabelnavn.
         public async Task<bool> CreateObjectAsync<T>(T newObject, TableName tableName)
         {
-            string objectName = tableName.ToString();
+            string objectName = tableName.ToString(); //tabelnavnet laves til String for at den kan bruges i kaldet til databasen. (PostAsync)
             bool created = false;
 
             using (HttpClient client = new HttpClient())
             {
-                string jstring = JsonConvert.SerializeObject(newObject);
+                string jstring = JsonConvert.SerializeObject(newObject); //konverterer objektet til Json.
                 StringContent content = new StringContent(jstring, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage resultMessage = await client.PostAsync(URI + objectName, content);
+                HttpResponseMessage resultMessage = await client.PostAsync(URI + objectName, content); //returbesked fra databasen.
 
                 if (resultMessage.IsSuccessStatusCode)
                 {
