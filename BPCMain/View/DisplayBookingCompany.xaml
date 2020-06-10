@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Page.DataContext>
-		<viewModel:BookingVM/>
+		<viewModel:DisplayBookingCompany/>
 	</Page.DataContext>
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
