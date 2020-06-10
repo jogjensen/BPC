@@ -59,7 +59,7 @@ namespace BPCRESTService.Managers
 
          using (SqlConnection conn = new SqlConnection(connString))
          {
-            conn.Open();
+            conn.Open(); //åbner forbindelse til databasen
 
             using (SqlCommand command = new SqlCommand("Insert into Booking (Status, CompanyCvrNo, NumOfCarsNeeded, Comment, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, StartDate, StartAddress, StartPostalCode, StartCountry, EndDate, EndAddress, EndPostalCode, EndCountry, TruckdriverId, ContactPerson, StartCity, EndCity) " +
                                                                     "values(@Status, @CompanyCvrNo, @NumOfCarsNeeded, @Comment, @TypeOfGoods, @TotalWidth, @TotalLength, @TotalHeight, @TotalWeight, @StartDate, @StartAddress, @StartPostalCode, @StartCountry, @EndDate, @EndAddress, @EndPostalCode, @EndCountry, @Truckdriver, @ContactPerson, @StartCity, @EndCity)", conn))
@@ -87,8 +87,8 @@ namespace BPCRESTService.Managers
                 command.Parameters.AddWithValue("@StartCity", booking.StartCity);
                 command.Parameters.AddWithValue("@EndCity", booking.EndCity);
 
-               int rows = command.ExecuteNonQuery();
-               created = rows == 1;
+               int rows = command.ExecuteNonQuery(); //Eksekvering af NonQuery (SQL command)
+               created = rows == 1; //sand hvis ændrede rækker i databasen er 1.
             }
          }
          return created;

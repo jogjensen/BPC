@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.Devices.SmartCards;
 using Windows.Media.Protection.PlayReady;
 using Windows.UI.Composition;
+using Windows.UI.Xaml.Controls;
 using BPCClassLibrary;
 
 
@@ -35,14 +36,14 @@ namespace BPCMain.Utilities
 
 		}
 
-        public static bool CreateUserCheck(Customer newCustomer)
-        {
-            if (
-                !StringLengthCheck(newCustomer.CompanyName, 2,50)||
+		public static bool CreateUserCheck(Customer newCustomer)
+		{
+			if (
+				!StringLengthCheck(newCustomer.CompanyName, 2,50)||
 				!CheckNumber(newCustomer.CvrNo, 10000000,99999999)||
-                !StringLengthCheck(newCustomer.EMail,3,50)||
+				!StringLengthCheck(newCustomer.EMail,3,50)||
 				!StringLengthCheck(newCustomer.TelephoneNo,8,8)||
-                !OnlyNumbersCheck(newCustomer.TelephoneNo) ||
+				!OnlyNumbersCheck(newCustomer.TelephoneNo) ||
 				!StringLengthCheck(newCustomer.MobileNo,0,16)||
 				!OnlyNumbersCheck(newCustomer.MobileNo)||
 				!StringLengthCheck(newCustomer.Address,6,80)||
@@ -50,39 +51,39 @@ namespace BPCMain.Utilities
 				!OnlyNumbersCheck(newCustomer.PostalCode)||
 				!StringLengthCheck(newCustomer.Country,2,40)||
 				!StringLengthCheck(newCustomer.Password,6,30)) return false;
-            return true;
+			return true;
 		}
 
-        public static bool CreateBookingCheck(Booking booking)
-        {
-	        if (
-		        !CheckNumber(booking.CompanyCvrNo, 10000000, 99999999) ||
+		public static bool CreateBookingCheck(Booking booking) 
+		{
+			if (
+				!CheckNumber(booking.CompanyCvrNo, 10000000, 99999999) ||
 				!CheckNumber(booking.NumOfCarsNeeded, 1, 4)) return false;
 			return true;
-        }
+		}
 
-        public static bool CreatetruckdriverCheck(Truckdriver truckdriver)
-        {
-	        if (
-		        !StringLengthCheck(truckdriver.EMail, 3, 50) ||
-		        !CheckNumber(truckdriver.TelephoneNo, 10000000, 99999999)) return false;
-	        return true;
-        }
+		public static bool CreatetruckdriverCheck(Truckdriver truckdriver)
+		{
+			if (
+				!StringLengthCheck(truckdriver.EMail, 3, 50) ||
+				!CheckNumber(truckdriver.TelephoneNo, 10000000, 99999999)) return false;
+			return true;
+		}
 
-		public static bool CheckNumber(int number, int min, int max)
+		public static bool CheckNumber(int number, int min, int max) //Returnerer True hvis number er mellem min og max.
 		{
 			if (number >= min && number <= max) return true;
 			return false;
 		}
 
 
-		public static bool StringLengthCheck(string str, int minLength, int maxLength)
+		public static bool StringLengthCheck(string str, int minLength, int maxLength) //Returnerer True hvis længden af str er mellem minLength og maxLength
 		{
 			if (str.Length >= minLength && str.Length <= maxLength) return true;
 			return false;
 		}
 
-		public static bool OnlyNumbersCheck(string str)
+		public static bool OnlyNumbersCheck(string str) //Returnerer True hvis str kun består af tal.
 		{
 			bool isOnlyNumbers = true;
 			if (str.Equals("N/A")) return true;

@@ -7,9 +7,9 @@ using BPCClassLibrary;
 
 namespace BPCRESTService.Managers
 {
-    public class ManagerCarBooking
-    {
-        private const string connString = "Server=tcp:bpc-dbserver.database.windows.net,1433;Initial Catalog=bpc-db;Persist Security Info=False;User ID=bpc-adm;Password=Secret1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+	public class ManagerCarBooking
+	{
+		private const string connString = "Server=tcp:bpc-dbserver.database.windows.net,1433;Initial Catalog=bpc-db;Persist Security Info=False;User ID=bpc-adm;Password=Secret1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
 		public IList<CarBooking> GetAllCarBookings()
 		{

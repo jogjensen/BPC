@@ -42,6 +42,7 @@ namespace BPCMain.ViewModel
 			_displayOmBpcCommand = new RelayCommand(NavigateToOmBpc, null);
 			_displayFaqCommand = new RelayCommand(NavigateToFaq, null);
 			_displayBookingCarCommand = new RelayCommand(NavigateToBookingCar, null);
+
 		}
 
 		public async void CancelBooking()
@@ -90,7 +91,8 @@ namespace BPCMain.ViewModel
 				{
 					if (cb.CarId == CurrentCar.Id && b.OrderNo == cb.OrderNo)
 					{
-						Bookings.Add(b);
+
+						//Bookings.Add(b);
 					}
 				}
 			}

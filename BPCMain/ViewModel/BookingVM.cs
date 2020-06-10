@@ -56,10 +56,10 @@ namespace BPCMain.ViewModel
 		protected RelayCommand _acceptBookingAdmin;
 		protected RelayCommand _requestJobCar;
 		protected RelayCommand _cancelJobCar;
-        private RelayCommand _backCommand;
-        private RelayCommand _displayOmBpcCommand;
-        private RelayCommand _displayFaqCommand;
-        private RelayCommand _displayCreateBookingCompCommand;
+		private RelayCommand _backCommand;
+		private RelayCommand _displayOmBpcCommand;
+		private RelayCommand _displayFaqCommand;
+		private RelayCommand _displayCreateBookingCompCommand;
 
 		//new Truckdriver
 		protected int _truckDriverTelNo;
@@ -95,10 +95,11 @@ namespace BPCMain.ViewModel
 		public Datastructures.Status Status
 		{
 			get { return _status; }
-			set { 
+			set
+			{
 				_status = value;
 				OnPropertyChanged();
-				}
+			}
 		}
 
 		public int NumOfCarsNeeded
@@ -311,24 +312,24 @@ namespace BPCMain.ViewModel
 		#region Properties RelayCommands 
 
 		public RelayCommand BackCommand
-        {
-            get { return _backCommand; }
-        }
+		{
+			get { return _backCommand; }
+		}
 
-        public RelayCommand DisplayOmBpcCommand
-        {
-            get { return _displayOmBpcCommand; }
-        }
+		public RelayCommand DisplayOmBpcCommand
+		{
+			get { return _displayOmBpcCommand; }
+		}
 
-        public RelayCommand DisplayFaqCommand
-        {
-            get { return _displayFaqCommand; }
-        }
+		public RelayCommand DisplayFaqCommand
+		{
+			get { return _displayFaqCommand; }
+		}
 
-        public RelayCommand DisplayCreateBookingCompCommand
-        {
-            get { return _displayCreateBookingCompCommand; }
-        }
+		public RelayCommand DisplayCreateBookingCompCommand
+		{
+			get { return _displayCreateBookingCompCommand; }
+		}
 
 		public RelayCommand RequestJobCar
 		{
@@ -356,13 +357,14 @@ namespace BPCMain.ViewModel
 			_displayOmBpcCommand = new RelayCommand(NavigateToOmBpc, null);
 			_displayCreateBookingCompCommand = new RelayCommand(NavigateToCreateBookingCompany, null);
 			_statusString = "PendingAccept";
-			_statusArray = new string[]{ "PendingAccept","Open","PendingClosing","Closed"};
+			_statusArray = new string[] { "PendingAccept", "Open", "PendingClosing", "Closed" };
 			_shared = SharedUser.Instance;
 			_bookings = new ObservableCollection<Booking>();
 			_carBookings = new ObservableCollection<CarBooking>();
 			_myCarBookings = new ObservableCollection<Booking>();
 			
 			GetBookingsAsync();
+			
 		}
 
 		#endregion
@@ -371,6 +373,7 @@ namespace BPCMain.ViewModel
 
 		protected virtual async Task<bool> GetAllBookingAsync()
 		{
+			Bookings.Clear();
 			List<Booking> list = (List<Booking>)await restworker.GetAllObjectsAsync<Booking>(Datastructures.TableName.Booking);
 			Bookings = new ObservableCollection<Booking>(list);
 			return true;
@@ -418,7 +421,7 @@ namespace BPCMain.ViewModel
 			List<CarBooking> list = (List<CarBooking>)await restworker.GetAllObjectsAsync<CarBooking>(Datastructures.TableName.CarBooking);
 			foreach (CarBooking cb in list)
 			{
-					CarBookings.Add(cb);
+				CarBookings.Add(cb);
 			}
 			return true;
 		}
@@ -426,27 +429,27 @@ namespace BPCMain.ViewModel
 		#endregion
 
 
-        #region Navigation Methods
+		#region Navigation Methods
 
-        public void GoBack()
-        {
+		public void GoBack()
+		{
 			navigation.GoBack();
-        }
+		}
 
-        public void NavigateToOmBpc()
-        {
+		public void NavigateToOmBpc()
+		{
 			navigation.Navigate(typeof(BPCMain.View.AboutUs));
-        }
+		}
 
-        public void NavigateToFaq()
-        {
+		public void NavigateToFaq()
+		{
 			navigation.Navigate(typeof(BPCMain.View.Faq));
-        }
+		}
 
-        public void NavigateToCreateBookingCompany()
-        {
+		public void NavigateToCreateBookingCompany()
+		{
 			navigation.Navigate(typeof(BPCMain.View.CreateBookingCompany));
-        }
-        #endregion
+		}
+		#endregion
 	}
 }

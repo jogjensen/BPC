@@ -24,11 +24,12 @@ namespace BPCMain.ViewModel
 			
 			_deleteBooking = new RelayCommand(DeleteBookingAsync, null);
 			_updateBooking = new RelayCommand(UpdateBookingAsync, null);
-		}
+            this.GetBookingsAsync();
+        }
 
 		protected override async void GetBookingsAsync()
 		{
-			_ = await GetAllBookingAsync();
+			_ = await this.GetAllBookingAsync();
 		}
 
 		protected override async Task<bool> GetAllBookingAsync()

@@ -16,11 +16,10 @@ namespace BPCMain.ViewModel
 	{
 		private RelayCommand _createBookingCompany;
 
-
-
 		public CreateBookingCompany()
 		{
-			_createBookingCompany = new RelayCommand(NewBooking, null);
+			//Denne relaycommand tager en command som parameter/argument og kriteriet for at denne relaycommand kan køre/aktiveres?
+				_createBookingCompany = new RelayCommand(NewBooking, null);
 
 		}
 
@@ -28,25 +27,28 @@ namespace BPCMain.ViewModel
 
 		public async void NewBooking()
 		{
+			//Opretninng af Booking objekt
 			Booking newBooking = new Booking(0, _shared.UserUser, NumOfCarsNeeded, TypeOfGoods, TotalWidth, TotalLength, TotalHeight, TotalWeight, DateTime.Now, StartAddress, StartPostalCode, StartCity, StartCountry, DateTime.Now, EndAddress, EndPostalCode, EndCity, EndCountry, TruckdriverId, Contactperson, Comment);
-
+			//opretning af Truckdriver objekt
 			Truckdriver truckdriver = new Truckdriver(Shared.UserUser, TruckdriverId, TruckdriverEMail);
 
-			if (CreateBookingCheck(newBooking))
+
+			if (CreateBookingCheck(newBooking)) //Check af indtastning. f.eks. 8 tal i et telefonnummer og KUN tal.
 			{
-				await CreateTruckdriver(truckdriver);
-				await CreateNewBooking(newBooking);
-				await GetAllBookingAsync();
+				await CreateTruckdriver(truckdriver); //kalder metoden som kalder Restworkeren.
+				await CreateNewBooking(newBooking); //kalder metoden som kalder Restworkeren.
+				await GetAllBookingAsync(); //Henter alle Bookings
 
-
-
-				newBooking = GetNewBooking(_shared.UserUser);
-				await NewCarBooking(newBooking.OrderNo);
+				newBooking = GetNewBooking(_shared.UserUser); //Henter den nyoprettede Booking
+				await NewCarBooking(newBooking.OrderNo); //kalder metode som opretter ny(e) CarBooking objekter.
 				navigation.Navigate(typeof(View.DisplayBookingCompany));
+
+
 			}
 		}
 
 		//Beskidt. Men det eneste unikke vi kender til, indtil den er hentet, er tidspunktet, da ordernummer bliver genereret i DB. Dårlig planlægning. 
+		//Generering af primærnøgle i programmet i stedet for databasen ville det være nemmere at finde den Booking man lige har oprettet.
 		private Booking GetNewBooking(int cvrNo)
 		{
 			Booking newBooking = new Booking();
@@ -59,6 +61,7 @@ namespace BPCMain.ViewModel
 					date = booking.StartDate;
 				}
 			}
+			
 			return newBooking;
 		}
 
@@ -67,11 +70,11 @@ namespace BPCMain.ViewModel
 			bool created = false;
 			for (int i = 0; i < NumOfCarsNeeded; i++)
 			{
-				CarBooking newCarBooking = new CarBooking(orderNo);
+				CarBooking newCarBooking = new CarBooking(orderNo); //opretter CarBooking med nuværende ordrenummer
 
-				newCarBooking.CarId = 1;
+				newCarBooking.CarId = 1; //Dummy Car bliver sat på nuværende Booking
 
-				created = await CreateNewCarBooking(newCarBooking);
+				created = await CreateNewCarBooking(newCarBooking); //Kalder Restworker for at gemme nyt CarBooking objekt på databasen.
 
 			}
 			return created;

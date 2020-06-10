@@ -204,6 +204,8 @@
 					<TextBlock Style="{StaticResource TextBlockStyle2}"
 						           Text="Alle bokse med * skal udfyldes"/>
 
+
+					<!--Denne knap er bundet til Propertien for en relaycommand i CreateBookingCompany-->
 					<Button Content="Lav booking"
 						        Margin="40,0,0,0"
 						        x:Name="Createbooking1"
