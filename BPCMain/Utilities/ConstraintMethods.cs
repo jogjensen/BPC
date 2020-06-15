@@ -38,26 +38,25 @@ namespace BPCMain.Utilities
 
 		public static bool CreateUserCheck(Customer newCustomer)
 		{
-			if (
-				!StringLengthCheck(newCustomer.CompanyName, 2,50)||
-				!CheckNumber(newCustomer.CvrNo, 10000000,99999999)||
-				!StringLengthCheck(newCustomer.EMail,3,50)||
-				!StringLengthCheck(newCustomer.TelephoneNo,8,8)||
-				!OnlyNumbersCheck(newCustomer.TelephoneNo) ||
-				!StringLengthCheck(newCustomer.MobileNo,0,16)||
-				!OnlyNumbersCheck(newCustomer.MobileNo)||
-				!StringLengthCheck(newCustomer.Address,6,80)||
-				!StringLengthCheck(newCustomer.PostalCode,4,10)||
-				!OnlyNumbersCheck(newCustomer.PostalCode)||
-				!StringLengthCheck(newCustomer.Country,2,40)||
-				!StringLengthCheck(newCustomer.Password,6,30)) return false;
+			//if (
+			//	!StringLengthCheck(newCustomer.CompanyName, 2,50)||
+			//	!CheckNumber(newCustomer.CvrNo, 10000000,99999999)||
+			//	!StringLengthCheck(newCustomer.EMail,3,50)||
+			//	!StringLengthCheck(newCustomer.TelephoneNo,8,8)||
+			//	!OnlyNumbersCheck(newCustomer.TelephoneNo) ||
+			//	!StringLengthCheck(newCustomer.MobileNo,0,16)||
+			//	!OnlyNumbersCheck(newCustomer.MobileNo)||
+			//	!StringLengthCheck(newCustomer.Address,6,80)||
+			//	!StringLengthCheck(newCustomer.PostalCode,4,10)||
+			//	!OnlyNumbersCheck(newCustomer.PostalCode)||
+			//	!StringLengthCheck(newCustomer.Country,2,40)||
+			//	!StringLengthCheck(newCustomer.Password,6,30)) return false;
 			return true;
 		}
 
 		public static bool CreateBookingCheck(Booking booking) 
 		{
 			if (
-				!CheckNumber(booking.CompanyCvrNo, 10000000, 99999999) ||
 				!CheckNumber(booking.NumOfCarsNeeded, 1, 4)) return false;
 			return true;
 		}
