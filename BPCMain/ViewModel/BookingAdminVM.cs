@@ -14,6 +14,7 @@ namespace BPCMain.ViewModel
     {
         #region Instance Fields
 
+        private RelayCommand _updateBooking;
         private RelayCommand _deleteBooking;
         private RelayCommand _backCommand;
         private RelayCommand _displayAllBookingsCommand;
@@ -32,8 +33,14 @@ namespace BPCMain.ViewModel
             _backCommand = new RelayCommand(GoBack, null);
             _displayAllBookingsCommand = new RelayCommand(NavigateToDisplayAllBookings, null);
             _displayAllCarsCommand = new RelayCommand(NavigateToDisplayAllCars, null);
+            _updateBooking = new RelayCommand(UpdateBookAsync, null);
         }
         #endregion
+
+        private async void UpdateBookAsync()
+        {
+            _ = await UpdateBookingTask(SelectedBooking);
+        }
 
         private async void GetCarAsync()
         {
@@ -55,6 +62,11 @@ namespace BPCMain.ViewModel
         }
 
         #region RelayCommands
+
+        public RelayCommand UpdateBookingRC
+        {
+            get { return _updateBooking; }
+        }
 
         public RelayCommand BackCommand
         {
