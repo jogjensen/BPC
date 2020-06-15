@@ -34,6 +34,7 @@ namespace BPCMain.ViewModel
             _displayAllBookingsCommand = new RelayCommand(NavigateToDisplayAllBookings, null);
             _displayAllCarsCommand = new RelayCommand(NavigateToDisplayAllCars, null);
             _updateBooking = new RelayCommand(UpdateBookAsync, null);
+            _deleteBooking = new RelayCommand(DeleteBookingAsync, null);
         }
         #endregion
 
@@ -45,6 +46,18 @@ namespace BPCMain.ViewModel
         private async void GetCarAsync()
         {
             _ = await GetAllCarTask();
+        }
+
+        private async void DeleteBookingAsync()
+        {
+            _ = await DeleteBookingTask();
+        }
+
+        private async Task<bool> DeleteBookingTask()
+        {
+            bool deleted = await restworker.DeleteObjectAsync<Booking>(_selectedBooking.OrderNo, Datastructures.TableName.Booking);
+            _bookings.Remove(SelectedBooking);
+            return true;
         }
 
         private async Task<bool> GetAllCarTask()
@@ -62,6 +75,11 @@ namespace BPCMain.ViewModel
         }
 
         #region RelayCommands
+
+        public RelayCommand DeleteBookingRC
+        {
+            get { return _deleteBooking; }
+        }
 
         public RelayCommand UpdateBookingRC
         {
