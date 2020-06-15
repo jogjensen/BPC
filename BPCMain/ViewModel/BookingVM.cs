@@ -11,6 +11,7 @@ using BPCClassLibrary;
 using BPCMain.Persistency;
 using BPCMain.Utilities;
 using System.Reflection.Metadata.Ecma335;
+using static BPCClassLibrary.Datastructures;
 
 namespace BPCMain.ViewModel
 {
@@ -389,6 +390,7 @@ namespace BPCMain.ViewModel
 
 		public async Task<bool> UpdateBookingTask(Booking updatedBooking)
 		{
+			updatedBooking.Status = (Status) Enum.Parse(typeof(Status), _statusString);
 			var Task = await restworker.UpdateObjectAsync<Booking>(updatedBooking, updatedBooking.OrderNo,
 				Datastructures.TableName.Booking);
 			var result = Task;
