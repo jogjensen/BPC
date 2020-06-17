@@ -17,7 +17,7 @@ namespace BPCClassLibrary
         private string _postalCode;
         private string _country;
         private string _password;
-        private int _truckdriver;
+        //private int _truckdriver;
         #endregion
 
         #region Constructors
@@ -41,6 +41,19 @@ namespace BPCClassLibrary
         }
 
         #endregion
+
+        public Customer(string companyName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password)
+        {
+	        _companyName = companyName;
+	        _cvrNo = cvrNo;
+	        _eMail = eMail;
+	        _telephoneNo = telephoneNo;
+	        _mobileNo = mobileNo;
+	        _address = address;
+	        _postalCode = postalCode;
+	        _country = country;
+	        _password = password;
+        }
 
         #region Properties
 
@@ -98,11 +111,11 @@ namespace BPCClassLibrary
             set => _password = value;
         }
 
-        public int Truckdriver
-        {
-	        get => _truckdriver;
-	        set => _truckdriver = value;
-        }
+        //public int Truckdriver
+        //{
+	       // get => _truckdriver;
+	       // set => _truckdriver = value;
+        //}
       #endregion
    }
 }

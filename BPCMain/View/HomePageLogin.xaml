@@ -5,10 +5,118 @@
     xmlns:local="using:BPCMain.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:BPCMain.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.DataContext>
+        <viewModel:HomePageLogin/>
+    </Page.DataContext>
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image Source="ms-appx:///Assets/freeway.jpg" Stretch="Fill" Grid.ColumnSpan="3"/>
+
+        <Grid Background="Black" Opacity="0.80" Width="Auto" Height="45" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Height="45" Width="auto" HorizontalAlignment="Center">
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="About Us" Command="{Binding AboutBpcCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="FAQ" Command="{Binding FAQCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Car" Command="{Binding CreateCarCommand}"/>
+            <Button Style="{StaticResource MenuBarButtonStyle}" HorizontalAlignment="Right" Content="Create Company" Command="{Binding CreateCompanyCommand}"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Background="Black" 
+             Opacity="0.50" 
+             Width="600" 
+             Height="700" 
+             VerticalAlignment="Top" 
+             Margin="100"/>
+
+        <StackPanel Orientation="Vertical" 
+                    Width="1000">
+
+            <StackPanel Orientation="Vertical" 
+                        VerticalAlignment="Top" 
+                        Width="600" Height="100" 
+                        Margin="0,150" 
+                        HorizontalAlignment="Center">
+
+                <TextBlock Text="BookPilotCar" 
+                           Width="750" Height="100" 
+                           TextAlignment="Center" 
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource HeaderTextBlockStyle}"
+                           FontWeight="Bold"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" 
+                        VerticalAlignment="Top" 
+                        Width="600" 
+                        Height="400"
+                        Margin="0,50">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
+                    <TextBox Header="Username:" 
+                             Text="{Binding Shared.Instance.UserUser, Mode=OneWay}"
+                         Width="300" 
+                         RequestedTheme="Light" 
+                         BorderThickness="1" 
+                         FontSize="16" 
+                         FontFamily="Arial Black"
+                         HorizontalAlignment="Center"
+                         Margin="150,10,0,0">
+
+                        <TextBox.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Username:" Foreground="White"/>
+                            </DataTemplate>
+                        </TextBox.HeaderTemplate>
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="600">
+                    <PasswordBox Header="Password:" 
+                                 Password="{Binding Shared.Instance.UserPass, Mode=OneWay}"
+                             Width="300" 
+                             RequestedTheme="Light" 
+                             BorderThickness="1" 
+                             FontSize="16" 
+                             FontFamily="Arial Black" 
+                             HorizontalAlignment="Center"
+                             Margin="150,10,0,0">
+
+                        <PasswordBox.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Password:" Foreground="White"/>
+                            </DataTemplate>
+                        </PasswordBox.HeaderTemplate>
+                    </PasswordBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="600" Height="100" Margin="25">
+                    <Button Content="Login" 
+                            Width="300" 
+                            RequestedTheme="Dark" 
+                            BorderThickness="1" 
+                            FontSize="16" 
+                            FontFamily="Arial Black" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            Margin="10"
+                            Command="{Binding TryLogin}"/>
+
+                    <CheckBox Content="Remember me" 
+                              Margin="10" 
+                              VerticalAlignment="Bottom" 
+                              FontSize="16" 
+                              FontFamily="Arial Black"
+                              HorizontalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
     </Grid>
 </Page>

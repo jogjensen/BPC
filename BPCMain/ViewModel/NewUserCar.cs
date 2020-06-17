@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using BPCClassLibrary;
 using BPCMain.Utilities;
+using static BPCMain.Utilities.ConstraintMethods;
+using static BPCMain.Utilities.NavigationService;
 using BPCMain.Persistency;
 
 namespace BPCMain.ViewModel
@@ -28,7 +31,7 @@ namespace BPCMain.ViewModel
 
 		private RelayCommand _createCar;
 
-		private NavigationService navigation = new NavigationService(); //Hvorfor behøver jeg ikke lave et objekt af ConstraintMethods?
+		private NavigationService navigation = new NavigationService();
 		private RestWorker restworker = new RestWorker();
 
 		#endregion
@@ -112,43 +115,45 @@ namespace BPCMain.ViewModel
 
 		#endregion
 
+		#region Constructor
+
+		public NewUserCar()
+		{
+			_createCar = new RelayCommand(NewUCAR, null);
+		}
+
+		#endregion
+
+		public async void NewUCAR()
+		{
+			Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
+			if (CreateCarCheck(newCar)) //metode i ConstraintMethods
+			{
+				//save new Car in database
+				await CreateNewCar(newCar);
+				navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
+			}
+			else
+			{
+				ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
+			}
+		}
 		#region RelayCommands
 
 		public RelayCommand CreateCar
 		{
 			get { return _createCar; }
-			set
-			{
-				_createCar = value;
-				Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode,
-					Country, Password);
-				if (ConstraintMethods.CreateCarCheck(newCar))
-				{
-					//save new Car in database
-
-					//CreateCarAsync(newCar); // eller
-
-					//var task = await restworker.CreateObjectAsync(newCar, Datastructures.TableName.Car);
-					//var result = task;
-					
-					navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
-				}
-				else
-				{
-					ErrorMessage = "Fejl i oplysninger"; //evt. bruge header til fejlmeddelelser
-				}
-			}
 		}
 
 		#endregion
 
 		#region Methods
 
-		public async Task<bool> CreateCarAsync<T>(T newObject)
+		public async Task<bool> CreateNewCar<T>(T newCar)
 		{
-			var task = await restworker.CreateObjectAsync(newObject, Datastructures.TableName.Car);
-			var result = task;
-			return result;
+			var Task = await restworker.CreateObjectAsync(newCar, Datastructures.TableName.Car);
+			var result = Task;
+				return result;
 		}
 
 		#endregion

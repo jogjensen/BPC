@@ -8,6 +8,7 @@ using Windows.Devices.SmartCards;
 using Windows.UI.Composition;
 using BPCClassLibrary;
 
+
 namespace BPCMain.Utilities
 {
 	public static class ConstraintMethods
@@ -18,8 +19,8 @@ namespace BPCMain.Utilities
 				 !OnlyNumbersCheck(car.MobileNo) ||
 				 !OnlyNumbersCheck(car.PostalCode) ||
 				 //!OnlyNumbersCheck(car.CvrNo) ||
-				 !StringLengthCheck(car.FirstName, 2, 30) ||
-				 !StringLengthCheck(car.LastName, 2, 30) ||
+				 !StringLengthCheck(car.FirstName, 2, 50) ||
+				 !StringLengthCheck(car.LastName, 2, 50) ||
 				 !CheckNumber(car.CvrNo, 10000000, 99999999) ||
 				 !StringLengthCheck(car.EMail, 10, 30) ||
 				 !StringLengthCheck(car.TelephoneNo, 8, 8) ||
@@ -29,24 +30,26 @@ namespace BPCMain.Utilities
 				 !StringLengthCheck(car.Country, 2, 30) ||
 				 !StringLengthCheck(car.Password, 6, 16)) return false;
 			return true;
+
 		}
 
-		public static bool CreateUserCheck(Customer customer)
-		{
-			if (
-				!StringLengthCheck(customer.CompanyName, 2, 50) ||
-				!CheckNumber(customer.CvrNo, 100000, 999999999) ||
-				!StringLengthCheck(customer.EMail, 6, 50) ||
-				!StringLengthCheck(customer.TelephoneNo, 6, 16) ||
-				//!OnlyNumbersCheck(customer.TelephoneNo) ||
-				!StringLengthCheck(customer.MobileNo, 6, 16) ||
-				!OnlyNumbersCheck(customer.MobileNo) ||
-				!StringLengthCheck(customer.Address, 10, 80) ||
-				!StringLengthCheck(customer.PostalCode, 4, 10) ||
-				!OnlyNumbersCheck(customer.PostalCode) ||
-				!StringLengthCheck(customer.Country, 2, 40) ||
-				!StringLengthCheck(customer.Password, 6, 30)) return false;
-			return true;
+        public static bool CreateUserCheck(Customer newCustomer)
+        {
+            if (
+                !StringLengthCheck(newCustomer.CompanyName, 2,50)||
+				!CheckNumber(newCustomer.CvrNo, 100000,999999999)||
+                !StringLengthCheck(newCustomer.EMail,6,50)||
+				!StringLengthCheck(newCustomer.TelephoneNo,6,16)||
+                !OnlyNumbersCheck(newCustomer.TelephoneNo) ||
+				!StringLengthCheck(newCustomer.MobileNo,6,16)||
+				!OnlyNumbersCheck(newCustomer.MobileNo)||
+				!StringLengthCheck(newCustomer.Address,10,80)||
+				!StringLengthCheck(newCustomer.PostalCode,4,10)||
+				!OnlyNumbersCheck(newCustomer.PostalCode)||
+				!StringLengthCheck(newCustomer.Country,2,40)||
+				!StringLengthCheck(newCustomer.Password,6,30)) return false;
+            return true;
+
 		}
 
 		public static bool CheckNumber(int number, int min, int max)
