@@ -393,6 +393,7 @@ namespace BPCMain.ViewModel
 			updatedBooking.Status = (Status) Enum.Parse(typeof(Status), _statusString);
 			var Task = await restworker.UpdateObjectAsync<Booking>(updatedBooking, updatedBooking.OrderNo,
 				Datastructures.TableName.Booking);
+			GetBookingsAsync();
 			var result = Task;
 			return result;
 		}
