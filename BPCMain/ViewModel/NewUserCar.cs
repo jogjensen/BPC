@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BPCClassLibrary;
 using BPCMain.Utilities;
-using static BPCMain.Utilities.ConstraintMethods;
-using static BPCMain.Utilities.NavigationService;
 using BPCMain.Persistency;
 
 namespace BPCMain.ViewModel
@@ -30,7 +28,7 @@ namespace BPCMain.ViewModel
 
 		private RelayCommand _createCar;
 
-		private NavigationService navigation = new NavigationService();
+		private NavigationService navigation = new NavigationService(); //Hvorfor behøver jeg ikke lave et objekt af ConstraintMethods?
 		private RestWorker restworker = new RestWorker();
 
 		#endregion
@@ -121,13 +119,18 @@ namespace BPCMain.ViewModel
 			get { return _createCar; }
 			set
 			{
-				_createCar = value; //er denne linje nødvendig???
+				_createCar = value;
 				Car newCar = new Car(FirstName, LastName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode,
 					Country, Password);
-				if (CreateCarCheck(newCar)) //metode i ConstraintMethods
+				if (ConstraintMethods.CreateCarCheck(newCar))
 				{
 					//save new Car in database
-					//await restworker.CreateObjectAsync(newCar, "Car");
+
+					//CreateCarAsync(newCar); // eller
+
+					//var task = await restworker.CreateObjectAsync(newCar, Datastructures.TableName.Car);
+					//var result = task;
+					
 					navigation.Navigate(typeof(BPCMain.View.DisplayBookingCar));
 				}
 				else
@@ -141,7 +144,12 @@ namespace BPCMain.ViewModel
 
 		#region Methods
 
-
+		public async Task<bool> CreateCarAsync<T>(T newObject)
+		{
+			var task = await restworker.CreateObjectAsync(newObject, Datastructures.TableName.Car);
+			var result = task;
+			return result;
+		}
 
 		#endregion
 	}

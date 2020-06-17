@@ -19,7 +19,7 @@
 			<StackPanel Orientation="Horizontal">
 				<TextBlock Style="{StaticResource TextBlockStyle1}"
 				           Text="Fornavn"/>
-				<TextBox Width="400" Text ="{Binding FirstName}"/>
+				<TextBox Width="400" Header="{Binding FirstNameError}" Text ="{Binding FirstName}"/>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal">
 				<TextBlock Style="{StaticResource TextBlockStyle1}"

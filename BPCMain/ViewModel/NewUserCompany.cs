@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Background;
 using BPCMain.Utilities;
 using BPCClassLibrary;
 using BPCMain.Persistency;
+using static BPCMain.Utilities.ConstraintMethods;
 
 namespace BPCMain.ViewModel
 {
@@ -111,11 +112,12 @@ namespace BPCMain.ViewModel
             get { return _createCompany; }
             set
             {
+               Customer customer = new Customer(CompanyName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country, Password);
                 _createCompany = value;
-                if (CreateUserCheck(CompanyName, CvrNo, EMail, TelephoneNo, MobileNo, Address, PostalCode, Country,
-                    Password) == true)
+                if (CreateUserCheck(customer))
                 {
-                    Customer newCustomer = new Customer(CompanyName,CvrNo,EMail,TelephoneNo,MobileNo,Address,PostalCode,Country,Password);
+	                Customer c = new Customer();
+                    //Customer newCustomer = new Customer(CompanyName, CvrNo, EMail,TelephoneNo,MobileNo,Address,PostalCode,Country,Password);
                     navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
                 }
                 else

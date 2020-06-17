@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.SmartCards;
 using Windows.UI.Composition;
+using BPCClassLibrary;
 
 namespace BPCMain.Utilities
 {
 	public static class ConstraintMethods
 	{
-		//string firstName, string lastName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password
 		public static bool CreateCarCheck(Car car)
 		{
 			if (!OnlyNumbersCheck(car.TelephoneNo) ||
@@ -29,27 +29,24 @@ namespace BPCMain.Utilities
 				 !StringLengthCheck(car.Country, 2, 30) ||
 				 !StringLengthCheck(car.Password, 6, 16)) return false;
 			return true;
-
 		}
 
-        public static bool CreateUserCheck(string CompanyName, int CvrNo, string Email, string TelephoneNo,
-            string MobileNo, string Address, string PostalCode, string Country, string Password)
-        {
-            if (
-                !StringLengthCheck(CompanyName,2,50)||
-				!CheckNumber(CvrNo,100000,999999999)||
-                !StringLengthCheck(Email,6,50)||
-				!StringLengthCheck(TelephoneNo,6,16)||
-                !OnlyNumbersCheck(TelephoneNo) ||
-				!StringLengthCheck(MobileNo,6,16)||
-				!OnlyNumbersCheck(MobileNo)||
-				!StringLengthCheck(Address,10,80)||
-				!StringLengthCheck(PostalCode,4,10)||
-				!OnlyNumbersCheck(PostalCode)||
-				!StringLengthCheck(Country,2,40)||
-				!StringLengthCheck(Password,6,30)) return false;
-            return true;
-
+		public static bool CreateUserCheck(Customer customer)
+		{
+			if (
+				!StringLengthCheck(customer.CompanyName, 2, 50) ||
+				!CheckNumber(customer.CvrNo, 100000, 999999999) ||
+				!StringLengthCheck(customer.EMail, 6, 50) ||
+				!StringLengthCheck(customer.TelephoneNo, 6, 16) ||
+				//!OnlyNumbersCheck(customer.TelephoneNo) ||
+				!StringLengthCheck(customer.MobileNo, 6, 16) ||
+				!OnlyNumbersCheck(customer.MobileNo) ||
+				!StringLengthCheck(customer.Address, 10, 80) ||
+				!StringLengthCheck(customer.PostalCode, 4, 10) ||
+				!OnlyNumbersCheck(customer.PostalCode) ||
+				!StringLengthCheck(customer.Country, 2, 40) ||
+				!StringLengthCheck(customer.Password, 6, 30)) return false;
+			return true;
 		}
 
 		public static bool CheckNumber(int number, int min, int max)

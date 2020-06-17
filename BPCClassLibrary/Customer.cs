@@ -26,6 +26,20 @@ namespace BPCClassLibrary
         {
 
         }
+
+        public Customer(string companyName, int cvrNo, string eMail, string telephoneNo, string mobileNo, string address, string postalCode, string country, string password)
+        {
+	        _companyName = companyName;
+	        _cvrNo = cvrNo;
+	        _eMail = eMail;
+	        _telephoneNo = telephoneNo;
+	        _mobileNo = mobileNo;
+	        _address = address;
+	        _postalCode = postalCode;
+	        _country = country;
+	        _password = password;
+        }
+
         #endregion
 
         #region Properties
