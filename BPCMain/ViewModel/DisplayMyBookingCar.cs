@@ -2,6 +2,7 @@
 using BPCClassLibrary;
 using System.Threading.Tasks;
 using BPCMain.Utilities;
+using Windows.System;
 
 namespace BPCMain.ViewModel
 {
@@ -50,6 +51,7 @@ namespace BPCMain.ViewModel
 			CarBooking updatedCarBooking = new CarBooking();
 			await GetAllCarBookingsTask();
 			await GetCurrentCarTask();
+			
 			foreach (CarBooking cb in CarBookings)
 			{
 				if (cb.OrderNo == SelectedBooking.OrderNo && cb.CarId == CurrentCar.Id)
@@ -61,10 +63,12 @@ namespace BPCMain.ViewModel
 					SelectedBooking.Status = Datastructures.Status.Open;
 					await UpdateCarBooking(updatedCarBooking);
 					await UpdateBooking(SelectedBooking);
+					await GetAllCarBookingsTask();
 					await GetAllBookingAsync();
 					break;
 				}
 			}
+
 		}
 
 		public async Task<bool> UpdateCarBooking(CarBooking upDatedCarBooking)
