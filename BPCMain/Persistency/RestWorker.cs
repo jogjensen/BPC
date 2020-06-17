@@ -56,6 +56,7 @@ namespace BPCMain.Persistency
                     created = JsonConvert.DeserializeObject<bool>(jstring);
                 }
             }
+
             return created;
         }
 
