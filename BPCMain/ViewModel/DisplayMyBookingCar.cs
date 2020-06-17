@@ -92,7 +92,7 @@ namespace BPCMain.ViewModel
 					if (cb.CarId == CurrentCar.Id && b.OrderNo == cb.OrderNo)
 					{
 
-						//Bookings.Add(b);
+						Bookings.Add(b);
 					}
 				}
 			}
