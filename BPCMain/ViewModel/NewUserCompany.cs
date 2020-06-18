@@ -12,7 +12,7 @@ using BPCMain.View;
 
 namespace BPCMain.ViewModel
 {
-	class NewUserCompany : BaseVM
+	class NewUserCompany : BookingVM
 	{
 		#region Instance Fields
 		private string _companyName;
@@ -155,6 +155,8 @@ namespace BPCMain.ViewModel
 			if (ConstraintMethods.CreateUserCheck(newCustomer))
 			{
 				await CreateNewCustomer(newCustomer);
+				_shared.UserUser = CvrNo;
+				_shared.UserPass = Password;
 				navigation.Navigate(typeof(BPCMain.View.DisplayBookingCompany));
 			}
 			else
