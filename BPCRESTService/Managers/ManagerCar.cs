@@ -9,7 +9,7 @@ namespace BPCRESTService.Managers
 {
 	public class ManagerCar
 	{
-		private const string connString = "Server=tcp:bpc-dbserver.database.windows.net,1433;Initial Catalog=bpc-db;Persist Security Info=False;User ID=bpc-adm;Password=Secret1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private const string connString = "SData Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BPCDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 		#region Get/Post/Put/Delete
 

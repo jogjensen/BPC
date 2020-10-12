@@ -9,8 +9,7 @@ namespace BPCRESTService.Managers
 {
     public class ManagerTruckdriver
     {
-        private const string connString = "Server=tcp:bpc-dbserver.database.windows.net,1433;Initial Catalog=bpc-db;Persist Security Info=False;User ID=bpc-adm;Password=Secret1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        //private const string connString = "Data Source=bpc-dbserver.database.windows.net;Initial Catalog=bpc-db;User ID=bpc-adm;Password=Secret1234;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private const string connString = "SData Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BPCDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public IList<Truckdriver> GetAllTruckdrivers()
         {

@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Reference Include="BPCClassLibrary">
-      <HintPath>..\BPCClassLibrary\bin\Debug\netstandard2.0\BPCClassLibrary.dll</HintPath>
+      <HintPath>..\BPCClassLibrary\obj\Debug\netstandard2.0\BPCClassLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
 
